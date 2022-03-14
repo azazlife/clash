@@ -1,0 +1,405 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  default-nameserver:
+    - 223.5.5.5
+    - 8.8.8.8
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    - 'music.163.com'
+    - '*.music.163.com'
+    - '*.126.net'
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    - 'songsearch.kugou.com'
+    - 'trackercdn.kugou.com'
+    - '*.kuwo.cn'
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'streamoc.music.tc.qq.com'
+    - 'mobileoc.music.tc.qq.com'
+    - 'isure.stream.qqmusic.qq.com'
+    - 'dl.stream.qqmusic.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - 'amobile.music.tc.qq.com'
+    - '*.xiami.com'
+    - '*.music.migu.cn'
+    - 'music.migu.cn'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - 'localhost.sec.qq.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - 'xnotify.xboxlive.com'
+    - '+.battlenet.com.cn'
+    - '+.wotgame.cn'
+    - '+.wggames.cn'
+    - '+.wowsgame.cn'
+    - '+.wargaming.net'
+    - 'proxy.golang.org'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - 'heartbeat.belkin.com'
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    - '*.router.asus.com'
+    - 'mesu.apple.com'
+    - 'swscan.apple.com'
+    - 'swquery.apple.com'
+    - 'swdownload.apple.com'
+    - 'swcdn.apple.com'
+    - 'swdist.apple.com'
+    - 'lens.l.google.com'
+    - 'stun.l.google.com'
+    - '+.nflxvideo.net'
+    - '*.square-enix.com'
+    - '*.finalfantasyxiv.com'
+    - '*.ffxiv.com'
+    - '*.mcdn.bilivideo.cn'
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://dns.google/dns-query
+    - https://dns.cloudflare.com/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 0.0.0.0/8
+      - 10.0.0.0/8
+      - 100.64.0.0/10
+      - 127.0.0.0/8
+      - 169.254.0.0/16
+      - 172.16.0.0/12
+      - 192.0.0.0/24
+      - 192.0.2.0/24
+      - 192.88.99.0/24
+      - 192.168.0.0/16
+      - 198.18.0.0/15
+      - 198.51.100.0/24
+      - 203.0.113.0/24
+      - 224.0.0.0/4
+      - 240.0.0.0/4
+      - 255.255.255.255/32
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+      - '+.githubusercontent.com'
+      - '+.googlevideo.com'
+proxies:
+  - name: bandwagonhost(coalcloud)
+    type: trojan
+    server: 139.227.219.199
+    port: 11123
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: bandwagonhost(forwardserver)
+    type: trojan
+#    server: china-gzyd-1.forwardserver.xyz
+#    port: 47430
+    server: azure-hk-1.forwardserver.xyz
+    port: 37450
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: bandwagonhost(anyhk)
+    type: trojan
+    server: zf.gzcm1.anyhk.xyz
+    port: 31234
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: virmach(coalcloud)
+    type: trojan
+    server: 139.227.219.199
+    port: 11234
+    password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
+    udp: true
+    sni: www.febeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: virmach(forwardserver)
+    type: trojan
+#    server: china-gzyd-1.forwardserver.xyz
+#    port: 48876
+    server: azure-hk-1.forwardserver.xyz
+    port: 45985
+    password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
+    udp: true
+    sni: www.febeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: virmach(anyhk)
+    type: trojan
+    server: zf.gzcm1.anyhk.xyz
+    port: 21234
+    password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
+    udp: true
+    sni: www.febeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: bandwagonhost(cdn)
+    type: vmess
+    server: hostmonit.com
+    port: 443
+    uuid: 64375483-bc00-4553-a80f-fa81f9801d88
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    servername: bandwagonhost.bylheart.workers.dev
+    network: ws
+    ws-opts:
+      path: /vcndvws
+      headers:
+        Host: bandwagonhost.bylheart.workers.dev
+      max-early-data: 2048
+      early-data-header-name: Sec-WebSocket-Protocol
+  - name: virmach(cdn)
+    type: vmess
+    server: hostmonit.com
+    port: 443
+    uuid: 90d29cfe-b4ab-49be-aef6-530eb4974d42
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    servername: virmach.bylheart.workers.dev
+    network: ws
+    ws-opts:
+      path: /bhfxvws
+      headers:
+        Host: virmach.bylheart.workers.dev
+      max-early-data: 2048
+      early-data-header-name: Sec-WebSocket-Protocol
+proxy-groups:
+  - name: "auto"
+    type: url-test
+    proxies:
+      - bandwagonhost(coalcloud)
+      - bandwagonhost(forwardserver)
+      - bandwagonhost(anyhk)
+      - virmach(coalcloud)
+      - virmach(forwardserver)
+      - virmach(anyhk)
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+  - name: PROXY
+    type: select
+    proxies:
+      - auto
+      - load-balance
+      - bandwagonhost(coalcloud)
+      - bandwagonhost(forwardserver)
+      - bandwagonhost(anyhk)
+      - virmach(coalcloud)
+      - virmach(forwardserver)
+      - virmach(anyhk)
+      - bandwagonhost(cdn)
+      - virmach(cdn)
+  - name: "load-balance"
+    type: load-balance
+    proxies:
+      - bandwagonhost(coalcloud)
+      - bandwagonhost(forwardserver)
+      - bandwagonhost(anyhk)
+      - virmach(coalcloud)
+      - virmach(forwardserver)
+      - virmach(anyhk)
+      - bandwagonhost(cdn)
+      - virmach(cdn)
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+rule-providers:
+# 广告域名列表
+  reject:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/reject.txt
+    path: ./ruleset/reject.yaml
+    interval: 86400
+# iCloud 域名列表
+  icloud:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/icloud.txt
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+# Apple 在中国大陆可直连的域名列表
+  apple:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/apple.txt
+    path: ./ruleset/apple.yaml
+    interval: 86400
+# [慎用]Google 在中国大陆可直连的域名列表
+  google:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/google.txt
+    path: ./ruleset/google.yaml
+    interval: 86400
+# 代理域名列表
+  proxy:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/proxy.txt
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+# 直连域名列表
+  direct:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/direct.txt
+    path: ./ruleset/direct.yaml
+    interval: 86400
+# 私有网络专用域名列表
+  private:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/private.txt
+    path: ./ruleset/private.yaml
+    interval: 86400
+# GFWList 域名列表
+  gfw:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/gfw.txt
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+# GreatFire 域名列表
+  greatfire:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/greatfire.txt
+    path: ./ruleset/greatfire.yaml
+    interval: 86400
+# 非中国大陆使用的顶级域名列表
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/tld-not-cn.txt
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+# Telegram 使用的 IP 地址列表
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+# 中国大陆 IP 地址列表
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/cncidr.txt
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+# 局域网 IP 及保留 IP 地址列表
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/lancidr.txt
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+# 需要直连的常见软件列表
+  applications:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/applications.txt
+    path: ./ruleset/applications.yaml
+    interval: 86400
+# 自定义
+  MyRules:
+    type: http
+    behavior: domain
+    url: https://raw.fastgit.org/bylheart/clash/main/MyRules.txt
+    path: ./ruleset/MyRules.yaml
+    interval: 86400
+rules:
+  - RULE-SET,MyRules,PROXY
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,google,PROXY
+  - RULE-SET,telegramcidr,PROXY
+# 拒绝
+#  - RULE-SET,reject,REJECT
+# 直连
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,icloud,DIRECT
+# 代理
+#  - RULE-SET,gfw,PROXY
+#  - RULE-SET,greatfire,PROXY
+#  - RULE-SET,proxy,PROXY
+#  - RULE-SET,tld-not-cn,PROXY
+# 其他
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
