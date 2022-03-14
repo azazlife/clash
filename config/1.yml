@@ -375,7 +375,7 @@ rule-providers:
   MyRules:
     type: http
     behavior: domain
-    url: https://raw.fastgit.org/bylheart/clash/main/MyRules.txt
+    url: https://raw.fastgit.org/bylheart/clashrule/main/MyRules.txt
     path: ./ruleset/MyRules.yaml
     interval: 86400
 rules:
