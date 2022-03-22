@@ -170,8 +170,8 @@ proxies:
       - http/1.1
   - name: virmach(coalcloud)
     type: trojan
-    server: shct2.forgebukkit.com
-    port: 31123
+    server: 139.227.219.199
+    port: 11000
     password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
     udp: true
     sni: www.febeuorg.eu.org
