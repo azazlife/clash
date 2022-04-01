@@ -202,7 +202,7 @@ proxies:
       - http/1.1
   - name: bandwagonhost(cdn)
     type: vmess
-    server: hostmonit.com
+    server: ip.sb
     port: 443
     uuid: 64375483-bc00-4553-a80f-fa81f9801d88
     alterId: 0
