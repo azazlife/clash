@@ -388,7 +388,7 @@ rules:
   - RULE-SET,google,PROXY
   - RULE-SET,telegramcidr,PROXY
 # 拒绝
-#  - RULE-SET,reject,REJECT
+  - RULE-SET,reject,REJECT
 # 直连
   - RULE-SET,cncidr,DIRECT
   - RULE-SET,direct,DIRECT
