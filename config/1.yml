@@ -372,6 +372,45 @@ rule-providers:
     behavior: classical
     url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/applications.txt
     path: ./ruleset/applications.yaml
+    interval: 86400   
+# 国内BAT公司及云服务厂商的IP段。所有在该云服务上的网站都可以直连。比如你网站在阿里云香港都可以直连。
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaCompanyIp.yaml
+    path: ./ruleset/ChinaCompanyIp.yaml
+    interval: 86400
+# 国内常见域名、直连CDN等。（很全，常用网址都有）
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
+    path: ./ruleset/ChinaDomain.yaml
+    interval: 86400
+# IPIP的国内地址段。比GeoIp更好。电脑性能好，可以引入
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml
+    path: ./ruleset/ChinaIp.yaml
+    interval: 86400
+  ChinaMedia:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml
+    path: ./ruleset/ChinaMedia.yaml
+    interval: 8640
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
+    path: ./ruleset/LocalAreaNetwork.yaml
+    interval: 8640
+  UnBan:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
+    path: ./ruleset/UnBan.yaml
     interval: 86400
 # 自定义
   MyRules:
@@ -395,7 +434,13 @@ rules:
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,apple,DIRECT
-  - RULE-SET,icloud,DIRECT
+  - RULE-SET,icloud,DIRECT 
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,LocalAreaNetwork,DIRECT  
+  - RULE-SET,UnBan,DIRECT
 # 代理
 #  - RULE-SET,gfw,PROXY
 #  - RULE-SET,greatfire,PROXY
