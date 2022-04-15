@@ -399,13 +399,13 @@ rule-providers:
     behavior: classical
     url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml
     path: ./ruleset/ChinaMedia.yaml
-    interval: 8640
+    interval: 86400
   LocalAreaNetwork:
     type: http
     behavior: classical
     url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
     path: ./ruleset/LocalAreaNetwork.yaml
-    interval: 8640
+    interval: 86400
   UnBan:
     type: http
     behavior: classical
