@@ -148,10 +148,8 @@ proxies:
       - http/1.1
   - name: bandwagonhost(forwardserver)
     type: trojan
-#    server: china-gzyd-1.forwardserver.xyz
-#    port: 47430
-    server: azure-hk-1.forwardserver.xyz
-    port: 37450
+    server: iepl-kn-hkbgp-r-1.forwardserver.xyz
+    port: 26356
     password: 64375483-bc00-4553-a80f-fa81f9801d88
     udp: true
     sni: www.janeuorg.eu.org
@@ -180,10 +178,8 @@ proxies:
       - http/1.1
   - name: virmach(forwardserver)
     type: trojan
-#    server: china-gzyd-1.forwardserver.xyz
-#    port: 48876
-    server: azure-hk-1.forwardserver.xyz
-    port: 45985
+    server: iepl-kn-hkbgp-r-1.forwardserver.xyz
+    port: 12133
     password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
     udp: true
     sni: www.febeuorg.eu.org
