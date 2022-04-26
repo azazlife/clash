@@ -136,7 +136,7 @@ dns:
       - '+.githubusercontent.com'
       - '+.googlevideo.com'
 proxies:
-  - name: bandwagonhost(coalcloud)
+  - name: bandwagonhost(倍率1.3-上海CN2)
     type: trojan
     server: shct2.forgebukkit.com
     port: 33123
@@ -146,7 +146,17 @@ proxies:
     alpn:
       - h2
       - http/1.1
-  - name: virmach(coalcloud)
+  - name: bandwagonhost(倍率1-上海联通-9929)
+    type: trojan
+    server: shcu.forgebukkit.com
+    port: 44123
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: virmach(倍率1.6-上海联通-CN2)
     type: trojan
     server: 139.227.219.199
     port: 11123
@@ -196,15 +206,17 @@ proxy-groups:
     proxies:
       - auto
       - load-balance
-      - bandwagonhost(coalcloud)
-      - virmach(coalcloud)
+      - bandwagonhost(倍率1.3-上海CN2)
+      - bandwagonhost(倍率1-上海联通-9929)
+      - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
   - name: "auto"
     type: url-test
     proxies:
-      - bandwagonhost(coalcloud)
-      - virmach(coalcloud)
+      - bandwagonhost(倍率1.3-上海CN2)
+      - bandwagonhost(倍率1-上海联通-9929)
+      - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
     url: 'http://www.gstatic.com/generate_204'
@@ -212,8 +224,9 @@ proxy-groups:
   - name: "load-balance"
     type: load-balance
     proxies:
-      - bandwagonhost(coalcloud)
-      - virmach(coalcloud)
+      - bandwagonhost(倍率1.3-上海CN2)
+      - bandwagonhost(倍率1-上海联通-9929)
+      - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
     url: 'http://www.gstatic.com/generate_204'
