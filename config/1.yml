@@ -139,7 +139,7 @@ proxies:
   - name: bandwagonhost(coalcloud)
     type: trojan
     server: shct2.forgebukkit.com
-    port: 31234
+    port: 31001
     password: 64375483-bc00-4553-a80f-fa81f9801d88
     udp: true
     sni: www.janeuorg.eu.org
@@ -169,7 +169,7 @@ proxies:
   - name: virmach(coalcloud)
     type: trojan
     server: 139.227.219.199
-    port: 11000
+    port: 11234
     password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
     udp: true
     sni: www.febeuorg.eu.org
