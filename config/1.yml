@@ -156,6 +156,26 @@ proxies:
     alpn:
       - h2
       - http/1.1
+  - name: bandwagonhost(倍率0.8-广州移动A)
+    type: trojan
+    server: 36.133.6.84
+    port: 33123
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+  - name: bandwagonhost(倍率0.8-广州移动B)
+    type: trojan
+    server: 112.33.52.65
+    port: 33312
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
   - name: virmach(倍率1.6-上海联通-CN2)
     type: trojan
     server: 139.227.219.199
@@ -208,6 +228,8 @@ proxy-groups:
       - load-balance
       - bandwagonhost(倍率1.3-上海CN2)
       - bandwagonhost(倍率1-上海联通-9929)
+	  - bandwagonhost(倍率0.8-广州移动A)
+	  - bandwagonhost(倍率0.8-广州移动B)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
@@ -216,6 +238,8 @@ proxy-groups:
     proxies:
       - bandwagonhost(倍率1.3-上海CN2)
       - bandwagonhost(倍率1-上海联通-9929)
+	  - bandwagonhost(倍率0.8-广州移动A)
+	  - bandwagonhost(倍率0.8-广州移动B)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
@@ -226,6 +250,8 @@ proxy-groups:
     proxies:
       - bandwagonhost(倍率1.3-上海CN2)
       - bandwagonhost(倍率1-上海联通-9929)
+	  - bandwagonhost(倍率0.8-广州移动A)
+	  - bandwagonhost(倍率0.8-广州移动B)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
