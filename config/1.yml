@@ -228,8 +228,8 @@ proxy-groups:
       - load-balance
       - bandwagonhost(倍率1.3-上海CN2)
       - bandwagonhost(倍率1-上海联通-9929)
-	  - bandwagonhost(倍率0.8-广州移动A)
-	  - bandwagonhost(倍率0.8-广州移动B)
+      - bandwagonhost(倍率0.8-广州移动A)
+      - bandwagonhost(倍率0.8-广州移动B)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
@@ -238,8 +238,8 @@ proxy-groups:
     proxies:
       - bandwagonhost(倍率1.3-上海CN2)
       - bandwagonhost(倍率1-上海联通-9929)
-	  - bandwagonhost(倍率0.8-广州移动A)
-	  - bandwagonhost(倍率0.8-广州移动B)
+      - bandwagonhost(倍率0.8-广州移动A)
+      - bandwagonhost(倍率0.8-广州移动B)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
@@ -250,8 +250,8 @@ proxy-groups:
     proxies:
       - bandwagonhost(倍率1.3-上海CN2)
       - bandwagonhost(倍率1-上海联通-9929)
-	  - bandwagonhost(倍率0.8-广州移动A)
-	  - bandwagonhost(倍率0.8-广州移动B)
+      - bandwagonhost(倍率0.8-广州移动A)
+      - bandwagonhost(倍率0.8-广州移动B)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
