@@ -19,6 +19,9 @@ dns:
   fake-ip-filter:
     - "*.lan"
     - localhost.ptlogin2.qq.com
+    - dns.msftncsi.com
+    - www.msftncsi.com
+    - www.msftconnecttest.com
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
