@@ -1,108 +1,25 @@
-mixed-port: 7890
+port: 7890
+socks-port: 7891
+# mixed-port: 7890
 allow-lan: false
 mode: rule
 log-level: info
+ipv6: false
 external-controller: 127.0.0.1:9090
+hosts：
 dns:
   enable: true
+  ipv6: false  
   listen: 127.0.0.1:1053
   default-nameserver:
     - 223.5.5.5
     - 8.8.8.8
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  use-hosts : true
   fake-ip-filter:
     - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - 'time.*.com'
-    - 'time.*.gov'
-    - 'time.*.edu.cn'
-    - 'time.*.apple.com'
-    - 'time1.*.com'
-    - 'time2.*.com'
-    - 'time3.*.com'
-    - 'time4.*.com'
-    - 'time5.*.com'
-    - 'time6.*.com'
-    - 'time7.*.com'
-    - 'ntp.*.com'
-    - 'ntp1.*.com'
-    - 'ntp2.*.com'
-    - 'ntp3.*.com'
-    - 'ntp4.*.com'
-    - 'ntp5.*.com'
-    - 'ntp6.*.com'
-    - 'ntp7.*.com'
-    - '*.time.edu.cn'
-    - '*.ntp.org.cn'
-    - '+.pool.ntp.org'
-    - 'time1.cloud.tencent.com'
-    - 'music.163.com'
-    - '*.music.163.com'
-    - '*.126.net'
-    - 'musicapi.taihe.com'
-    - 'music.taihe.com'
-    - 'songsearch.kugou.com'
-    - 'trackercdn.kugou.com'
-    - '*.kuwo.cn'
-    - 'api-jooxtt.sanook.com'
-    - 'api.joox.com'
-    - 'joox.com'
-    - 'y.qq.com'
-    - '*.y.qq.com'
-    - 'streamoc.music.tc.qq.com'
-    - 'mobileoc.music.tc.qq.com'
-    - 'isure.stream.qqmusic.qq.com'
-    - 'dl.stream.qqmusic.qq.com'
-    - 'aqqmusic.tc.qq.com'
-    - 'amobile.music.tc.qq.com'
-    - '*.xiami.com'
-    - '*.music.migu.cn'
-    - 'music.migu.cn'
-    - '*.msftconnecttest.com'
-    - '*.msftncsi.com'
-    - 'msftconnecttest.com'
-    - 'msftncsi.com'
-    - 'localhost.ptlogin2.qq.com'
-    - 'localhost.sec.qq.com'
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - 'xbox.*.microsoft.com'
-    - 'xnotify.xboxlive.com'
-    - '+.battlenet.com.cn'
-    - '+.wotgame.cn'
-    - '+.wggames.cn'
-    - '+.wowsgame.cn'
-    - '+.wargaming.net'
-    - 'proxy.golang.org'
-    - 'stun.*.*'
-    - 'stun.*.*.*'
-    - '+.stun.*.*'
-    - '+.stun.*.*.*'
-    - '+.stun.*.*.*.*'
-    - 'heartbeat.belkin.com'
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    - '*.router.asus.com'
-    - 'mesu.apple.com'
-    - 'swscan.apple.com'
-    - 'swquery.apple.com'
-    - 'swdownload.apple.com'
-    - 'swcdn.apple.com'
-    - 'swdist.apple.com'
-    - 'lens.l.google.com'
-    - 'stun.l.google.com'
-    - '+.nflxvideo.net'
-    - '*.square-enix.com'
-    - '*.finalfantasyxiv.com'
-    - '*.ffxiv.com'
-    - '*.mcdn.bilivideo.cn'
+    - localhost.ptlogin2.qq.com
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
@@ -113,28 +30,7 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr:
-      - 0.0.0.0/8
-      - 10.0.0.0/8
-      - 100.64.0.0/10
-      - 127.0.0.0/8
-      - 169.254.0.0/16
-      - 172.16.0.0/12
-      - 192.0.0.0/24
-      - 192.0.2.0/24
-      - 192.88.99.0/24
-      - 192.168.0.0/16
-      - 198.18.0.0/15
-      - 198.51.100.0/24
-      - 203.0.113.0/24
-      - 224.0.0.0/4
       - 240.0.0.0/4
-      - 255.255.255.255/32
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-      - '+.githubusercontent.com'
-      - '+.googlevideo.com'
 proxies:
   - name: bandwagonhost(倍率1.3-上海CN2)
     type: trojan
@@ -258,178 +154,282 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 rule-providers:
-# 广告域名列表
-  reject:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/reject.txt
-    path: ./ruleset/reject.yaml
-    interval: 86400
-# iCloud 域名列表
-  icloud:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/icloud.txt
-    path: ./ruleset/icloud.yaml
-    interval: 86400
-# Apple 在中国大陆可直连的域名列表
-  apple:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/apple.txt
-    path: ./ruleset/apple.yaml
-    interval: 86400
-# [慎用]Google 在中国大陆可直连的域名列表
-  google:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/google.txt
-    path: ./ruleset/google.yaml
-    interval: 86400
-# 代理域名列表
-  proxy:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/proxy.txt
-    path: ./ruleset/proxy.yaml
-    interval: 86400
-# 直连域名列表
-  direct:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/direct.txt
-    path: ./ruleset/direct.yaml
-    interval: 86400
-# 私有网络专用域名列表
-  private:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/private.txt
-    path: ./ruleset/private.yaml
-    interval: 86400
-# GFWList 域名列表
-  gfw:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/gfw.txt
-    path: ./ruleset/gfw.yaml
-    interval: 86400
-# GreatFire 域名列表
-  greatfire:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/greatfire.txt
-    path: ./ruleset/greatfire.yaml
-    interval: 86400
-# 非中国大陆使用的顶级域名列表
-  tld-not-cn:
-    type: http
-    behavior: domain
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/tld-not-cn.txt
-    path: ./ruleset/tld-not-cn.yaml
-    interval: 86400
-# Telegram 使用的 IP 地址列表
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/telegramcidr.txt
-    path: ./ruleset/telegramcidr.yaml
-    interval: 86400
-# 中国大陆 IP 地址列表
-  cncidr:
-    type: http
-    behavior: ipcidr
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/cncidr.txt
-    path: ./ruleset/cncidr.yaml
-    interval: 86400
-# 局域网 IP 及保留 IP 地址列表
-  lancidr:
-    type: http
-    behavior: ipcidr
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/lancidr.txt
-    path: ./ruleset/lancidr.yaml
-    interval: 86400
-# 需要直连的常见软件列表
-  applications:
-    type: http
-    behavior: classical
-    url: https://raw.fastgit.org/Loyalsoldier/clash-rules/release/applications.txt
-    path: ./ruleset/applications.yaml
-    interval: 86400   
-# 国内BAT公司及云服务厂商的IP段。所有在该云服务上的网站都可以直连。比如你网站在阿里云香港都可以直连。
-  ChinaCompanyIp:
-    type: http
-    behavior: ipcidr
-    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaCompanyIp.yaml
-    path: ./ruleset/ChinaCompanyIp.yaml
-    interval: 86400
-# 国内常见域名、直连CDN等。（很全，常用网址都有）
-  ChinaDomain:
-    type: http
-    behavior: classical
-    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
-    path: ./ruleset/ChinaDomain.yaml
-    interval: 86400
-# IPIP的国内地址段。比GeoIp更好。电脑性能好，可以引入
-  ChinaIp:
-    type: http
-    behavior: ipcidr
-    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml
-    path: ./ruleset/ChinaIp.yaml
-    interval: 86400
-  ChinaMedia:
-    type: http
-    behavior: classical
-    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml
-    path: ./ruleset/ChinaMedia.yaml
-    interval: 86400
+# 全球直连
   LocalAreaNetwork:
     type: http
     behavior: classical
-    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
     path: ./ruleset/LocalAreaNetwork.yaml
     interval: 86400
+# 全球直连
   UnBan:
     type: http
     behavior: classical
-    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
     path: ./ruleset/UnBan.yaml
+    interval: 86400
+# 广告拦截
+  BanAD:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+    path: ./ruleset/BanAD.yaml
+    interval: 86400
+# 应用净化
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+    path: ./ruleset/BanProgramAD.yaml
+    interval: 86400
+# AdBlock
+  BanEasyList:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list
+    path: ./ruleset/BanEasyList.yaml
+    interval: 86400
+# AdBlock
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list
+    path: ./ruleset/BanEasyListChina.yaml
+    interval: 86400
+# 隐私防护
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/BanEasyPrivacy.list
+    path: ./ruleset/BanEasyPrivacy.yaml
+    interval: 86400
+# 谷歌FCM
+  GoogleFCM:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list
+    path: ./ruleset/GoogleFCM.yaml
+    interval: 86400
+# 谷歌🇨🇳Play服务
+  GoogleCNProxyIP:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
+    path: ./ruleset/GoogleCNProxyIP.yaml
+    interval: 86400
+# 谷歌🇨🇳
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCN.list
+    path: ./ruleset/GoogleCN.yaml
+    interval: 86400
+# 谷歌
+  Google:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list
+    path: ./ruleset/Google.yaml
+    interval: 86400
+# 全球直连
+  SteamCN:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
+    path: ./ruleset/SteamCN.yaml
+    interval: 86400
+# 微软云盘
+  OneDrive:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
+    path: ./ruleset/OneDrive.yaml
+    interval: 86400
+# 微软服务
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list
+    path: ./ruleset/Microsoft.yaml
+    interval: 86400
+# 苹果服务
+  Apple:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    path: ./ruleset/AppleCN.yaml
+    interval: 86400
+# 电报消息
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+    path: ./ruleset/Telegram.yaml
+    interval: 86400
+# 网易音乐
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetEaseMusic.list
+    path: ./ruleset/NetEaseMusic.yaml
+    interval: 86400
+# 游戏平台
+  Epic:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list
+    path: ./ruleset/Epic.yaml
+    interval: 86400
+# 游戏平台
+  Sony:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list
+    path: ./ruleset/Sony.yaml
+    interval: 86400
+# 游戏平台
+  Steam:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list
+    path: ./ruleset/Steam.yaml
+    interval: 86400
+# 油管视频
+  YouTube:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+    path: ./ruleset/YouTube.yaml
+    interval: 86400
+# 奈飞视频
+  Netflix:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list
+    path: ./ruleset/Netflix.yaml
+    interval: 86400
+# 奈飞视频
+  AmazonIp:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AmazonIp.list
+    path: ./ruleset/AmazonIp.yaml
+    interval: 86400
+# 巴哈姆特
+  Bahamut:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list
+    path: ./ruleset/Bahamut.yaml
+    interval: 86400
+# 哔哩哔哩
+  BilibiliHMT:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list
+    path: ./ruleset/BilibiliHMT.yaml
+    interval: 86400
+# 哔哩哔哩
+  Bilibili:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list
+    path: ./ruleset/Bilibili.yaml
+    interval: 86400
+# 国内媒体
+  ChinaMedia:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
+    path: ./ruleset/ChinaMedia.yaml
+    interval: 86400
+# 国外媒体
+  ProxyMedia:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
+    path: ./ruleset/ProxyMedia.yaml
+    interval: 86400
+# 节点选择
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+    path: ./ruleset/ProxyGFWlist.yaml
+    interval: 86400
+# 全球直连
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
+    path: ./ruleset/ChinaIp.yaml
+    interval: 86400
+# 全球直连
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+    path: ./ruleset/ChinaDomain.yaml
+    interval: 86400
+# 全球直连
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
+    path: ./ruleset/ChinaCompanyIp.yaml
+    interval: 86400
+# 全球直连
+  Download:
+    type: http
+    behavior: classical
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Download.list
+    path: ./ruleset/Download.yaml
     interval: 86400
 # 自定义
   MyRules:
     type: http
     behavior: domain
-    url: https://raw.fastgit.org/bylheart/clashrule/main/MyRules.txt
+    url: https://raw.fastgit.org/bylheart/clash/main/MyRules.txt
     path: ./ruleset/MyRules.yaml
     interval: 86400
 rules:
   - RULE-SET,MyRules,PROXY
-  - RULE-SET,applications,DIRECT
-  - DOMAIN,clash.razord.top,DIRECT
-  - DOMAIN,yacd.haishan.me,DIRECT
-  - RULE-SET,google,PROXY
-  - RULE-SET,telegramcidr,PROXY
 # 拒绝
-#  - RULE-SET,reject,REJECT
+#  - RULE-SET,BanAD,REJECT
+#  - RULE-SET,BanProgramAD,REJECT
+#  - RULE-SET,BanEasyList,REJECT
+#  - RULE-SET,BanEasyListChina,REJECT
+#  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
-  - RULE-SET,cncidr,DIRECT
-  - RULE-SET,direct,DIRECT
-  - RULE-SET,lancidr,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,icloud,DIRECT 
-  - RULE-SET,ChinaCompanyIp,DIRECT
-  - RULE-SET,ChinaDomain,DIRECT
-  - RULE-SET,ChinaIp,DIRECT
-  - RULE-SET,ChinaMedia,DIRECT
-  - RULE-SET,LocalAreaNetwork,DIRECT  
+  - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
+  - RULE-SET,GoogleFCM,DIRECT
+  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,OneDrive,DIRECT
+  - RULE-SET,Microsoft,DIRECT
+  - RULE-SET,Apple,DIRECT
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Epic,DIRECT
+  - RULE-SET,Sony,DIRECT
+  - RULE-SET,Steam,DIRECT
+  - RULE-SET,BilibiliHMT,DIRECT
+  - RULE-SET,Bilibili,DIRECT  
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,Download,DIRECT
 # 代理
-#  - RULE-SET,gfw,PROXY
-#  - RULE-SET,greatfire,PROXY
-#  - RULE-SET,proxy,PROXY
-#  - RULE-SET,tld-not-cn,PROXY
+#  - RULE-SET,GoogleCNProxyIP,PROXY
+#  - RULE-SET,YouTube,PROXY
+#  - RULE-SET,Google,PROXY
+#  - RULE-SET,Telegram,PROXY
+#  - RULE-SET,Netflix,PROXY
+#  - RULE-SET,AmazonIp,PROXY
+#  - RULE-SET,Bahamut,PROXY
+#  - RULE-SET,ProxyMedia,PROXY
+#  - RULE-SET,ProxyGFWlist,PROXY
 # 其他
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve
   - MATCH,PROXY
