@@ -74,6 +74,16 @@ proxies:
     alpn:
       - h2
       - http/1.1
+  - name: bandwagonhost(倍率0.1-上海联通D)
+    type: trojan
+    server: shcu4.forgebukkit.com
+    port: 12123
+    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    udp: true
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
   - name: virmach(倍率1.6-上海联通-CN2)
     type: trojan
     server: 139.227.219.199
@@ -128,6 +138,7 @@ proxy-groups:
       - bandwagonhost(倍率1-上海联通-9929)
       - bandwagonhost(倍率0.8-广州移动A)
       - bandwagonhost(倍率0.8-广州移动B)
+	  - bandwagonhost(倍率0.1-上海联通D)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
@@ -138,6 +149,7 @@ proxy-groups:
       - bandwagonhost(倍率1-上海联通-9929)
       - bandwagonhost(倍率0.8-广州移动A)
       - bandwagonhost(倍率0.8-广州移动B)
+	  - bandwagonhost(倍率0.1-上海联通D)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
@@ -150,6 +162,7 @@ proxy-groups:
       - bandwagonhost(倍率1-上海联通-9929)
       - bandwagonhost(倍率0.8-广州移动A)
       - bandwagonhost(倍率0.8-广州移动B)
+	  - bandwagonhost(倍率0.1-上海联通D)
       - virmach(倍率1.6-上海联通-CN2)
       - bandwagonhost(cdn)
       - virmach(cdn)
