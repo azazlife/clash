@@ -1,18 +1,20 @@
-port: 7890
-socks-port: 7891
+mixed-port: 7890
 allow-lan: false
 mode: rule
 log-level: info
 ipv6: false
 external-controller: 127.0.0.1:9090
-hosts: 
+hosts:
+  '*.clash.dev': 127.0.0.1
+  '.dev': 127.0.0.1
+  'alpha.clash.dev': '::1'
 dns:
   enable: true
   ipv6: false
-  listen: 0.0.0.0:1053
+  # listen: 0.0.0.0:1053
   default-nameserver:
     - 223.5.5.5
-    - 8.8.8.8
+    - 119.29.29.29
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   use-hosts: true
@@ -23,149 +25,67 @@ dns:
     - www.msftncsi.com
     - www.msftconnecttest.com
   nameserver:
+    - tls://dns.alidns.com
+    - tls://dot.pub
+  fallback:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
-  fallback:
-    - https://dns.google/dns-query
-    - https://dns.cloudflare.com/dns-query
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
+	domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
 proxies:
-  - name: bandwagonhost(倍率1.3-上海CN2)
+  - name: bandwagonhost(2-上海移动)
+    server: 117.185.229.209
+    port: 30123
     type: trojan
-    server: shct2.forgebukkit.com
-    port: 33123
-    password: 64375483-bc00-4553-a80f-fa81f9801d88
-    udp: true
+    password: "89a3cc0b92"
+	network: ws
     sni: www.janeuorg.eu.org
-    alpn:
-      - h2
-      - http/1.1
-  - name: bandwagonhost(倍率1-上海联通-9929)
-    type: trojan
-    server: shcu.forgebukkit.com
-    port: 44123
-    password: 64375483-bc00-4553-a80f-fa81f9801d88
+    # skip-cert-verify: true
     udp: true
-    sni: www.janeuorg.eu.org
-    alpn:
-      - h2
-      - http/1.1
-  - name: bandwagonhost(倍率0.8-广州移动A)
-    type: trojan
-    server: 36.133.6.84
-    port: 33123
-    password: 64375483-bc00-4553-a80f-fa81f9801d88
-    udp: true
-    sni: www.janeuorg.eu.org
-    alpn:
-      - h2
-      - http/1.1
-  - name: bandwagonhost(倍率0.8-广州移动B)
-    type: trojan
-    server: 112.33.52.65
-    port: 33312
-    password: 64375483-bc00-4553-a80f-fa81f9801d88
-    udp: true
-    sni: www.janeuorg.eu.org
-    alpn:
-      - h2
-      - http/1.1
-  - name: bandwagonhost(倍率0.1-上海联通D)
-    type: trojan
-    server: shcu4.forgebukkit.com
-    port: 12123
-    password: 64375483-bc00-4553-a80f-fa81f9801d88
-    udp: true
-    sni: www.janeuorg.eu.org
-    alpn:
-      - h2
-      - http/1.1
-  - name: virmach(倍率1.6-上海联通-CN2)
-    type: trojan
-    server: 139.227.219.199
-    port: 11123
-    password: 90d29cfe-b4ab-49be-aef6-530eb4974d42
-    udp: true
-    sni: www.febeuorg.eu.org
-    alpn:
-      - h2
-      - http/1.1
+    ws-opts:
+      path: /80606fec
+      headers:
+        Host: www.janeuorg.eu.org
   - name: bandwagonhost(cdn)
-    type: vmess
     server: ip.sb
     port: 443
-    uuid: 64375483-bc00-4553-a80f-fa81f9801d88
-    alterId: 0
-    cipher: auto
+    type: trojan
+    password: "89a3cc0b92"
+	network: ws
+    sni: www.janeuorg.eu.org
+    # skip-cert-verify: true
     udp: true
-    tls: true
-    servername: bandwagonhost.bylheart.workers.dev
-    network: ws
     ws-opts:
-      path: /vcndvws
+      path: /80606fec
       headers:
-        Host: bandwagonhost.bylheart.workers.dev
-      max-early-data: 2048
-      early-data-header-name: Sec-WebSocket-Protocol
-  - name: virmach(cdn)
-    type: vmess
-    server: hostmonit.com
-    port: 443
-    uuid: 90d29cfe-b4ab-49be-aef6-530eb4974d42
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    servername: virmach.bylheart.workers.dev
-    network: ws
-    ws-opts:
-      path: /bhfxvws
-      headers:
-        Host: virmach.bylheart.workers.dev
-      max-early-data: 2048
-      early-data-header-name: Sec-WebSocket-Protocol
+        Host: www.janeuorg.eu.org
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - auto
       - load-balance
-      - bandwagonhost(倍率1.3-上海CN2)
-      - bandwagonhost(倍率1-上海联通-9929)
-      - bandwagonhost(倍率0.8-广州移动A)
-      - bandwagonhost(倍率0.8-广州移动B)
-      - bandwagonhost(倍率0.1-上海联通D)
-      - virmach(倍率1.6-上海联通-CN2)
+      - bandwagonhost(2-上海移动)
       - bandwagonhost(cdn)
-      - virmach(cdn)
   - name: auto
     type: url-test
     proxies:
-      - bandwagonhost(倍率1.3-上海CN2)
-      - bandwagonhost(倍率1-上海联通-9929)
-      - bandwagonhost(倍率0.8-广州移动A)
-      - bandwagonhost(倍率0.8-广州移动B)
-      - bandwagonhost(倍率0.1-上海联通D)
-      - virmach(倍率1.6-上海联通-CN2)
+      - bandwagonhost(2-上海移动)
       - bandwagonhost(cdn)
-      - virmach(cdn)
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
     type: load-balance
     proxies:
-      - bandwagonhost(倍率1.3-上海CN2)
-      - bandwagonhost(倍率1-上海联通-9929)
-      - bandwagonhost(倍率0.8-广州移动A)
-      - bandwagonhost(倍率0.8-广州移动B)
-      - bandwagonhost(倍率0.1-上海联通D)
-      - virmach(倍率1.6-上海联通-CN2)
+      - bandwagonhost(2-上海移动)
       - bandwagonhost(cdn)
-      - virmach(cdn)
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
