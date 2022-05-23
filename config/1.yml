@@ -35,7 +35,7 @@ dns:
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
-	domain:
+    domain:
       - '+.google.com'
       - '+.facebook.com'
       - '+.youtube.com'
@@ -45,7 +45,7 @@ proxies:
     port: 30123
     type: trojan
     password: "89a3cc0b92"
-	network: ws
+    network: ws
     sni: www.janeuorg.eu.org
     # skip-cert-verify: true
     udp: true
@@ -58,7 +58,7 @@ proxies:
     port: 443
     type: trojan
     password: "89a3cc0b92"
-	network: ws
+    network: ws
     sni: www.janeuorg.eu.org
     # skip-cert-verify: true
     udp: true
