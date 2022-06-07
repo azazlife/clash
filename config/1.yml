@@ -47,9 +47,9 @@ proxies:
     password: 465e10cd-a51a-4beb-ae65-568e35d43972
     udp: true
     sni: janeuorg.eu.org
-    # alpn:
-    #   - h2
-    #   - http/1.1
+    alpn:
+      - h2
+      - http/1.1
     # skip-cert-verify: true
   - name: bandwagonhost(trojan-grpc)
     server: www.zoominfo.com
@@ -58,6 +58,9 @@ proxies:
     password: "465e10cd-a51a-4beb-ae65-568e35d43972"
     network: grpc
     sni: janeuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
     # skip-cert-verify: true
     udp: true
     grpc-opts:
