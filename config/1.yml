@@ -64,7 +64,7 @@ proxies:
     # skip-cert-verify: true
     udp: true
     grpc-opts:
-      grpc-service-name: "maibgrpc"
+      grpc-service-name: "maibtrojangrpc"
 proxy-groups:
   - name: PROXY
     type: select
