@@ -11,7 +11,7 @@ hosts:
 dns:
   enable: true
   ipv6: false
-  # listen: 0.0.0.0:1053
+#  listen: 0.0.0.0:1053
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
@@ -40,52 +40,48 @@ dns:
       - '+.facebook.com'
       - '+.youtube.com'
 proxies:
-  - name: bandwagonhost(2-上海移动)
-    server: 117.185.229.209
-    port: 30123
+  - name: "bandwagonhost(trojan)"
     type: trojan
-    password: "89a3cc0b92"
-    network: ws
-    sni: www.janeuorg.eu.org
-    # skip-cert-verify: true
+    server: shcu2.forgebukkit.com
+    port: 10123
+    password: 465e10cd-a51a-4beb-ae65-568e35d43972
     udp: true
-    ws-opts:
-      path: /80606fec
-      headers:
-        Host: www.janeuorg.eu.org
-  - name: bandwagonhost(cdn)
-    server: ip.sb
+    sni: janeuorg.eu.org
+    # alpn:
+    #   - h2
+    #   - http/1.1
+    # skip-cert-verify: true
+  - name: bandwagonhost(trojan-grpc)
+    server: www.zoominfo.com
     port: 443
     type: trojan
-    password: "89a3cc0b92"
-    network: ws
-    sni: www.janeuorg.eu.org
+    password: "465e10cd-a51a-4beb-ae65-568e35d43972"
+    network: grpc
+    sni: janeuorg.eu.org
     # skip-cert-verify: true
     udp: true
-    ws-opts:
-      path: /80606fec
-      headers:
-        Host: www.janeuorg.eu.org
+    grpc-opts:
+      grpc-service-name: "maibgrpc"
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - auto
       - load-balance
-      - bandwagonhost(2-上海移动)
-      - bandwagonhost(cdn)
-  - name: auto
+      - bandwagonhost(trojan)
+      - bandwagonhost(trojan-grpc)
+  - name: "auto"
     type: url-test
     proxies:
-      - bandwagonhost(2-上海移动)
-      - bandwagonhost(cdn)
+      - bandwagonhost(trojan)
+      - bandwagonhost(trojan-grpc)
     url: http://www.gstatic.com/generate_204
     interval: 300
-  - name: load-balance
+  - name: "load-balance"
     type: load-balance
     proxies:
-      - bandwagonhost(2-上海移动)
-      - bandwagonhost(cdn)
+      - bandwagonhost(trojan)
+      - bandwagonhost(trojan-grpc)
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
@@ -275,14 +271,20 @@ rule-providers:
     url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/Download.yaml
     interval: 86400
     path: ./ruleset/Download.yaml
-  MyRules:
-    behavior: domain
+  Wechat:
+    behavior: classical
     type: http
-    url: https://raw.fastgit.org/bylheart/clashrule/main/MyRules.txt
+    url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Wechat.yaml
     interval: 86400
-    path: ./ruleset/MyRules.yaml
+    path: ./ruleset/Download.yaml
+  myclassical:
+    behavior: classical
+    type: http
+    url: https://raw.fastgit.org/bylheart/clashrule/main/myclassical.txt
+    interval: 86400
+    path: ./ruleset/myclassical.yaml
 rules:
-  - RULE-SET,MyRules,PROXY
+  - RULE-SET,myclassical,PROXY
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
 #  - RULE-SET,BanProgramAD,REJECT
@@ -300,6 +302,7 @@ rules:
   - RULE-SET,NetEaseMusic,DIRECT
   - RULE-SET,Epic,DIRECT
   - RULE-SET,Sony,DIRECT
+  - RULE-SET,SteamCN,DIRECT
   - RULE-SET,BilibiliHMT,DIRECT
   - RULE-SET,Bilibili,DIRECT  
   - RULE-SET,ChinaMedia,DIRECT
@@ -307,6 +310,7 @@ rules:
   - RULE-SET,ChinaDomain,DIRECT
   - RULE-SET,ChinaCompanyIp,DIRECT
   - RULE-SET,Download,DIRECT
+  - RULE-SET,Wechat,DIRECT
 # 代理
 #  - RULE-SET,Google,PROXY
 #  - RULE-SET,Telegram,PROXY
