@@ -57,7 +57,7 @@ proxies:
     type: trojan
     password: "465e10cd-a51a-4beb-ae65-568e35d43972"
     network: grpc
-    sni: janeuorg.eu.org
+    sni: workers.mayfreenom.gq
     # skip-cert-verify: true
     udp: true
     grpc-opts:
