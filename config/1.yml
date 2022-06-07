@@ -52,7 +52,7 @@ proxies:
       - http/1.1
     # skip-cert-verify: true
   - name: bandwagonhost(trojan-grpc)
-    server: www.zoominfo.com
+    server: 1dot1dot1dot1.cloudflare-dns.com
     port: 443
     type: trojan
     password: "465e10cd-a51a-4beb-ae65-568e35d43972"
