@@ -89,13 +89,13 @@ proxy-groups:
     proxies:
       - auto
       - load-balance
-	  - bandwagonhost(vmess-ws)
+      - bandwagonhost(vmess-ws)
       - bandwagonhost(trojan)
     #   - bandwagonhost(trojan-grpc)
   - name: auto
     type: url-test
     proxies:
-	  - bandwagonhost(vmess-ws)
+      - bandwagonhost(vmess-ws)
       - bandwagonhost(trojan)
     #   - bandwagonhost(trojan-grpc)
     url: http://www.gstatic.com/generate_204
@@ -103,7 +103,7 @@ proxy-groups:
   - name: load-balance
     type: load-balance
     proxies:
-	  - bandwagonhost(vmess-ws)
+      - bandwagonhost(vmess-ws)
       - bandwagonhost(trojan)
     #   - bandwagonhost(trojan-grpc)
     url: http://www.gstatic.com/generate_204
