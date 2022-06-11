@@ -9,7 +9,7 @@ hosts:
   '.dev': 127.0.0.1
   'alpha.clash.dev': '::1'
 dns:
-  enable: true
+  enable: false
   ipv6: false
 #  listen: 0.0.0.0:1053
   default-nameserver:
@@ -40,51 +40,72 @@ dns:
       - '+.facebook.com'
       - '+.youtube.com'
 proxies:
-  - name: "bandwagonhost(trojan)"
+  - name: bandwagonhost(vmess-ws)
+    type: vmess
+    server: 1dot1dot1dot1.cloudflare-dns.com
+    port: 443
+    uuid: 3b83996b-8e2a-42c6-af12-46075ccc3583
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    # skip-cert-verify: true
+    servername: pages.mayfreenom.gq
+    network: ws
+    ws-opts:
+      path: /andcvws
+      headers:
+        Host: pages.mayfreenom.gq
+    #   max-early-data: 2048
+    #   early-data-header-name: Sec-WebSocket-Protocol
+  - name: bandwagonhost(trojan)
     type: trojan
     server: shcu2.forgebukkit.com
     port: 10123
-    password: 465e10cd-a51a-4beb-ae65-568e35d43972
+    password: 3b83996b-8e2a-42c6-af12-46075ccc3583
     udp: true
     sni: janeuorg.eu.org
     alpn:
       - h2
-      - http/1.1
+    #   - http/1.1
     # skip-cert-verify: true
   - name: bandwagonhost(trojan-grpc)
-    server: 1dot1dot1dot1.cloudflare-dns.com
+    server: janeuorg.eu.org
     port: 443
     type: trojan
-    password: "465e10cd-a51a-4beb-ae65-568e35d43972"
+    password: 3b83996b-8e2a-42c6-af12-46075ccc3583
     network: grpc
     sni: janeuorg.eu.org
     alpn:
       - h2
-      - http/1.1
+    #   - http/1.1
     # skip-cert-verify: true
     udp: true
     grpc-opts:
-      grpc-service-name: "maibtrojangrpc"
+      grpc-service-name: andctrojangrpc
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - auto
       - load-balance
+	  - bandwagonhost(vmess-ws)
       - bandwagonhost(trojan)
-      - bandwagonhost(trojan-grpc)
-  - name: "auto"
+    #   - bandwagonhost(trojan-grpc)
+  - name: auto
     type: url-test
     proxies:
+	  - bandwagonhost(vmess-ws)
       - bandwagonhost(trojan)
-      - bandwagonhost(trojan-grpc)
+    #   - bandwagonhost(trojan-grpc)
     url: http://www.gstatic.com/generate_204
     interval: 300
-  - name: "load-balance"
+  - name: load-balance
     type: load-balance
     proxies:
+	  - bandwagonhost(vmess-ws)
       - bandwagonhost(trojan)
-      - bandwagonhost(trojan-grpc)
+    #   - bandwagonhost(trojan-grpc)
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
@@ -280,14 +301,21 @@ rule-providers:
     url: https://raw.fastgit.org/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Wechat.yaml
     interval: 86400
     path: ./ruleset/Download.yaml
-  myclassical:
-    behavior: classical
+  mydirect:
+    behavior: ipcidr
     type: http
-    url: https://raw.fastgit.org/bylheart/clashrule/main/myclassical.txt
+    url: https://raw.fastgit.org/bylheart/clashrule/main/mydirect.txt
     interval: 86400
-    path: ./ruleset/myclassical.yaml
+    path: ./ruleset/mydirect.yaml
+  myproxy:
+    behavior: domain
+    type: http
+    url: https://raw.fastgit.org/bylheart/clashrule/main/myproxy.txt
+    interval: 86400
+    path: ./ruleset/myproxy.yaml
 rules:
-  - RULE-SET,myclassical,PROXY
+  - RULE-SET,mydirect,DIRECT
+  - RULE-SET,myproxy,PROXY
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
 #  - RULE-SET,BanProgramAD,REJECT
