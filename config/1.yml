@@ -9,7 +9,7 @@ hosts:
   '.dev': 127.0.0.1
   'alpha.clash.dev': '::1'
 dns:
-  enable: false
+  enable: true
   ipv6: false
 #  listen: 0.0.0.0:1053
   default-nameserver:
@@ -317,11 +317,11 @@ rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
 # 拒绝
-#  - RULE-SET,BanAD,REJECT
-#  - RULE-SET,BanProgramAD,REJECT
-#  - RULE-SET,BanEasyList,REJECT
-#  - RULE-SET,BanEasyListChina,REJECT
-#  - RULE-SET,BanEasyPrivacy,REJECT
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanProgramAD,REJECT
+  - RULE-SET,BanEasyList,REJECT
+  - RULE-SET,BanEasyListChina,REJECT
+  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
