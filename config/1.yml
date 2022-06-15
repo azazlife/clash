@@ -62,7 +62,7 @@ proxies:
     sni: febeuorg.eu.org
     alpn:
       - h2
-    #   - http/1.1
+      - http/1.1
     # skip-cert-verify: true
   - name: trojan-grpc
     server: 104.225.152.106
@@ -72,7 +72,7 @@ proxies:
     network: grpc
     sni: febeuorg.eu.org
     alpn:
-    #   - h2
+      - h2
       - http/1.1
     # skip-cert-verify: true
     udp: true
