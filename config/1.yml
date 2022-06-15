@@ -72,8 +72,8 @@ proxies:
     network: grpc
     sni: febeuorg.eu.org
     alpn:
-      - h2
-    #   - http/1.1
+    #   - h2
+      - http/1.1
     # skip-cert-verify: true
     udp: true
     grpc-opts:
