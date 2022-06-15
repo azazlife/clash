@@ -35,11 +35,11 @@ dns:
       - '+.facebook.com'
       - '+.youtube.com'
 proxies:
-  - name: bandwagonhost(vmess-ws)
+  - name: vmess-ws
     type: vmess
     server: 1dot1dot1dot1.cloudflare-dns.com
     port: 443
-    uuid: 3b83996b-8e2a-42c6-af12-46075ccc3583
+    uuid: e23afa88-33d2-4563-99ac-efa2fe7121b7
     alterId: 0
     cipher: auto
     udp: true
@@ -48,59 +48,59 @@ proxies:
     servername: pages.mayfreenom.gq
     network: ws
     ws-opts:
-      path: /andcvws
+      path: /bcpgvws
       headers:
         Host: pages.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
-  - name: bandwagonhost(trojan)
+  - name: trojan
     type: trojan
-    server: shcu2.forgebukkit.com
-    port: 10123
-    password: 3b83996b-8e2a-42c6-af12-46075ccc3583
+    server: 104.225.152.106
+    port: 9001
+    password: e23afa88-33d2-4563-99ac-efa2fe7121b7
     udp: true
     sni: janeuorg.eu.org
     alpn:
       - h2
     #   - http/1.1
     # skip-cert-verify: true
-  - name: bandwagonhost(trojan-grpc)
-    server: janeuorg.eu.org
-    port: 443
+  - name: trojan-grpc
+    server: 104.225.152.106
+    port: 9001
     type: trojan
-    password: 3b83996b-8e2a-42c6-af12-46075ccc3583
+    password: e23afa88-33d2-4563-99ac-efa2fe7121b7
     network: grpc
-    sni: janeuorg.eu.org
+    sni: febeuorg.eu.org
     alpn:
       - h2
     #   - http/1.1
     # skip-cert-verify: true
     udp: true
     grpc-opts:
-      grpc-service-name: andctrojangrpc
+      grpc-service-name: bcpgtrojangrpc
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - auto
       - load-balance
-      - bandwagonhost(vmess-ws)
-      - bandwagonhost(trojan)
-    #   - bandwagonhost(trojan-grpc)
+      - vmess-ws
+      - trojan
+      - trojan-grpc
   - name: auto
     type: url-test
     proxies:
-      - bandwagonhost(vmess-ws)
-      - bandwagonhost(trojan)
-    #   - bandwagonhost(trojan-grpc)
+      - vmess-ws
+      - trojan
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
     type: load-balance
     proxies:
-      - bandwagonhost(vmess-ws)
-      - bandwagonhost(trojan)
-    #   - bandwagonhost(trojan-grpc)
+      - vmess-ws
+      - trojan
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
