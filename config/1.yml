@@ -45,12 +45,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: pages.mayfreenom.gq
+    servername: workers.mayfreenom.gq
     network: ws
     ws-opts:
       path: /bcpgvws
       headers:
-        Host: pages.mayfreenom.gq
+        Host: workers.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
@@ -59,7 +59,7 @@ proxies:
     port: 9001
     password: e23afa88-33d2-4563-99ac-efa2fe7121b7
     udp: true
-    sni: janeuorg.eu.org
+    sni: febeuorg.eu.org
     alpn:
       - h2
     #   - http/1.1
