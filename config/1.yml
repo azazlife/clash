@@ -55,8 +55,8 @@ proxies:
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
     type: trojan
-    server: 104.225.152.106
-    port: 9001
+    server: 198.12.121.206
+    port: 10001
     password: a9004e1f-edb6-4b02-bc24-4c55061c23f1
     udp: true
     sni: janeuorg.eu.org
@@ -65,8 +65,8 @@ proxies:
       - http/1.1
     # skip-cert-verify: true
   - name: trojan-grpc
-    server: 104.225.152.106
-    port: 9001
+    server: janeuorg.eu.org
+    port: 443
     type: trojan
     password: a9004e1f-edb6-4b02-bc24-4c55061c23f1
     network: grpc
