@@ -39,45 +39,45 @@ proxies:
     type: vmess
     server: 1dot1dot1dot1.cloudflare-dns.com
     port: 443
-    uuid: e23afa88-33d2-4563-99ac-efa2fe7121b7
+    uuid: a9004e1f-edb6-4b02-bc24-4c55061c23f1
     alterId: 0
     cipher: auto
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: workers.mayfreenom.gq
+    servername: pages.mayfreenom.gq
     network: ws
     ws-opts:
-      path: /bcpgvws
+      path: /jhkhvws
       headers:
-        Host: workers.mayfreenom.gq
+        Host: pages.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
     type: trojan
     server: 104.225.152.106
     port: 9001
-    password: e23afa88-33d2-4563-99ac-efa2fe7121b7
+    password: a9004e1f-edb6-4b02-bc24-4c55061c23f1
     udp: true
-    sni: febeuorg.eu.org
+    sni: janeuorg.eu.org
     alpn:
-      - h2
+    #   - h2
       - http/1.1
     # skip-cert-verify: true
   - name: trojan-grpc
     server: 104.225.152.106
     port: 9001
     type: trojan
-    password: e23afa88-33d2-4563-99ac-efa2fe7121b7
+    password: a9004e1f-edb6-4b02-bc24-4c55061c23f1
     network: grpc
-    sni: febeuorg.eu.org
+    sni: janeuorg.eu.org
     alpn:
       - h2
-      - http/1.1
+    #   - http/1.1
     # skip-cert-verify: true
     udp: true
     grpc-opts:
-      grpc-service-name: bcpgtrojangrpc
+      grpc-service-name: jhkhtrojangrpc
 proxy-groups:
   - name: PROXY
     type: select
@@ -86,13 +86,13 @@ proxy-groups:
       - load-balance
       - vmess-ws
       - trojan
-      - trojan-grpc
+      # - trojan-grpc
   - name: auto
     type: url-test
     proxies:
       - vmess-ws
       - trojan
-      - trojan-grpc
+      # - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
@@ -100,7 +100,7 @@ proxy-groups:
     proxies:
       - vmess-ws
       - trojan
-      - trojan-grpc
+      # - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
@@ -312,11 +312,11 @@ rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
 # 拒绝
-  - RULE-SET,BanAD,REJECT
-  - RULE-SET,BanProgramAD,REJECT
-  - RULE-SET,BanEasyList,REJECT
-  - RULE-SET,BanEasyListChina,REJECT
-  - RULE-SET,BanEasyPrivacy,REJECT
+#  - RULE-SET,BanAD,REJECT
+#  - RULE-SET,BanProgramAD,REJECT
+#  - RULE-SET,BanEasyList,REJECT
+#  - RULE-SET,BanEasyListChina,REJECT
+#  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
