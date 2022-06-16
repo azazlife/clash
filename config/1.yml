@@ -324,14 +324,14 @@ rules:
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
-  - RULE-SET,GoogleFCM,DIRECT
-  - RULE-SET,GoogleCN,DIRECT
-  - RULE-SET,OneDrive,DIRECT
-  - RULE-SET,Microsoft,DIRECT
-  - RULE-SET,Apple,DIRECT
+#  - RULE-SET,GoogleFCM,DIRECT
+#  - RULE-SET,GoogleCN,DIRECT
+#  - RULE-SET,OneDrive,DIRECT
+#  - RULE-SET,Microsoft,DIRECT
+#  - RULE-SET,Apple,DIRECT
   - RULE-SET,NetEaseMusic,DIRECT
   - RULE-SET,Epic,DIRECT
-  - RULE-SET,Sony,DIRECT
+#  - RULE-SET,Sony,DIRECT
   - RULE-SET,SteamCN,DIRECT
   - RULE-SET,BilibiliHMT,DIRECT
   - RULE-SET,Bilibili,DIRECT  
