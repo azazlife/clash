@@ -11,7 +11,9 @@ dns:
   listen: 0.0.0.0:1053
   default-nameserver:
     - 223.5.5.5
-    - 119.29.29.29
+    - 8.8.8.8
+    - 119.29.29.29    
+    - 1.1.1.1
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   use-hosts: true
@@ -23,8 +25,10 @@ dns:
     - tls://dns.alidns.com
     - tls://dot.pub
   fallback:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    # - https://dns.alidns.com/dns-query
+    # - https://doh.pub/dns-query
+    - https://dns.google/dns-query
+    - https://dns.cloudflare.com/dns-query
   fallback-filter:
     geoip: true
     geoip-code: CN
