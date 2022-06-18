@@ -41,47 +41,47 @@ dns:
 proxies:
   - name: vmess-ws
     type: vmess
-    server: 1dot1dot1dot1.cloudflare-dns.com
+    server: dns.cloudflare.com
     port: 443
-    uuid: a9004e1f-edb6-4b02-bc24-4c55061c23f1
+    uuid: 98acc17d-5f6f-47d4-a848-6f59badc3215
     alterId: 0
     cipher: auto
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: pages.mayfreenom.gq
+    servername: wstls.mayfreenom.gq
     network: ws
     ws-opts:
-      path: /jhkhvws
+      path: /wstlsvws
       headers:
-        Host: pages.mayfreenom.gq
+        Host: wstls.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
     type: trojan
-    server: 198.12.121.206
+    server: 23.105.214.198
     port: 10001
-    password: a9004e1f-edb6-4b02-bc24-4c55061c23f1
+    password: 98acc17d-5f6f-47d4-a848-6f59badc3215
     udp: true
-    sni: janeuorg.eu.org
+    sni: febeuorg.eu.org
     alpn:
     #   - h2
       - http/1.1
     # skip-cert-verify: true
   - name: trojan-grpc
-    server: janeuorg.eu.org
-    port: 443
+    server: 23.105.214.198
+    port: 10001
     type: trojan
-    password: a9004e1f-edb6-4b02-bc24-4c55061c23f1
+    password: 98acc17d-5f6f-47d4-a848-6f59badc3215
     network: grpc
-    sni: janeuorg.eu.org
+    sni: febeuorg.eu.org
     alpn:
       - h2
     #   - http/1.1
     # skip-cert-verify: true
     udp: true
     grpc-opts:
-      grpc-service-name: jhkhtrojangrpc
+      grpc-service-name: wstlstrojangrpc
 proxy-groups:
   - name: PROXY
     type: select
@@ -90,13 +90,13 @@ proxy-groups:
       - load-balance
       - vmess-ws
       - trojan
-      # - trojan-grpc
+      - trojan-grpc
   - name: auto
     type: url-test
     proxies:
       - vmess-ws
       - trojan
-      # - trojan-grpc
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
@@ -104,7 +104,7 @@ proxy-groups:
     proxies:
       - vmess-ws
       - trojan
-      # - trojan-grpc
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
