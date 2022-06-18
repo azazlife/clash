@@ -69,8 +69,8 @@ proxies:
       - http/1.1
     # skip-cert-verify: true
   - name: trojan-grpc
-    server: shcu2.forgebukkit.com
-    port: 10123
+    server: 23.105.214.198
+    port: 10001
     type: trojan
     password: 98acc17d-5f6f-47d4-a848-6f59badc3215
     network: grpc
