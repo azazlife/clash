@@ -41,7 +41,7 @@ dns:
 proxies:
   - name: vmess-ws
     type: vmess
-    server: dns.cloudflare.com
+    server: 1dot1dot1dot1.cloudflare-dns.com
     port: 443
     uuid: 98acc17d-5f6f-47d4-a848-6f59badc3215
     alterId: 0
