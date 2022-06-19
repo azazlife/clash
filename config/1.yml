@@ -8,7 +8,7 @@ hosts:
 dns:
   enable: true
   ipv6: false
-  listen: 127.0.0.1:3453
+  listen: 0.0.0.0:3453
   default-nameserver:
     - 223.5.5.5
     - 8.8.8.8
