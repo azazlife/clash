@@ -41,8 +41,26 @@ dns:
 proxies:
   - name: vmess-ws
     type: vmess
-    server: 1dot1dot1dot1.cloudflare-dns.com
-    port: 443
+    server: 23.105.214.198
+    port: 10002
+    uuid: 98acc17d-5f6f-47d4-a848-6f59badc3215
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    # skip-cert-verify: true
+    servername: febeuorg.eu.org
+    network: ws
+    ws-opts:
+      path: /wstlsvws
+      headers:
+        Host: febeuorg.eu.org
+    #   max-early-data: 2048
+    #   early-data-header-name: Sec-WebSocket-Protocol
+  - name: vmess-ws-cdn
+    type: vmess
+    server: 23.105.214.198
+    port: 10032
     uuid: 98acc17d-5f6f-47d4-a848-6f59badc3215
     alterId: 0
     cipher: auto
@@ -60,7 +78,7 @@ proxies:
   - name: trojan
     type: trojan
     server: 23.105.214.198
-    port: 10001
+    port: 10002
     password: 98acc17d-5f6f-47d4-a848-6f59badc3215
     udp: true
     sni: febeuorg.eu.org
@@ -70,7 +88,7 @@ proxies:
     # skip-cert-verify: true
   - name: trojan-grpc
     server: 23.105.214.198
-    port: 10001
+    port: 10002
     type: trojan
     password: 98acc17d-5f6f-47d4-a848-6f59badc3215
     network: grpc
@@ -89,22 +107,25 @@ proxy-groups:
       - auto
       - load-balance
       - vmess-ws
-      - trojan
-      - trojan-grpc
+      - vmess-ws-cdn
+#      - trojan
+#      - trojan-grpc
   - name: auto
     type: url-test
     proxies:
       - vmess-ws
-      - trojan
-      - trojan-grpc
+      - vmess-ws-cdn
+#      - trojan
+#      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
     type: load-balance
     proxies:
       - vmess-ws
-      - trojan
-      - trojan-grpc
+      - vmess-ws-cdn
+#      - trojan
+#      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
