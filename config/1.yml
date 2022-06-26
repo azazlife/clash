@@ -39,11 +39,47 @@ dns:
       - '+.facebook.com'
       - '+.youtube.com'
 proxies:
-  - name: vmess-ws
+  - name: vmess-ws-racknerd
     type: vmess
-    server: 23.105.214.198
-    port: 10002
-    uuid: 98acc17d-5f6f-47d4-a848-6f59badc3215
+    server: mareuorg.eu.org
+    port: 443
+    uuid: a56431e0-c66a-47a1-9244-236802ae878d
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    # skip-cert-verify: true
+    servername: mareuorg.eu.org
+    network: ws
+    ws-opts:
+      path: /wstlsvws
+      headers:
+        Host: mareuorg.eu.org
+    #   max-early-data: 2048
+    #   early-data-header-name: Sec-WebSocket-Protocol
+  - name: vmess-ws-cloudcone
+    type: vmess
+    server: janeuorg.eu.org
+    port: 443
+    uuid: 24390adc-1b3a-4080-8537-165b0db253ad
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    # skip-cert-verify: true
+    servername: janeuorg.eu.org
+    network: ws
+    ws-opts:
+      path: /wstlsvws
+      headers:
+        Host: janeuorg.eu.org
+    #   max-early-data: 2048
+    #   early-data-header-name: Sec-WebSocket-Protocol
+  - name: vmess-ws-virmach
+    type: vmess
+    server: febeuorg.eu.org
+    port: 443
+    uuid: 236d5ade-2906-4153-ad8a-797190bcb887
     alterId: 0
     cipher: auto
     udp: true
@@ -57,24 +93,6 @@ proxies:
         Host: febeuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
-  - name: vmess-ws-cdn
-    type: vmess
-    server: 23.105.214.198
-    port: 10032
-    uuid: 98acc17d-5f6f-47d4-a848-6f59badc3215
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    # skip-cert-verify: true
-    servername: wstls.mayfreenom.gq
-    network: ws
-    ws-opts:
-      path: /wstlsvws
-      headers:
-        Host: wstls.mayfreenom.gq
-    #   max-early-data: 2048
-    #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
     type: trojan
     server: 23.105.214.198
@@ -86,46 +104,32 @@ proxies:
     #   - h2
       - http/1.1
     # skip-cert-verify: true
-  - name: trojan-grpc
-    server: 23.105.214.198
-    port: 10002
-    type: trojan
-    password: 98acc17d-5f6f-47d4-a848-6f59badc3215
-    network: grpc
-    sni: febeuorg.eu.org
-    alpn:
-      - h2
-    #   - http/1.1
-    # skip-cert-verify: true
-    udp: true
-    grpc-opts:
-      grpc-service-name: wstlstrojangrpc
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - auto
       - load-balance
-      - vmess-ws
-      - vmess-ws-cdn
+      - vmess-ws-racknerd
+      - vmess-ws-cloudcone
+      - vmess-ws-virmach
 #      - trojan
-#      - trojan-grpc
   - name: auto
     type: url-test
     proxies:
-      - vmess-ws
-      - vmess-ws-cdn
+      - vmess-ws-racknerd
+      - vmess-ws-cloudcone
+      - vmess-ws-virmach
 #      - trojan
-#      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
     type: load-balance
     proxies:
-      - vmess-ws
-      - vmess-ws-cdn
+      - vmess-ws-racknerd
+      - vmess-ws-cloudcone
+      - vmess-ws-virmach
 #      - trojan
-#      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
