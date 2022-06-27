@@ -41,7 +41,7 @@ dns:
 proxies:
   - name: vmess-ws-racknerd
     type: vmess
-    server: mareuorg.eu.org
+    server: racknerd.marfreenom.gq
     port: 443
     uuid: a56431e0-c66a-47a1-9244-236802ae878d
     alterId: 0
@@ -49,17 +49,17 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: mareuorg.eu.org
+    servername: racknerd.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: mareuorg.eu.org
+        Host: racknerd.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-cloudcone
     type: vmess
-    server: janeuorg.eu.org
+    server: cloudcone.marfreenom.gq
     port: 443
     uuid: 24390adc-1b3a-4080-8537-165b0db253ad
     alterId: 0
@@ -67,17 +67,17 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: janeuorg.eu.org
+    servername: cloudcone.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: janeuorg.eu.org
+        Host: cloudcone.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-virmach
     type: vmess
-    server: febeuorg.eu.org
+    server: virmach.marfreenom.gq
     port: 443
     uuid: 236d5ade-2906-4153-ad8a-797190bcb887
     alterId: 0
@@ -85,12 +85,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: febeuorg.eu.org
+    servername: virmach.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: febeuorg.eu.org
+        Host: virmach.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
