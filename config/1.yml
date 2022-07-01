@@ -93,11 +93,11 @@ proxies:
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
     type: trojan
-    server: 23.105.214.198
-    port: 10002
-    password: 98acc17d-5f6f-47d4-a848-6f59badc3215
+    server: shcu2.forgebukkit.com
+    port: 51234
+    password: a56431e0-c66a-47a1-9244-236802ae878d
     udp: true
-    sni: febeuorg.eu.org
+    sni: mareuorg.eu.org
     alpn:
     #   - h2
       - http/1.1
