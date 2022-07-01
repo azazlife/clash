@@ -22,22 +22,20 @@ dns:
     - www.msftncsi.com
     - www.msftconnecttest.com
   nameserver:
-    - tls://dns.alidns.com
-    - tls://dot.pub
-  fallback:
+#    - tls://dns.alidns.com
+#    - tls://dot.pub
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+#  fallback:
+#    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
 #    - https://dns.google/dns-query
 #    - https://dns.cloudflare.com/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    ipcidr:
+#      - 240.0.0.0/4
 proxies:
   - name: vmess-ws-racknerd
     type: vmess
