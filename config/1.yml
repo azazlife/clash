@@ -324,7 +324,7 @@ rule-providers:
     interval: 86400
     path: ./ruleset/Download.yaml
   mydirect:
-    behavior: ipcidr
+    behavior: domain
     type: http
     url: https://raw.fastgit.org/bylheart/clashrule/main/mydirect.txt
     interval: 86400
