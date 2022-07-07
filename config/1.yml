@@ -91,6 +91,17 @@ proxies:
         Host: febeuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
+  - name: trojan
+    type: trojan
+    server: shcu2.forgebukkit.com
+    port: 51234
+    password: a56431e0-c66a-47a1-9244-236802ae878d
+    udp: true
+    sni: mareuorg.eu.org
+    alpn:
+      - h2
+      - http/1.1
+    # skip-cert-verify: true
   - name: trojan-grpc
     server: shcu2.forgebukkit.com
     port: 51234
@@ -111,14 +122,14 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan-grpc
+      - trojan
   - name: auto
     type: url-test
     proxies:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan-grpc
+      - trojan
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: load-balance
@@ -127,7 +138,7 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan-grpc
+      - trojan
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
