@@ -91,6 +91,24 @@ proxies:
         Host: virmach.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
+  - name: vmess-ws-euserv
+    type: vmess
+    server: cloudcone.marfreenom.gq
+    port: 443
+    uuid: a6e72c5d-8f5a-4bd5-b1ec-d6fb97d2443d
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    # skip-cert-verify: true
+    servername: srv20064.blue.kundencontroller.de
+    network: ws
+    ws-opts:
+      path: /wstlsvws
+      headers:
+        Host: srv20064.blue.kundencontroller.de
+    #   max-early-data: 2048
+    #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
     type: trojan
     server: shcu2.forgebukkit.com
@@ -131,6 +149,7 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
+	  - vmess-ws-euserv
       - trojan
   - name: load-balance
     type: load-balance
@@ -352,10 +371,17 @@ rule-providers:
     url: https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myproxy.txt
     interval: 86400
     path: ./ruleset/myproxy.yaml
+  myrules:
+    behavior: domain
+    type: http
+    url: https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myrules.txt
+    interval: 86400
+    path: ./ruleset/myrules.yaml
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
   - RULE-SET,anti-AD,REJECT
+  - RULE-SET,myrules,vmess-ws-euserv
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
 #  - RULE-SET,BanProgramAD,REJECT
