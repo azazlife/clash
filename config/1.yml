@@ -47,12 +47,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: mareuorg.eu.org
+    servername: racknerd.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: mareuorg.eu.org
+        Host: racknerd.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-cloudcone
@@ -65,12 +65,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: janeuorg.eu.org
+    servername: cloudcone.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: janeuorg.eu.org
+        Host: cloudcone.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-virmach
@@ -83,12 +83,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: febeuorg.eu.org
+    servername: virmach.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: febeuorg.eu.org
+        Host: virmach.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
@@ -120,7 +120,7 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: PROXY
@@ -131,14 +131,14 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan
+      - trojan-grpc
   - name: load-balance
     type: load-balance
     proxies:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
