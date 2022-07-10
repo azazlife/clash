@@ -357,11 +357,11 @@ rules:
   - RULE-SET,myproxy,PROXY
   - RULE-SET,anti-AD,REJECT
 # 拒绝
-  - RULE-SET,BanAD,REJECT
-  - RULE-SET,BanProgramAD,REJECT
-  - RULE-SET,BanEasyList,REJECT
-  - RULE-SET,BanEasyListChina,REJECT
-  - RULE-SET,BanEasyPrivacy,REJECT
+#  - RULE-SET,BanAD,REJECT
+#  - RULE-SET,BanProgramAD,REJECT
+#  - RULE-SET,BanEasyList,REJECT
+#  - RULE-SET,BanEasyListChina,REJECT
+#  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
