@@ -93,7 +93,7 @@ proxies:
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-euserv
     type: vmess
-    server: srv20064.blue.kundencontroller.de
+    server: 2606:4700:4700::1111
     port: 443
     uuid: a6e72c5d-8f5a-4bd5-b1ec-d6fb97d2443d
     alterId: 0
@@ -101,12 +101,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: srv20064.blue.kundencontroller.de
+    servername: euserv.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: srv20064.blue.kundencontroller.de
+        Host: euserv.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: trojan
