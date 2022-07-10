@@ -149,7 +149,7 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-	  - vmess-ws-euserv
+      - vmess-ws-euserv
       - trojan
   - name: load-balance
     type: load-balance
