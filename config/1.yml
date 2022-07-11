@@ -126,7 +126,7 @@ proxies:
     type: trojan
     password: a097adf8-79cd-4335-ad26-2755300059c9
     network: grpc
-    sni: mareuorg.eu.org
+    sni: racknerd.mayfreenom.gq
     # skip-cert-verify: true
     udp: true
     grpc-opts:
@@ -138,7 +138,7 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: PROXY
@@ -150,14 +150,14 @@ proxy-groups:
       - vmess-ws-cloudcone
       - vmess-ws-virmach
       - vmess-ws-euserv
-      - trojan
+      - trojan-grpc
   - name: load-balance
     type: load-balance
     proxies:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan
+      - trojan-grpc
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
