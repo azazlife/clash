@@ -126,7 +126,7 @@ proxies:
     type: trojan
     password: a097adf8-79cd-4335-ad26-2755300059c9
     network: grpc
-    sni: racknerd.mayfreenom.gq
+    sni: mareuorg.eu.org
     # skip-cert-verify: true
     udp: true
     grpc-opts:
