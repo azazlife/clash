@@ -41,7 +41,7 @@ proxies:
     type: vmess
     server: my.aprfreenom.gq
     port: 443
-    uuid: a56431e0-c66a-47a1-9244-236802ae878d
+    uuid: a097adf8-79cd-4335-ad26-2755300059c9
     alterId: 0
     cipher: auto
     udp: true
@@ -59,7 +59,7 @@ proxies:
     type: vmess
     server: www.aprfreenom.gq
     port: 443
-    uuid: 24390adc-1b3a-4080-8537-165b0db253ad
+    uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
     alterId: 0
     cipher: auto
     udp: true
@@ -113,7 +113,7 @@ proxies:
     type: trojan
     server: shcu2.forgebukkit.com
     port: 51234
-    password: a56431e0-c66a-47a1-9244-236802ae878d
+    password: a097adf8-79cd-4335-ad26-2755300059c9
     udp: true
     sni: mareuorg.eu.org
     alpn:
@@ -124,7 +124,7 @@ proxies:
     server: shcu2.forgebukkit.com
     port: 51234
     type: trojan
-    password: a56431e0-c66a-47a1-9244-236802ae878d
+    password: a097adf8-79cd-4335-ad26-2755300059c9
     network: grpc
     sni: mareuorg.eu.org
     # skip-cert-verify: true
