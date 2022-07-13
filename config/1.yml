@@ -77,7 +77,7 @@ proxies:
     type: vmess
     server: virmach.marfreenom.gq
     port: 443
-    uuid: 236d5ade-2906-4153-ad8a-797190bcb887
+    uuid: 321a8837-94f0-4295-9dc0-0dacf630ed96
     alterId: 0
     cipher: auto
     udp: true
@@ -391,8 +391,8 @@ rules:
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
-  - RULE-SET,GoogleFCM,DIRECT
-  - RULE-SET,GoogleCN,DIRECT
+#  - RULE-SET,GoogleFCM,DIRECT
+#  - RULE-SET,GoogleCN,DIRECT
   - RULE-SET,OneDrive,DIRECT
   - RULE-SET,Microsoft,DIRECT
   - RULE-SET,Apple,DIRECT
