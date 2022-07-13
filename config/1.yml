@@ -138,7 +138,7 @@ proxy-groups:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan-grpc
+      - trojan
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: PROXY
@@ -150,14 +150,14 @@ proxy-groups:
       - vmess-ws-cloudcone
       - vmess-ws-virmach
       - vmess-ws-euserv
-      - trojan-grpc
+      - trojan
   - name: load-balance
     type: load-balance
     proxies:
       - vmess-ws-racknerd
       - vmess-ws-cloudcone
       - vmess-ws-virmach
-      - trojan-grpc
+      - trojan
     url: http://www.gstatic.com/generate_204
     interval: 300
 rule-providers:
