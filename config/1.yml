@@ -22,10 +22,10 @@ dns:
     - www.msftncsi.com
     - www.msftconnecttest.com
   nameserver:
-#    - tls://dns.alidns.com
-#    - tls://dot.pub
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - tls://dns.alidns.com
+    - tls://dot.pub
+#    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
 #  fallback:
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
