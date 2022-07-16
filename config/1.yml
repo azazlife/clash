@@ -162,221 +162,227 @@ proxy-groups:
     interval: 300
 rule-providers:
   LocalAreaNetwork:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/LocalAreaNetwork.yaml
+    behavior: classical
     path: ./ruleset/LocalAreaNetwork.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/LocalAreaNetwork.yaml"
+    interval: 43200
   UnBan:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/UnBan.yaml
+    behavior: classical
     path: ./ruleset/UnBan.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/UnBan.yaml"
+    interval: 43200
   BanAD:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanAD.yaml
+    behavior: classical
     path: ./ruleset/BanAD.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanAD.yaml"
+    interval: 43200
   BanProgramAD:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanProgramAD.yaml
+    behavior: classical
     path: ./ruleset/BanProgramAD.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanProgramAD.yaml"
+    interval: 43200
   BanEasyList:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyList.yaml
+    behavior: classical
     path: ./ruleset/BanEasyList.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyList.yaml"
+    interval: 43200
   BanEasyListChina:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyListChina.yaml
+    behavior: classical
     path: ./ruleset/BanEasyListChina.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyListChina.yaml"
+    interval: 43200
   BanEasyPrivacy:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyPrivacy.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/BanEasyPrivacy.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyPrivacy.yaml"
+    interval: 43200
   GoogleFCM:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/GoogleFCM.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/GoogleFCM.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/GoogleFCM.yaml"
+    interval: 43200
   GoogleCN:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/GoogleCN.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/GoogleCN.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/GoogleCN.yaml"
+    interval: 43200
   Google:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Google.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Google.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Google.yaml"
+    interval: 43200
   SteamCN:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/SteamCN.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/SteamCN.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/SteamCN.yaml"
+    interval: 43200
   OneDrive:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/OneDrive.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/OneDrive.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/OneDrive.yaml"
+    interval: 43200
   Microsoft:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Microsoft.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Microsoft.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Microsoft.yaml"
+    interval: 43200
   Apple:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Apple.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/AppleCN.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Apple.yaml"
+    interval: 43200
   Telegram:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Telegram.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Telegram.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Telegram.yaml"
+    interval: 43200
   NetEaseMusic:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/NetEaseMusic.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/NetEaseMusic.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+    interval: 43200
   Epic:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Epic.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Epic.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Epic.yaml"
+    interval: 43200
   Sony:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Sony.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Sony.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Sony.yaml"
+    interval: 43200
   Steam:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Steam.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Steam.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Steam.yaml"
+    interval: 43200
   YouTube:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/YouTube.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/YouTube.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/YouTube.yaml"
+    interval: 43200
   Netflix:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Netflix.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Netflix.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Netflix.yaml"
+    interval: 43200
   AmazonIp:
-    behavior: ipcidr
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/AmazonIp.yaml
-    interval: 86400
+    behavior: ipcidr
     path: ./ruleset/AmazonIp.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/AmazonIp.yaml"
+    interval: 43200
   Bahamut:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Bahamut.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Bahamut.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Bahamut.yaml"
+    interval: 43200
   BilibiliHMT:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/BilibiliHMT.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/BilibiliHMT.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+    interval: 43200
   Bilibili:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Bilibili.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Bilibili.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Bilibili.yaml"
+    interval: 43200
   ChinaMedia:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaMedia.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/ChinaMedia.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaMedia.yaml"
+    interval: 43200
   ProxyMedia:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ProxyMedia.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/ProxyMedia.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ProxyMedia.yaml"
+    interval: 43200
   ProxyGFWlist:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ProxyGFWlist.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/ProxyGFWlist.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ProxyGFWlist.yaml"
+    interval: 43200
   ChinaIp:
-    behavior: ipcidr
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaIp.yaml
-    interval: 86400
+    behavior: ipcidr
     path: ./ruleset/ChinaIp.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaIp.yaml"
+    interval: 43200
   ChinaDomain:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaDomain.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/ChinaDomain.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaDomain.yaml"
+    interval: 43200
   ChinaCompanyIp:
+    type: http
     behavior: ipcidr
-    type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaCompanyIp.yaml
-    interval: 86400
     path: ./ruleset/ChinaCompanyIp.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaCompanyIp.yaml"
+    interval: 43200
   Download:
-    behavior: classical
     type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Download.yaml
-    interval: 86400
+    behavior: classical
     path: ./ruleset/Download.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Download.yaml"
+    interval: 43200
   Wechat:
+    type: http
     behavior: classical
-    type: http
-    url: https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Wechat.yaml
-    interval: 86400
     path: ./ruleset/Download.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Wechat.yaml"
+    interval: 43200
   anti-AD:
-    behavior: domain
     type: http
-    url: https://github.mayfreenom.gq/privacy-protection-tools/anti-AD/raw/master/anti-ad-clash.yaml
-    interval: 86400
+    behavior: domain
     path: ./ruleset/anti-AD.yaml
+    url: "https://github.mayfreenom.gq/privacy-protection-tools/anti-AD/raw/master/anti-ad-clash.yaml"
+    interval: 43200
   mydirect:
-    behavior: domain
     type: http
-    url: https://github.mayfreenom.gq/bylheart/clashrule/raw/main/mydirect.txt
-    interval: 86400
+    behavior: domain
     path: ./ruleset/mydirect.yaml
+    url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/mydirect.txt"
+    interval: 43200
   myproxy:
-    behavior: domain
     type: http
-    url: https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myproxy.txt
-    interval: 86400
+    behavior: domain
     path: ./ruleset/myproxy.yaml
+    url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myproxy.txt"
+    interval: 43200
   myrules:
-    behavior: domain
     type: http
-    url: https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myrules.txt
-    interval: 86400
+    behavior: domain
     path: ./ruleset/myrules.yaml
+    url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myrules.txt"
+    interval: 43200
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
