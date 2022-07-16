@@ -1,0 +1,455 @@
+mixed-port: 7890             #本地混合代理(http和socks5合并）端口
+geodata-mode: true         #【Meta专属】使用geoip.dat数据库(默认：false使用mmdb数据库)
+tcp-concurrent: true         #【Meta专属】TCP连接并发，如果域名解析结果对应多个IP，
+allow-lan: false                  #允许局域网连接(false/true)
+bind-address:                     #监听IP白名单（当allow-lan：true），只允许列表设备
+  '*'                             #全部设备
+mode: rule                 #clash工作模式（rule/global/direct,meta暂不支持script）
+log-level: info            #日志等级（info/warning/error/debug/silent）
+ipv6: true                #ip6开关，当为false时，停止解析hostanmes为ip6地址
+external-controller: 127.0.0.1:9090   #控制器监听地址
+profile:                   #缓存设置(文件位置./cache.db)
+  store-selected: false    #节点状态记忆（若不同配置有同代理名称,设置值共享）
+  store-fake-ip: true      #fake-ip缓存
+sniffer:                         #【Meta专属】sniffer域名嗅探器
+  enable: true                   #嗅探开关
+  sniffing:                      #嗅探协议对象：目前支持tls/http
+    - tls
+    - http
+  skip-domain:                   #列表中的sni字段，保留mapping结果，不通过嗅探还原域名
+    - 'Mijia Cloud'              #米家设备，建议加
+    - 'dlg.io.mi.com'
+    - '+.apple.com'              #苹果域名，建议加
+  # - '*.baidu.com'              #支持通配符    
+  force-domain:                  #需要强制嗅探的域名，默认只对IP嗅探
+  # - '+'                        #去掉注释后等于全局嗅探
+    - 'google.com'    
+  #port-whitelist:               #端口白名单，只对名单内的端口进行还原域名
+  # - 80
+  # - 443
+  # - 8000-9000
+hosts:                           #host，支持通配符（非通配符域名优先级高于通配符域名）
+  # '*.clash.dev': 127.0.0.1     #例如foo.example.com>*.example.com>.example.com
+  # '.dev': 127.0.0.1
+  # 'alpha.clash.dev': '::1'
+dns:
+  enable: true                 #DNS开关(false/true)
+  listen: 127.0.0.1:3453           #DNS监听地址
+  # ipv6: false                #IP6解析开关；如果为false，将返回ip6结果为空  
+  default-nameserver:          #解析非IP的dns用的dns服务器,只支持纯IP
+    - 223.5.5.5 
+    - 119.29.29.29 
+#    - 1.1.1.1
+#    - 8.8.8.8
+  #nameserver-policy:                #指定域名使用自定义DNS解析
+  # 'www.baidu.com': 'https://223.5.5.5/dns-query'
+  # '+.internal.crop.com': '114.114.114.114'  
+  enhanced-mode: redir-host          #DNS模式(redir-host/fake-ip)
+  fake-ip-range: 198.18.0.1/16       #Fake-IP解析地址池
+  # use-hosts: true                  #查询hosts配置并返回真实IP  
+  # fake-ip-filter:                  #Fake-ip过滤，列表中的域名返回真实ip
+  #   - '*.lan'
+  #   - '*.linksys.com'
+  #   - '+.pool.ntp.org'
+  #   - localhost.ptlogin2.qq.com  
+  #proxy-server-nameserver:          #【Meta专属】解析代理服务器域名的dns
+  # - tls://1.0.0.1:853              # 不写时用nameserver解析
+  nameserver:                        #默认DNS服务器，支持udp/tcp/dot/doh/doq
+    - tls://dns.alidns.com
+    - tls://dot.pub
+#    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
+  fallback:                          #回落DNS服务器，支持udp/tcp/dot/doh/doq
+#    - tls://1dot1dot1dot1.cloudflare-dns.com
+#    - tls://dns.google
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+#    - https://dns.cloudflare.com/dns-query
+#    - https://dns.google/dns-query
+  fallback-filter:                   #回落DNS服务器过滤
+    geoip: true                      #为真时，不匹配为geoip规则的使用fallback返回结果
+    geoip-code: CN                   #geoip匹配区域设定
+    geosite:                         #【Meta专属】设定geosite某分类使用fallback返回结果
+      - gfw
+    ipcidr:                          #列表中的ip使用fallback返回解析结果
+      - 240.0.0.0/4
+    domain:                          #列表中的域名使用fallback返回解析结果
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+
+proxies:  
+  - name: "vless-tcp"
+    type: vless
+    server: shcu2.forgebukkit.com
+    port: 51234
+    uuid: a097adf8-79cd-4335-ad26-2755300059c9
+    network: XTLS
+    servername: mareuorg.eu.org # AKA SNI
+    flow: xtls-rprx-direct # xtls-rprx-origin  # enable XTLS
+  - name: "vless-ws-racknerd"
+    type: vless
+    server: my.aprfreenom.gq
+    port: 443
+    uuid: a097adf8-79cd-4335-ad26-2755300059c9
+    udp: true
+    tls: true
+    network: ws
+    servername: racknerd.mayfreenom.gq # priority over wss host
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: racknerd.mayfreenom.gq
+  - name: "vless-ws-cloudcone"
+    type: vless
+    server: www.aprfreenom.gq
+    port: 443
+    uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
+    udp: true
+    tls: true
+    network: ws
+    servername: cloudcone.mayfreenom.gq # priority over wss host
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: cloudcone.mayfreenom.gq
+  - name: "vless-ws-virmach"
+    type: vless
+    server: virmach.marfreenom.gq
+    port: 443
+    uuid: 321a8837-94f0-4295-9dc0-0dacf630ed96
+    udp: true
+    tls: true
+    network: ws
+    servername: virmach.mayfreenom.gq # priority over wss host
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: virmach.mayfreenom.gq
+  - name: "vless-ws-euserv"
+    type: vless
+    server: euserv.mayfreenom.gq
+    port: 443
+    uuid: a6e72c5d-8f5a-4bd5-b1ec-d6fb97d2443d
+    udp: true
+    tls: true
+    network: ws
+    servername: euserv.mayfreenom.gq # priority over wss host
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: euserv.mayfreenom.gq
+
+proxy-groups:
+  - name: "auto" 
+    type: url-test         #通过httping URL 自动切换延迟最低的节点
+    proxies:
+      - vless-tcp
+      - vless-ws-racknerd
+      - vless-ws-cloudcone
+      - vless-ws-virmach
+      - vless-ws-euserv
+    tolerance: 150       #容差值：节点差值低于设定值时，不自动切换
+    url: 'http://www.gstatic.com/generate_204'      #用来测ping的地址
+    interval: 300          #测ping时间(秒)
+  - name: "fallback-auto"
+    type: fallback         #通过httping URL，当没有ping值时，自动切换下一个节点
+    proxies:
+      - vless-tcp
+      - vless-ws-racknerd
+      - vless-ws-cloudcone
+      - vless-ws-virmach
+      - vless-ws-euserv
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+  - name: "load-balance"
+    type: load-balance      #负载均衡：同一域名(eTLD+1)使用同一代理
+    proxies:
+      - vless-tcp
+      - vless-ws-racknerd
+      - vless-ws-cloudcone
+      - vless-ws-virmach
+      - vless-ws-euserv
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+  - name: PROXY
+    type: select              #手动代理组
+    proxies:
+      - auto
+      - fallback-auto
+      - load-balance
+      - vless-tcp
+      - vless-ws-racknerd
+      - vless-ws-cloudcone
+      - vless-ws-virmach
+      - vless-ws-euserv
+
+rule-providers:      
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    path: ./ruleset/LocalAreaNetwork.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/LocalAreaNetwork.yaml"
+    interval: 43200
+  UnBan:
+    type: http
+    behavior: classical
+    path: ./ruleset/UnBan.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/UnBan.yaml"
+    interval: 43200
+  BanAD:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanAD.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanAD.yaml"
+    interval: 43200
+  BanProgramAD:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanProgramAD.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanProgramAD.yaml"
+    interval: 43200
+  BanEasyList:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanEasyList.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyList.yaml"
+    interval: 43200
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanEasyListChina.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyListChina.yaml"
+    interval: 43200
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanEasyPrivacy.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/BanEasyPrivacy.yaml"
+    interval: 43200
+  GoogleFCM:
+    type: http
+    behavior: classical
+    path: ./ruleset/GoogleFCM.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/GoogleFCM.yaml"
+    interval: 43200
+  GoogleCN:
+    type: http
+    behavior: classical
+    path: ./ruleset/GoogleCN.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/GoogleCN.yaml"
+    interval: 43200
+  Google:
+    type: http
+    behavior: classical
+    path: ./ruleset/Google.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Google.yaml"
+    interval: 43200
+  SteamCN:
+    type: http
+    behavior: classical
+    path: ./ruleset/SteamCN.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/SteamCN.yaml"
+    interval: 43200
+  OneDrive:
+    type: http
+    behavior: classical
+    path: ./ruleset/OneDrive.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/OneDrive.yaml"
+    interval: 43200
+  Microsoft:
+    type: http
+    behavior: classical
+    path: ./ruleset/Microsoft.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Microsoft.yaml"
+    interval: 43200
+  Apple:
+    type: http
+    behavior: classical
+    path: ./ruleset/AppleCN.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Apple.yaml"
+    interval: 43200
+  Telegram:
+    type: http
+    behavior: classical
+    path: ./ruleset/Telegram.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Telegram.yaml"
+    interval: 43200
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    path: ./ruleset/NetEaseMusic.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+    interval: 43200
+  Epic:
+    type: http
+    behavior: classical
+    path: ./ruleset/Epic.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Epic.yaml"
+    interval: 43200
+  Sony:
+    type: http
+    behavior: classical
+    path: ./ruleset/Sony.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Sony.yaml"
+    interval: 43200
+  Steam:
+    type: http
+    behavior: classical
+    path: ./ruleset/Steam.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Steam.yaml"
+    interval: 43200
+  YouTube:
+    type: http
+    behavior: classical
+    path: ./ruleset/YouTube.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/YouTube.yaml"
+    interval: 43200
+  Netflix:
+    type: http
+    behavior: classical
+    path: ./ruleset/Netflix.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Netflix.yaml"
+    interval: 43200
+  AmazonIp:
+    type: http
+    behavior: ipcidr
+    path: ./ruleset/AmazonIp.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/AmazonIp.yaml"
+    interval: 43200
+  Bahamut:
+    type: http
+    behavior: classical
+    path: ./ruleset/Bahamut.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Bahamut.yaml"
+    interval: 43200
+  BilibiliHMT:
+    type: http
+    behavior: classical
+    path: ./ruleset/BilibiliHMT.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+    interval: 43200
+  Bilibili:
+    type: http
+    behavior: classical
+    path: ./ruleset/Bilibili.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Bilibili.yaml"
+    interval: 43200
+  ChinaMedia:
+    type: http
+    behavior: classical
+    path: ./ruleset/ChinaMedia.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaMedia.yaml"
+    interval: 43200
+  ProxyMedia:
+    type: http
+    behavior: classical
+    path: ./ruleset/ProxyMedia.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ProxyMedia.yaml"
+    interval: 43200
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    path: ./ruleset/ProxyGFWlist.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ProxyGFWlist.yaml"
+    interval: 43200
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    path: ./ruleset/ChinaIp.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaIp.yaml"
+    interval: 43200
+  ChinaDomain:
+    type: http
+    behavior: classical
+    path: ./ruleset/ChinaDomain.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaDomain.yaml"
+    interval: 43200
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    path: ./ruleset/ChinaCompanyIp.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/ChinaCompanyIp.yaml"
+    interval: 43200
+  Download:
+    type: http
+    behavior: classical
+    path: ./ruleset/Download.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Download.yaml"
+    interval: 43200
+  Wechat:
+    type: http
+    behavior: classical
+    path: ./ruleset/Download.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Wechat.yaml"
+    interval: 43200
+  anti-AD:
+    type: http
+    behavior: domain
+    path: ./ruleset/anti-AD.yaml
+    url: "https://github.mayfreenom.gq/privacy-protection-tools/anti-AD/raw/master/anti-ad-clash.yaml"
+    interval: 43200
+  mydirect:
+    type: http
+    behavior: domain
+    path: ./ruleset/mydirect.yaml
+    url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/mydirect.txt"
+    interval: 43200
+  myproxy:
+    type: http
+    behavior: domain
+    path: ./ruleset/myproxy.yaml
+    url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myproxy.txt"
+    interval: 43200
+  myrules:
+    type: http
+    behavior: domain
+    path: ./ruleset/myrules.yaml
+    url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myrules.txt"
+    interval: 43200
+
+rules:
+  - RULE-SET,mydirect,DIRECT
+  - RULE-SET,myproxy,PROXY
+  - RULE-SET,anti-AD,REJECT
+  - RULE-SET,myrules,vless-ws-euserv
+# 拒绝
+#  - RULE-SET,BanAD,REJECT
+#  - RULE-SET,BanProgramAD,REJECT
+#  - RULE-SET,BanEasyList,REJECT
+#  - RULE-SET,BanEasyListChina,REJECT
+#  - RULE-SET,BanEasyPrivacy,REJECT
+# 直连
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  - RULE-SET,UnBan,DIRECT
+#  - RULE-SET,GoogleFCM,DIRECT
+#  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,OneDrive,DIRECT
+  - RULE-SET,Microsoft,DIRECT
+  - RULE-SET,Apple,DIRECT
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Epic,DIRECT
+  - RULE-SET,Sony,DIRECT
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,BilibiliHMT,DIRECT
+  - RULE-SET,Bilibili,DIRECT  
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,Download,DIRECT
+  - RULE-SET,Wechat,DIRECT
+# 代理
+#  - RULE-SET,Google,PROXY
+#  - RULE-SET,Telegram,PROXY
+#  - RULE-SET,Steam,DIRECT
+#  - RULE-SET,YouTube,PROXY
+#  - RULE-SET,Netflix,PROXY
+#  - RULE-SET,AmazonIp,PROXY
+#  - RULE-SET,Bahamut,PROXY
+#  - RULE-SET,ProxyMedia,PROXY
+#  - RULE-SET,ProxyGFWlist,PROXY
+# 其他
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
