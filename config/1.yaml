@@ -79,14 +79,16 @@ dns:
       - '+.youtube.com'
 
 proxies:  
-  - name: "vless-tcp"
-    type: vless
+  - name: "trojan"
+    type: trojan
     server: shcu2.forgebukkit.com
     port: 51234
-    uuid: a097adf8-79cd-4335-ad26-2755300059c9
-    network: XTLS
-    servername: mareuorg.eu.org # AKA SNI
-    flow: xtls-rprx-direct # xtls-rprx-origin  # enable XTLS
+    password: a097adf8-79cd-4335-ad26-2755300059c9
+    udp: true
+    sni: mareuorg.eu.org # aka server name
+    alpn:
+      - h2
+      - http/1.1
   - name: "vless-ws-racknerd"
     type: vless
     server: my.aprfreenom.gq
@@ -144,7 +146,7 @@ proxy-groups:
   - name: "auto" 
     type: url-test         #通过httping URL 自动切换延迟最低的节点
     proxies:
-      - vless-tcp
+      - trojan
       - vless-ws-racknerd
       - vless-ws-cloudcone
       - vless-ws-virmach
@@ -155,7 +157,7 @@ proxy-groups:
   - name: "fallback-auto"
     type: fallback         #通过httping URL，当没有ping值时，自动切换下一个节点
     proxies:
-      - vless-tcp
+      - trojan
       - vless-ws-racknerd
       - vless-ws-cloudcone
       - vless-ws-virmach
@@ -165,7 +167,7 @@ proxy-groups:
   - name: "load-balance"
     type: load-balance      #负载均衡：同一域名(eTLD+1)使用同一代理
     proxies:
-      - vless-tcp
+      - trojan
       - vless-ws-racknerd
       - vless-ws-cloudcone
       - vless-ws-virmach
@@ -178,7 +180,7 @@ proxy-groups:
       - auto
       - fallback-auto
       - load-balance
-      - vless-tcp
+      - trojan
       - vless-ws-racknerd
       - vless-ws-cloudcone
       - vless-ws-virmach
