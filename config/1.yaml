@@ -410,7 +410,6 @@ rules:
 #  - RULE-SET,BanEasyListChina,REJECT
 #  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
-  - GEOSITE:tld-cn
   - GEOSITE:category-games@cn
   - GEOSITE:private
   - GEOSITE:cn
