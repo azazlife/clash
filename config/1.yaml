@@ -1,83 +1,72 @@
-mixed-port: 7890             #本地混合代理(http和socks5合并）端口
-geodata-mode: true         #【Meta专属】使用geoip.dat数据库(默认：false使用mmdb数据库)
-tcp-concurrent: true         #【Meta专属】TCP连接并发，如果域名解析结果对应多个IP，
-allow-lan: false                  #允许局域网连接(false/true)
-bind-address:                     #监听IP白名单（当allow-lan：true），只允许列表设备
-  '*'                             #全部设备
-mode: rule                 #clash工作模式（rule/global/direct,meta暂不支持script）
-log-level: info            #日志等级（info/warning/error/debug/silent）
-ipv6: true                #ip6开关，当为false时，停止解析hostanmes为ip6地址
-external-controller: 127.0.0.1:9090   #控制器监听地址
-profile:                   #缓存设置(文件位置./cache.db)
-  store-selected: false    #节点状态记忆（若不同配置有同代理名称,设置值共享）
-  store-fake-ip: true      #fake-ip缓存
-sniffer:                         #【Meta专属】sniffer域名嗅探器
-  enable: true                   #嗅探开关
-  sniffing:                      #嗅探协议对象：目前支持tls/http
+mixed-port: 7890
+geodata-mode: true
+tcp-concurrent: true
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: true
+external-controller: 127.0.0.1:9090
+sniffer:
+  enable: true
+  sniffing:
     - tls
     - http
-  skip-domain:                   #列表中的sni字段，保留mapping结果，不通过嗅探还原域名
-    - 'Mijia Cloud'              #米家设备，建议加
+  skip-domain:
+    - 'Mijia Cloud'
     - 'dlg.io.mi.com'
-    - '+.apple.com'              #苹果域名，建议加
-  # - '*.baidu.com'              #支持通配符    
-  force-domain:                  #需要强制嗅探的域名，默认只对IP嗅探
-  # - '+'                        #去掉注释后等于全局嗅探
-    - 'google.com'    
-  #port-whitelist:               #端口白名单，只对名单内的端口进行还原域名
+    - '+.apple.com'
+  # - '*.baidu.com'
+  force-domain:
+  # - '+'
+    - 'google.com'
+  #port-whitelist:
   # - 80
   # - 443
   # - 8000-9000
-hosts:                           #host，支持通配符（非通配符域名优先级高于通配符域名）
-  # '*.clash.dev': 127.0.0.1     #例如foo.example.com>*.example.com>.example.com
+hosts:
+  # '*.clash.dev': 127.0.0.1
   # '.dev': 127.0.0.1
   # 'alpha.clash.dev': '::1'
 dns:
-  enable: true                 #DNS开关(false/true)
-  listen: 127.0.0.1:3453           #DNS监听地址
-  # ipv6: false                #IP6解析开关；如果为false，将返回ip6结果为空  
-  default-nameserver:          #解析非IP的dns用的dns服务器,只支持纯IP
+  enable: true
+  listen: 127.0.0.1:1053
+  # ipv6: false
+  default-nameserver:
     - 223.5.5.5 
     - 119.29.29.29 
 #    - 1.1.1.1
 #    - 8.8.8.8
-  #nameserver-policy:                #指定域名使用自定义DNS解析
-  # 'www.baidu.com': 'https://223.5.5.5/dns-query'
-  # '+.internal.crop.com': '114.114.114.114'  
-  enhanced-mode: redir-host          #DNS模式(redir-host/fake-ip)
-  fake-ip-range: 198.18.0.1/16       #Fake-IP解析地址池
-  # use-hosts: true                  #查询hosts配置并返回真实IP  
-  # fake-ip-filter:                  #Fake-ip过滤，列表中的域名返回真实ip
+  enhanced-mode: redir-host
+  fake-ip-range: 198.18.0.1/16
+  # use-hosts: true
+  # fake-ip-filter:
   #   - '*.lan'
   #   - '*.linksys.com'
   #   - '+.pool.ntp.org'
-  #   - localhost.ptlogin2.qq.com  
-  #proxy-server-nameserver:          #【Meta专属】解析代理服务器域名的dns
-  # - tls://1.0.0.1:853              # 不写时用nameserver解析
-  nameserver:                        #默认DNS服务器，支持udp/tcp/dot/doh/doq
+  #   - localhost.ptlogin2.qq.com
+  nameserver:
     - tls://dns.alidns.com
     - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
-  fallback:                          #回落DNS服务器，支持udp/tcp/dot/doh/doq
+  fallback:
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
-  fallback-filter:                   #回落DNS服务器过滤
-    geoip: true                      #为真时，不匹配为geoip规则的使用fallback返回结果
-    geoip-code: CN                   #geoip匹配区域设定
-    geosite:                         #【Meta专属】设定geosite某分类使用fallback返回结果
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
       - gfw
-    ipcidr:                          #列表中的ip使用fallback返回解析结果
+    ipcidr:
       - 240.0.0.0/4
-    domain:                          #列表中的域名使用fallback返回解析结果
+    domain:
       - '+.google.com'
       - '+.facebook.com'
       - '+.youtube.com'
-
 proxies:  
   - name: "trojan"
     type: trojan
@@ -85,7 +74,7 @@ proxies:
     port: 51234
     password: a097adf8-79cd-4335-ad26-2755300059c9
     udp: true
-    sni: mareuorg.eu.org # aka server name
+    sni: mareuorg.eu.org
     alpn:
       - h2
       - http/1.1
@@ -97,7 +86,7 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: racknerd.mayfreenom.gq # priority over wss host
+    servername: racknerd.mayfreenom.gq
     ws-opts:
       path: "/wstlsws"
       headers:
@@ -110,7 +99,7 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: cloudcone.mayfreenom.gq # priority over wss host
+    servername: cloudcone.mayfreenom.gq
     ws-opts:
       path: "/wstlsws"
       headers:
@@ -123,7 +112,7 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: virmach.mayfreenom.gq # priority over wss host
+    servername: virmach.mayfreenom.gq
     ws-opts:
       path: "/wstlsws"
       headers:
@@ -136,26 +125,25 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: euserv.mayfreenom.gq # priority over wss host
+    servername: euserv.mayfreenom.gq
     ws-opts:
       path: "/wstlsws"
       headers:
         Host: euserv.mayfreenom.gq
-
 proxy-groups:
   - name: "auto" 
-    type: url-test         #通过httping URL 自动切换延迟最低的节点
+    type: url-test
     proxies:
       - trojan
       - vless-ws-racknerd
       - vless-ws-cloudcone
       - vless-ws-virmach
       - vless-ws-euserv
-    tolerance: 100       #容差值：节点差值低于设定值时，不自动切换
-    url: 'http://www.gstatic.com/generate_204'      #用来测ping的地址
-    interval: 300          #测ping时间(秒)
+    tolerance: 100
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
   - name: "fallback-auto"
-    type: fallback         #通过httping URL，当没有ping值时，自动切换下一个节点
+    type: fallback
     proxies:
       - trojan
       - vless-ws-racknerd
@@ -165,7 +153,7 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
   - name: "load-balance"
-    type: load-balance      #负载均衡：同一域名(eTLD+1)使用同一代理
+    type: load-balance
     proxies:
       - trojan
       - vless-ws-racknerd
@@ -175,7 +163,7 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
   - name: PROXY
-    type: select              #手动代理组
+    type: select
     proxies:
       - auto
       - fallback-auto
@@ -185,7 +173,6 @@ proxy-groups:
       - vless-ws-cloudcone
       - vless-ws-virmach
       - vless-ws-euserv
-
 rule-providers:      
   LocalAreaNetwork:
     type: http
@@ -413,35 +400,41 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
-  - RULE-SET,anti-AD,REJECT
+#  - RULE-SET,anti-AD,REJECT
   - RULE-SET,myrules,vless-ws-euserv
 # 拒绝
+  - GEOSITE,category-ads-all,REJECT
 #  - RULE-SET,BanAD,REJECT
 #  - RULE-SET,BanProgramAD,REJECT
 #  - RULE-SET,BanEasyList,REJECT
 #  - RULE-SET,BanEasyListChina,REJECT
 #  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
-  - RULE-SET,LocalAreaNetwork,DIRECT
-  - RULE-SET,UnBan,DIRECT
+  - GEOSITE:tld-cn
+  - GEOSITE:category-games@cn
+  - GEOSITE:private
+  - GEOSITE:cn
+#  - RULE-SET,LocalAreaNetwork,DIRECT
+#  - RULE-SET,UnBan,DIRECT
 #  - RULE-SET,GoogleFCM,DIRECT
 #  - RULE-SET,GoogleCN,DIRECT
-  - RULE-SET,OneDrive,DIRECT
-  - RULE-SET,Microsoft,DIRECT
-  - RULE-SET,Apple,DIRECT
-  - RULE-SET,NetEaseMusic,DIRECT
-  - RULE-SET,Epic,DIRECT
-  - RULE-SET,Sony,DIRECT
-  - RULE-SET,SteamCN,DIRECT
-  - RULE-SET,BilibiliHMT,DIRECT
-  - RULE-SET,Bilibili,DIRECT  
-  - RULE-SET,ChinaMedia,DIRECT
-  - RULE-SET,ChinaIp,DIRECT
-  - RULE-SET,ChinaDomain,DIRECT
-  - RULE-SET,ChinaCompanyIp,DIRECT
-  - RULE-SET,Download,DIRECT
-  - RULE-SET,Wechat,DIRECT
+#  - RULE-SET,OneDrive,DIRECT
+#  - RULE-SET,Microsoft,DIRECT
+#  - RULE-SET,Apple,DIRECT
+#  - RULE-SET,NetEaseMusic,DIRECT
+#  - RULE-SET,Epic,DIRECT
+#  - RULE-SET,Sony,DIRECT
+#  - RULE-SET,SteamCN,DIRECT
+#  - RULE-SET,BilibiliHMT,DIRECT
+#  - RULE-SET,Bilibili,DIRECT  
+#  - RULE-SET,ChinaMedia,DIRECT
+#  - RULE-SET,ChinaIp,DIRECT
+#  - RULE-SET,ChinaDomain,DIRECT
+#  - RULE-SET,ChinaCompanyIp,DIRECT
+#  - RULE-SET,Download,DIRECT
+#  - RULE-SET,Wechat,DIRECT
 # 代理
+#  - GEOSITE,geolocation-!cn,PROXY
 #  - RULE-SET,Google,PROXY
 #  - RULE-SET,Telegram,PROXY
 #  - RULE-SET,Steam,DIRECT
@@ -452,6 +445,7 @@ rules:
 #  - RULE-SET,ProxyMedia,PROXY
 #  - RULE-SET,ProxyGFWlist,PROXY
 # 其他
-  - GEOIP,LAN,DIRECT
+  - GEOIP,private,DIRECT
+#  - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,PROXY
