@@ -446,6 +446,7 @@ rules:
 #  - RULE-SET,ProxyGFWlist,PROXY
 # 其他
   - GEOIP,private,DIRECT
+  - GEOIP,cn,DIRECT
 #  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
+#  - GEOIP,CN,DIRECT
   - MATCH,PROXY
