@@ -1,4 +1,5 @@
-mixed-port: 7890
+port: 7890
+socks-port: 7891
 geodata-mode: true
 tcp-concurrent: true
 allow-lan: false
@@ -404,11 +405,11 @@ rules:
   - RULE-SET,myrules,vless-ws-euserv
 # 拒绝
 #  - GEOSITE,category-ads-all,REJECT
-  - RULE-SET,BanAD,REJECT
-  - RULE-SET,BanProgramAD,REJECT
-  - RULE-SET,BanEasyList,REJECT
-  - RULE-SET,BanEasyListChina,REJECT
-  - RULE-SET,BanEasyPrivacy,REJECT
+#  - RULE-SET,BanAD,REJECT
+#  - RULE-SET,BanProgramAD,REJECT
+#  - RULE-SET,BanEasyList,REJECT
+#  - RULE-SET,BanEasyListChina,REJECT
+#  - RULE-SET,BanEasyPrivacy,REJECT
 # 直连
 #  - GEOSITE:tld-cn
 #  - GEOSITE:category-games@cn
