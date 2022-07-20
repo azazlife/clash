@@ -1,4 +1,5 @@
-mixed-port: 7890
+port: 7890
+socks-port: 7891
 allow-lan: false
 mode: rule
 log-level: info
@@ -8,7 +9,7 @@ hosts:
 dns:
   enable: true
   ipv6: false
-  listen: 127.0.0.1:3453
+  listen: 127.0.0.1:1053
   default-nameserver:
     - 223.5.5.5 
     - 119.29.29.29   
@@ -386,7 +387,7 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
-  - RULE-SET,anti-AD,REJECT
+#  - RULE-SET,anti-AD,REJECT
   - RULE-SET,myrules,vmess-ws-euserv
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
