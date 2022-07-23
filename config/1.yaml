@@ -401,7 +401,7 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
-  - RULE-SET,anti-AD,REJECT
+#  - RULE-SET,anti-AD,REJECT
   - RULE-SET,myrules,vless-ws-euserv
 # 拒绝
 #  - GEOSITE,category-ads-all,REJECT
