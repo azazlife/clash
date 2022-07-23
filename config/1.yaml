@@ -436,18 +436,19 @@ rules:
   - RULE-SET,Wechat,DIRECT
 # 代理
 #  - GEOSITE,geolocation-!cn,PROXY
-#  - RULE-SET,Google,PROXY
-#  - RULE-SET,Telegram,PROXY
-#  - RULE-SET,Steam,PROXY
-#  - RULE-SET,YouTube,PROXY
-#  - RULE-SET,Netflix,PROXY
-#  - RULE-SET,AmazonIp,PROXY
-#  - RULE-SET,Bahamut,PROXY
-#  - RULE-SET,ProxyMedia,PROXY
-#  - RULE-SET,ProxyGFWlist,PROXY
+  - RULE-SET,Google,PROXY
+  - RULE-SET,Telegram,PROXY
+  - RULE-SET,Steam,PROXY
+  - RULE-SET,YouTube,PROXY
+  - RULE-SET,Netflix,PROXY
+  - RULE-SET,AmazonIp,PROXY
+  - RULE-SET,Bahamut,PROXY
+  - RULE-SET,ProxyMedia,PROXY
+  - RULE-SET,ProxyGFWlist,PROXY
 # 其他
 #  - GEOIP,private,DIRECT
 #  - GEOIP,cn,DIRECT
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,PROXY
+  - GEOip,US,PROXY
+  - MATCH,DIRECT
