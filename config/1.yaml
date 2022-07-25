@@ -498,7 +498,7 @@ rules:
   - RULE-SET,myproxy,PROXY
   - RULE-SET,anti-AD-white,DIRECT
   - RULE-SET,anti-AD,REJECT
-  - RULE-SET,myrules,vmess-ws-euserv
+  - RULE-SET,myrules,vless-ws-euserv
 # 拒绝
 #  - GEOSITE,category-ads-all,REJECT
 #  - RULE-SET,reject,REJECT  
