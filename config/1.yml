@@ -456,6 +456,12 @@ rule-providers:
     path: ./ruleset/anti-AD.yaml
     url: "https://github.mayfreenom.gq/privacy-protection-tools/anti-AD/raw/master/anti-ad-clash.yaml"
     interval: 43200
+  anti-AD-white:
+    type: http
+    behavior: domain
+    path: ./ruleset/anti-AD.yaml
+    url: "https://github.mayfreenom.gq/privacy-protection-tools/dead-horse/raw/master/anti-ad-white-for-clash.yaml"
+    interval: 43200
   mydirect:
     type: http
     behavior: domain
@@ -478,7 +484,8 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
-#  - RULE-SET,anti-AD,REJECT
+  - RULE-SET,anti-AD-white,REJECT
+  - RULE-SET,anti-AD,REJECT
   - RULE-SET,myrules,vmess-ws-euserv
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
