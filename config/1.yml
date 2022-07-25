@@ -6,6 +6,7 @@ log-level: info
 ipv6: true
 external-controller: 127.0.0.1:9090
 hosts:
+#
 dns:
   enable: true
   ipv6: false
@@ -17,7 +18,7 @@ dns:
 #    - 8.8.8.8
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-  use-hosts: true
+#  use-hosts: true
   fake-ip-filter:
     - dns.msftncsi.com
     - www.msftncsi.com
@@ -27,16 +28,19 @@ dns:
     - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
-#  fallback:
+  fallback:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
-#  fallback-filter:
-#    geoip: true
-#    geoip-code: CN
-#    ipcidr:
-#      - 240.0.0.0/4
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+#
 proxies:
   - name: vmess-ws-racknerd
     type: vmess
@@ -132,6 +136,7 @@ proxies:
     udp: true
     grpc-opts:
       grpc-service-name: wstlstrojangrpc
+#
 proxy-groups:
   - name: auto
     type: url-test
@@ -161,6 +166,7 @@ proxy-groups:
       - trojan
     url: http://www.gstatic.com/generate_204
     interval: 300
+#
 rule-providers:
   LocalAreaNetwork:
     type: http
@@ -360,6 +366,90 @@ rule-providers:
     path: ./ruleset/Download.yaml
     url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Wechat.yaml"
     interval: 43200
+  reject:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 43200
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 43200
+  apple:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 43200
+  googlelist:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/google.txt"
+    path: ./ruleset/googlelist.yaml
+    interval: 43200
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 43200
+  direct:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 43200
+  private:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 43200
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 43200
+  greatfire:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/greatfire.txt"
+    path: ./ruleset/greatfire.yaml
+    interval: 43200
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 43200
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 43200
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 43200
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 43200
+  applications:
+    type: http
+    behavior: classical
+    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 43200
   anti-AD:
     type: http
     behavior: domain
@@ -384,6 +474,7 @@ rule-providers:
     path: ./ruleset/myrules.yaml
     url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myrules.txt"
     interval: 43200
+#
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
