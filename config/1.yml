@@ -484,7 +484,7 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
-  - RULE-SET,anti-AD-white,REJECT
+  - RULE-SET,anti-AD-white,DIRECT
   - RULE-SET,anti-AD,REJECT
   - RULE-SET,myrules,vmess-ws-euserv
 # 拒绝
