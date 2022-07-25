@@ -7,6 +7,7 @@ mode: rule
 log-level: info
 ipv6: true
 external-controller: 127.0.0.1:9090
+#
 sniffer:
   enable: true
   sniffing:
@@ -28,10 +29,11 @@ hosts:
   # '*.clash.dev': 127.0.0.1
   # '.dev': 127.0.0.1
   # 'alpha.clash.dev': '::1'
+#
 dns:
   enable: true
   listen: 127.0.0.1:1053
-  # ipv6: false
+  ipv6: false
   default-nameserver:
     - 223.5.5.5 
     - 119.29.29.29 
@@ -68,6 +70,7 @@ dns:
       - '+.google.com'
       - '+.facebook.com'
       - '+.youtube.com'
+#
 proxies:  
   - name: "trojan"
     type: trojan
@@ -131,6 +134,7 @@ proxies:
       path: "/wstlsws"
       headers:
         Host: euserv.mayfreenom.gq
+#
 proxy-groups:
   - name: "auto" 
     type: url-test
@@ -174,6 +178,7 @@ proxy-groups:
       - vless-ws-cloudcone
       - vless-ws-virmach
       - vless-ws-euserv
+#
 rule-providers:      
   LocalAreaNetwork:
     type: http
@@ -481,7 +486,7 @@ rule-providers:
     path: ./ruleset/myrules.yaml
     url: "https://github.mayfreenom.gq/bylheart/clashrule/raw/main/myrules.txt"
     interval: 43200
-
+#
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
