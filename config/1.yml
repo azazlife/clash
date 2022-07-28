@@ -487,6 +487,9 @@ rules:
   - RULE-SET,anti-AD,REJECT
   - RULE-SET,anti-AD-white,DIRECT
   - RULE-SET,myrules,vmess-ws-euserv
+  - RULE-SET,googlelist,PROXY
+  - RULE-SET,GoogleFCM,PROXY
+  - RULE-SET,GoogleCN,PROXY
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
 #  - RULE-SET,BanProgramAD,REJECT
@@ -496,8 +499,6 @@ rules:
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
-#  - RULE-SET,GoogleFCM,DIRECT
-#  - RULE-SET,GoogleCN,DIRECT
   - RULE-SET,OneDrive,DIRECT
   - RULE-SET,Microsoft,DIRECT
   - RULE-SET,Apple,DIRECT
