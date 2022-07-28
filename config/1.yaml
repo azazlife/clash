@@ -497,8 +497,11 @@ rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY  
   - RULE-SET,anti-AD,REJECT
-#  - RULE-SET,anti-AD-white,DIRECT
+  - RULE-SET,anti-AD-white,DIRECT
   - RULE-SET,myrules,vless-ws-euserv
+  - RULE-SET,googlelist,PROXY
+  - RULE-SET,GoogleFCM,PROXY
+  - RULE-SET,GoogleCN,PROXY
 # 拒绝
 #  - GEOSITE,category-ads-all,REJECT
 #  - RULE-SET,reject,REJECT  
@@ -516,14 +519,11 @@ rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
-#  - RULE-SET,googlelist,DIRECT
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
-#  - RULE-SET,GoogleFCM,DIRECT
-#  - RULE-SET,GoogleCN,DIRECT
   - RULE-SET,OneDrive,DIRECT
   - RULE-SET,Microsoft,DIRECT
   - RULE-SET,Apple,DIRECT
