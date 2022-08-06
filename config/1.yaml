@@ -496,12 +496,12 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY  
-  - RULE-SET,anti-AD,REJECT
-  - RULE-SET,anti-AD-white,DIRECT
+#  - RULE-SET,anti-AD,REJECT
+#  - RULE-SET,anti-AD-white,DIRECT
   - RULE-SET,myrules,vless-ws-euserv
-  - RULE-SET,googlelist,PROXY
-  - RULE-SET,GoogleFCM,PROXY
-  - RULE-SET,GoogleCN,PROXY
+#  - RULE-SET,googlelist,PROXY
+#  - RULE-SET,GoogleFCM,PROXY
+#  - RULE-SET,GoogleCN,PROXY
 # 拒绝
 #  - GEOSITE,category-ads-all,REJECT
 #  - RULE-SET,reject,REJECT  
