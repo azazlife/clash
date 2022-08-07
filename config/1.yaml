@@ -9,7 +9,7 @@ ipv6: true
 external-controller: 127.0.0.1:9090
 #
 sniffer:
-  enable: true
+  enable: false
   sniffing:
     - tls
     - http
@@ -39,14 +39,17 @@ dns:
     - 119.29.29.29 
 #    - 1.1.1.1
 #    - 8.8.8.8
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   # use-hosts: true
-  # fake-ip-filter:
+  fake-ip-filter:
   #   - '*.lan'
   #   - '*.linksys.com'
   #   - '+.pool.ntp.org'
   #   - localhost.ptlogin2.qq.com
+    - dns.msftncsi.com
+    - www.msftncsi.com
+    - www.msftconnecttest.com
   nameserver:
     - tls://dns.alidns.com
     - tls://dot.pub
