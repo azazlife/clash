@@ -52,12 +52,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: racknerd.mayfreenom.gq
+    servername: janeuorg.eu.org
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: racknerd.mayfreenom.gq
+        Host: janeuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-cloudcone
@@ -70,12 +70,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: cloudcone.mayfreenom.gq
+    servername: febeuorg.eu.org
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: cloudcone.mayfreenom.gq
+        Host: febeuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-virmach
@@ -88,12 +88,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: virmach.mayfreenom.gq
+    servername: mareuorg.eu.org
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: virmach.mayfreenom.gq
+        Host: mareuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-euserv
