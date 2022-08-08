@@ -52,12 +52,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: janeuorg.eu.org
+    servername: mareuorg.eu.org
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: janeuorg.eu.org
+        Host: mareuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-cloudcone
@@ -70,12 +70,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: febeuorg.eu.org
+    servername: janeuorg.eu.org
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: febeuorg.eu.org
+        Host: janeuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-virmach
@@ -88,12 +88,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: mareuorg.eu.org
+    servername: febeuorg.eu.org
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: mareuorg.eu.org
+        Host: febeuorg.eu.org
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-euserv
