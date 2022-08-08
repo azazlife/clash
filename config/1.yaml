@@ -55,24 +55,24 @@ dns:
     - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
-  fallback:
+#  fallback:
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+#    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    geosite:
+#      - gfw
+#    ipcidr:
+#      - 240.0.0.0/4
+#    domain:
+#      - '+.google.com'
+#      - '+.facebook.com'
+#      - '+.youtube.com'
 #
 proxies:  
   - name: "trojan"
