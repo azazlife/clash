@@ -28,18 +28,18 @@ dns:
     - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
-  fallback:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+#  fallback:
+#    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    ipcidr:
+#      - 240.0.0.0/4
 #
 proxies:
   - name: vmess-ws-racknerd
