@@ -52,12 +52,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: mareuorg.eu.org
+    servername: racknerd.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: mareuorg.eu.org
+        Host: racknerd.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-cloudcone
@@ -70,12 +70,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: janeuorg.eu.org
+    servername: cloudcone.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: janeuorg.eu.org
+        Host: cloudcone.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-virmach
@@ -88,12 +88,12 @@ proxies:
     udp: true
     tls: true
     # skip-cert-verify: true
-    servername: febeuorg.eu.org
+    servername: virmach.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
-        Host: febeuorg.eu.org
+        Host: virmach.mayfreenom.gq
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-euserv
@@ -125,17 +125,6 @@ proxies:
       - h2
       - http/1.1
     # skip-cert-verify: true
-  - name: trojan-grpc
-    server: shcu2.forgebukkit.com
-    port: 51234
-    type: trojan
-    password: a097adf8-79cd-4335-ad26-2755300059c9
-    network: grpc
-    sni: mareuorg.eu.org
-    # skip-cert-verify: true
-    udp: true
-    grpc-opts:
-      grpc-service-name: wstlstrojangrpc
 #
 proxy-groups:
   - name: auto
