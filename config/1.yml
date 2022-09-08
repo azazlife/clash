@@ -1,6 +1,7 @@
 port: 7890
 socks-port: 7891
 allow-lan: false
+bind-address: '*'
 mode: rule
 log-level: info
 ipv6: false
@@ -9,8 +10,8 @@ hosts:
 #
 dns:
   enable: true
-  ipv6: false
   listen: 127.0.0.1:1053
+  ipv6: false
   default-nameserver:
     - 223.5.5.5 
     - 119.29.29.29   
@@ -27,56 +28,54 @@ dns:
     - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
-#  fallback:
-#    - https://dns.alidns.com/dns-query
-#    - https://doh.pub/dns-query
+  fallback:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
-#  fallback-filter:
-#    geoip: true
-#    geoip-code: CN
-#    ipcidr:
-#      - 240.0.0.0/4
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
 #
 proxies:
   - name: vmess-ws-racknerd
     type: vmess
-    server: my.aprfreenom.gq
+    server: racknerd.marfreenom.gq
     port: 443
     uuid: a097adf8-79cd-4335-ad26-2755300059c9
     alterId: 0
     cipher: auto
     udp: true
     tls: true
-    # skip-cert-verify: true
     servername: racknerd.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
         Host: racknerd.mayfreenom.gq
-    #   max-early-data: 2048
-    #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-cloudcone
     type: vmess
-    server: www.aprfreenom.gq
+    server: cloudcone.marfreenom.gq
     port: 443
     uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
     alterId: 0
     cipher: auto
     udp: true
     tls: true
-    # skip-cert-verify: true
     servername: cloudcone.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
         Host: cloudcone.mayfreenom.gq
-    #   max-early-data: 2048
-    #   early-data-header-name: Sec-WebSocket-Protocol
   - name: vmess-ws-virmach
     type: vmess
     server: virmach.marfreenom.gq
@@ -86,15 +85,12 @@ proxies:
     cipher: auto
     udp: true
     tls: true
-    # skip-cert-verify: true
     servername: virmach.mayfreenom.gq
     network: ws
     ws-opts:
       path: /wstlsvws
       headers:
         Host: virmach.mayfreenom.gq
-    #   max-early-data: 2048
-    #   early-data-header-name: Sec-WebSocket-Protocol
 #
 proxy-groups:
   - name: auto
@@ -442,9 +438,6 @@ rules:
 #  - RULE-SET,anti-AD,REJECT
 #  - RULE-SET,anti-AD-white,DIRECT
 #  - RULE-SET,myrules,vmess-ws-euserv
-#  - RULE-SET,googlelist,PROXY
-#  - RULE-SET,GoogleFCM,PROXY
-#  - RULE-SET,GoogleCN,PROXY
 # 拒绝
 #  - RULE-SET,reject,REJECT  
 #  - RULE-SET,BanAD,REJECT
@@ -452,6 +445,21 @@ rules:
 #  - RULE-SET,BanEasyList,REJECT
 #  - RULE-SET,BanEasyListChina,REJECT
 #  - RULE-SET,BanEasyPrivacy,REJECT
+# 代理
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,tld-not-cn,PROXY
+  - RULE-SET,gfw,PROXY
+  - RULE-SET,greatfire,PROXY
+  - RULE-SET,telegramcidr,PROXY 
+  - RULE-SET,Google,PROXY
+  - RULE-SET,Telegram,PROXY
+  - RULE-SET,Steam,PROXY
+  - RULE-SET,YouTube,PROXY
+  - RULE-SET,Netflix,PROXY
+  - RULE-SET,AmazonIp,PROXY
+  - RULE-SET,Bahamut,PROXY
+  - RULE-SET,ProxyMedia,PROXY
+  - RULE-SET,ProxyGFWlist,PROXY
 # 直连
   - RULE-SET,applications,DIRECT
   - RULE-SET,private,DIRECT
@@ -460,6 +468,9 @@ rules:
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
+  - RULE-SET,googlelist,DIRECT
+  - RULE-SET,GoogleFCM,DIRECT
+  - RULE-SET,GoogleCN,DIRECT
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
   - RULE-SET,OneDrive,DIRECT
@@ -477,21 +488,6 @@ rules:
   - RULE-SET,ChinaCompanyIp,DIRECT
   - RULE-SET,Download,DIRECT
   - RULE-SET,Wechat,DIRECT
-# 代理
-#  - RULE-SET,proxy,PROXY
-#  - RULE-SET,tld-not-cn,PROXY
-#  - RULE-SET,gfw,PROXY
-#  - RULE-SET,greatfire,PROXY
-#  - RULE-SET,telegramcidr,PROXY 
-#  - RULE-SET,Google,PROXY
-#  - RULE-SET,Telegram,PROXY
-#  - RULE-SET,Steam,PROXY
-#  - RULE-SET,YouTube,PROXY
-#  - RULE-SET,Netflix,PROXY
-#  - RULE-SET,AmazonIp,PROXY
-#  - RULE-SET,Bahamut,PROXY
-#  - RULE-SET,ProxyMedia,PROXY
-#  - RULE-SET,ProxyGFWlist,PROXY
 # 其他
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
