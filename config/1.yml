@@ -461,34 +461,36 @@ rules:
   - RULE-SET,ProxyMedia,PROXY
   - RULE-SET,ProxyGFWlist,PROXY
 # 直连
-  - RULE-SET,applications,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,direct,DIRECT
-  - RULE-SET,lancidr,DIRECT
-  - RULE-SET,cncidr,DIRECT
-  - RULE-SET,googlelist,DIRECT
-  - RULE-SET,GoogleFCM,DIRECT
-  - RULE-SET,GoogleCN,DIRECT
-  - RULE-SET,LocalAreaNetwork,DIRECT
-  - RULE-SET,UnBan,DIRECT
-  - RULE-SET,OneDrive,DIRECT
-  - RULE-SET,Microsoft,DIRECT
-  - RULE-SET,Apple,DIRECT
-  - RULE-SET,NetEaseMusic,DIRECT
-  - RULE-SET,Epic,DIRECT
-  - RULE-SET,Sony,DIRECT
-  - RULE-SET,SteamCN,DIRECT
-  - RULE-SET,BilibiliHMT,DIRECT
-  - RULE-SET,Bilibili,DIRECT  
-  - RULE-SET,ChinaMedia,DIRECT
-  - RULE-SET,ChinaIp,DIRECT
-  - RULE-SET,ChinaDomain,DIRECT
-  - RULE-SET,ChinaCompanyIp,DIRECT
-  - RULE-SET,Download,DIRECT
-  - RULE-SET,Wechat,DIRECT
+#  - RULE-SET,applications,DIRECT
+#  - RULE-SET,private,DIRECT
+#  - RULE-SET,icloud,DIRECT
+#  - RULE-SET,googlelist,DIRECT
+#  - RULE-SET,apple,DIRECT
+#  - RULE-SET,direct,DIRECT
+#  - RULE-SET,lancidr,DIRECT
+#  - RULE-SET,cncidr,DIRECT
+#  - RULE-SET,LocalAreaNetwork,DIRECT
+#  - RULE-SET,UnBan,DIRECT
+#  - RULE-SET,GoogleFCM,DIRECT
+#  - RULE-SET,GoogleCN,DIRECT
+#  - RULE-SET,OneDrive,DIRECT
+#  - RULE-SET,Microsoft,DIRECT
+#  - RULE-SET,Apple,DIRECT
+#  - RULE-SET,NetEaseMusic,DIRECT
+#  - RULE-SET,Epic,DIRECT
+#  - RULE-SET,Sony,DIRECT
+#  - RULE-SET,SteamCN,DIRECT
+#  - RULE-SET,BilibiliHMT,DIRECT
+#  - RULE-SET,Bilibili,DIRECT  
+#  - RULE-SET,ChinaMedia,DIRECT
+#  - RULE-SET,ChinaIp,DIRECT
+#  - RULE-SET,ChinaDomain,DIRECT
+#  - RULE-SET,ChinaCompanyIp,DIRECT
+#  - RULE-SET,Download,DIRECT
+#  - RULE-SET,Wechat,DIRECT
 # 其他
   - GEOIP,LAN,DIRECT
+  - GEOIP,US,PROXY
+  - GEOIP,JP,PROXY
   - GEOIP,CN,DIRECT
-  - MATCH,PROXY
+  - MATCH,DIRECT
