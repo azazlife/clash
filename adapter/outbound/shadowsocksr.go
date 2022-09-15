@@ -8,12 +8,11 @@ import (
 
 	"github.com/Dreamacro/clash/component/dialer"
 	C "github.com/Dreamacro/clash/constant"
+	"github.com/Dreamacro/clash/transport/shadowsocks/core"
+	"github.com/Dreamacro/clash/transport/shadowsocks/shadowaead"
+	"github.com/Dreamacro/clash/transport/shadowsocks/shadowstream"
 	"github.com/Dreamacro/clash/transport/ssr/obfs"
 	"github.com/Dreamacro/clash/transport/ssr/protocol"
-
-	"github.com/Dreamacro/go-shadowsocks2/core"
-	"github.com/Dreamacro/go-shadowsocks2/shadowaead"
-	"github.com/Dreamacro/go-shadowsocks2/shadowstream"
 )
 
 type ShadowSocksR struct {
@@ -92,6 +91,12 @@ func (ssr *ShadowSocksR) ListenPacketContext(ctx context.Context, metadata *C.Me
 }
 
 func NewShadowSocksR(option ShadowSocksROption) (*ShadowSocksR, error) {
+	// SSR protocol compatibility
+	// https://github.com/Dreamacro/clash/pull/2056
+	if option.Cipher == "none" {
+		option.Cipher = "dummy"
+	}
+
 	addr := net.JoinHostPort(option.Server, strconv.Itoa(option.Port))
 	cipher := option.Cipher
 	password := option.Password
@@ -103,13 +108,14 @@ func NewShadowSocksR(option ShadowSocksROption) (*ShadowSocksR, error) {
 		ivSize int
 		key    []byte
 	)
+
 	if option.Cipher == "dummy" {
 		ivSize = 0
 		key = core.Kdf(option.Password, 16)
 	} else {
 		ciph, ok := coreCiph.(*core.StreamCipher)
 		if !ok {
-			return nil, fmt.Errorf("%s is not dummy or a supported stream cipher in ssr", cipher)
+			return nil, fmt.Errorf("%s is not none or a supported stream cipher in ssr", cipher)
 		}
 		ivSize = ciph.IVSize()
 		key = ciph.Key
@@ -142,6 +148,7 @@ func NewShadowSocksR(option ShadowSocksROption) (*ShadowSocksR, error) {
 			tp:    C.ShadowsocksR,
 			udp:   option.UDP,
 			iface: option.Interface,
+			rmark: option.RoutingMark,
 		},
 		cipher:   coreCiph,
 		obfs:     obfs,
