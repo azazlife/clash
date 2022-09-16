@@ -314,7 +314,7 @@ rule-providers:
   Wechat:
     type: http
     behavior: classical
-    path: ./ruleset/Download.yaml
+    path: ./ruleset/Wechat.yaml
     url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Wechat.yaml"
     interval: 43200
   reject:
