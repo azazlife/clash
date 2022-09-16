@@ -1,7 +1,11 @@
 port: 7890
 socks-port: 7891
+# mixed-port: 7890 
+geodata-mode: true
 tcp-concurrent: true
 allow-lan: false
+bind-address:
+  '*' 
 mode: rule
 log-level: info
 ipv6: false
@@ -20,9 +24,9 @@ sniffer:
   force-domain:
 #    - '+'
     - 'google.com'
-#   port-whitelist:
-#    - 80
-#    - 443
+   port-whitelist:
+    - 80
+    - 443
 #    - 8000-9000
 hosts:
 #
@@ -49,62 +53,62 @@ dns:
 #  fallback:
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
-#    - https://dns.alidns.com/dns-query
-#    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
-#  fallback-filter:
-#    geoip: true
-#    geoip-code: CN
-#    geosite:
-#      - gfw
-#    ipcidr:
-#      - 240.0.0.0/4
-#    domain:
-#      - '+.google.com'
-#      - '+.facebook.com'
-#      - '+.youtube.com'
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
 #
 proxies: 
   - name: "vless-ws-racknerd"
     type: vless
-    server: my.aprfreenom.gq
+    server: mareuorg.eu.org
     port: 443
     uuid: a097adf8-79cd-4335-ad26-2755300059c9
     udp: true
     tls: true
     network: ws
-    servername: racknerd.mayfreenom.gq
+    servername: mareuorg.eu.org
     ws-opts:
       path: "/wstlsws"
       headers:
-        Host: racknerd.mayfreenom.gq
+        Host: mareuorg.eu.org
   - name: "vless-ws-cloudcone"
     type: vless
-    server: www.aprfreenom.gq
+    server: janeuorg.eu.org
     port: 443
     uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
     udp: true
     tls: true
     network: ws
-    servername: cloudcone.mayfreenom.gq
+    servername: janeuorg.eu.org
     ws-opts:
       path: "/wstlsws"
       headers:
-        Host: cloudcone.mayfreenom.gq
+        Host: janeuorg.eu.org
   - name: "vless-ws-virmach"
     type: vless
-    server: virmach.marfreenom.gq
+    server: febeuorg.eu.org
     port: 443
     uuid: 321a8837-94f0-4295-9dc0-0dacf630ed96
     udp: true
     tls: true
     network: ws
-    servername: virmach.mayfreenom.gq
+    servername: febeuorg.eu.org
     ws-opts:
       path: "/wstlsws"
       headers:
-        Host: virmach.mayfreenom.gq
+        Host: febeuorg.eu.org
 #
 proxy-groups:
   - name: "auto" 
@@ -461,47 +465,27 @@ rules:
   - RULE-SET,myproxy,PROXY  
 #  - RULE-SET,anti-AD,REJECT
 #  - RULE-SET,anti-AD-white,DIRECT
-#  - RULE-SET,googlelist,PROXY
-#  - RULE-SET,GoogleFCM,PROXY
-#  - RULE-SET,GoogleCN,PROXY
+# GEOSITE规则
+   - GEOSITE,category-ads-all,REJECT
+   - GEOSITE,private,DIRECT
+   - GEOSITE,google-cn,DIRECT
+   - GEOSITE,google@cn,DIRECT
+   - GEOSITE,tld-cn,DIRECT
+   - GEOSITE,category-games@cn,DIRECT
+   - GEOSITE,geolocation-!cn,PROXY
+   - GEOSITE,cn,DIRECT
+# GEOIP规则
+   - GEOIP,private,DIRECT
+   - GEOIP,cn,DIRECT
+   - MATCH,PROXY
+# RULE-SET规则
 # 拒绝
-#  - RULE-SET,reject,REJECT  
 #  - RULE-SET,BanAD,REJECT
 #  - RULE-SET,BanProgramAD,REJECT
 #  - RULE-SET,BanEasyList,REJECT
 #  - RULE-SET,BanEasyListChina,REJECT
 #  - RULE-SET,BanEasyPrivacy,REJECT
-# 直连
-  - RULE-SET,applications,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,direct,DIRECT
-  - RULE-SET,lancidr,DIRECT
-  - RULE-SET,cncidr,DIRECT
-  - RULE-SET,LocalAreaNetwork,DIRECT
-  - RULE-SET,UnBan,DIRECT
-  - RULE-SET,OneDrive,DIRECT
-  - RULE-SET,Microsoft,DIRECT
-  - RULE-SET,Apple,DIRECT
-  - RULE-SET,NetEaseMusic,DIRECT
-  - RULE-SET,Epic,DIRECT
-  - RULE-SET,Sony,DIRECT
-  - RULE-SET,SteamCN,DIRECT
-  - RULE-SET,BilibiliHMT,DIRECT
-  - RULE-SET,Bilibili,DIRECT  
-  - RULE-SET,ChinaMedia,DIRECT
-  - RULE-SET,ChinaIp,DIRECT
-  - RULE-SET,ChinaDomain,DIRECT
-  - RULE-SET,ChinaCompanyIp,DIRECT
-  - RULE-SET,Download,DIRECT
-  - RULE-SET,Wechat,DIRECT
 # 代理
-#  - RULE-SET,proxy,PROXY
-#  - RULE-SET,tld-not-cn,PROXY
-#  - RULE-SET,gfw,PROXY
-#  - RULE-SET,greatfire,PROXY
-#  - RULE-SET,telegramcidr,PROXY 
 #  - RULE-SET,Google,PROXY
 #  - RULE-SET,Telegram,PROXY
 #  - RULE-SET,Steam,PROXY
@@ -511,7 +495,28 @@ rules:
 #  - RULE-SET,Bahamut,PROXY
 #  - RULE-SET,ProxyMedia,PROXY
 #  - RULE-SET,ProxyGFWlist,PROXY
+# 直连
+#  - RULE-SET,LocalAreaNetwork,DIRECT
+#  - RULE-SET,UnBan,DIRECT
+#  - RULE-SET,GoogleFCM,DIRECT
+#  - RULE-SET,GoogleCN,DIRECT
+#  - RULE-SET,OneDrive,DIRECT
+#  - RULE-SET,Microsoft,DIRECT
+#  - RULE-SET,NetEaseMusic,DIRECT
+#  - RULE-SET,Epic,DIRECT
+#  - RULE-SET,Sony,DIRECT
+#  - RULE-SET,SteamCN,DIRECT
+#  - RULE-SET,BilibiliHMT,DIRECT
+#  - RULE-SET,Bilibili,DIRECT  
+#  - RULE-SET,ChinaMedia,DIRECT
+#  - RULE-SET,ChinaIp,DIRECT
+#  - RULE-SET,ChinaDomain,DIRECT
+#  - RULE-SET,ChinaCompanyIp,DIRECT
+#  - RULE-SET,Download,DIRECT
+#  - RULE-SET,Wechat,DIRECT
 # 其他
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
-  - MATCH,PROXY
+#  - GEOIP,LAN,DIRECT
+#  - GEOIP,US,DIRECT
+#  - GEOIP,JP,DIRECT
+#  - GEOIP,CN,DIRECT
+#  - MATCH,DIRECT
