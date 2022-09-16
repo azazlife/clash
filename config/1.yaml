@@ -339,96 +339,31 @@ rule-providers:
     path: ./ruleset/Download.yaml
     url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Download.yaml"
     interval: 43200
+  Amazon:
+    type: http
+    behavior: classical
+    path: ./ruleset/Amazon.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Amazon.yaml"
+    interval: 43200
   Wechat:
     type: http
     behavior: classical
-    path: ./ruleset/Download.yaml
+    path: ./ruleset/Wechat.yaml
     url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Wechat.yaml"
     interval: 43200
-  reject:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/reject.txt"
-    path: ./ruleset/reject.yaml
-    interval: 43200
-  icloud:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/icloud.txt"
-    path: ./ruleset/icloud.yaml
-    interval: 43200
-  apple:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/apple.txt"
-    path: ./ruleset/apple.yaml
-    interval: 43200
-  googlelist:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/google.txt"
-    path: ./ruleset/googlelist.yaml
-    interval: 43200
-  proxy:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/proxy.txt"
-    path: ./ruleset/proxy.yaml
-    interval: 43200
-  direct:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/direct.txt"
-    path: ./ruleset/direct.yaml
-    interval: 43200
-  private:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/private.txt"
-    path: ./ruleset/private.yaml
-    interval: 43200
-  gfw:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/gfw.txt"
-    path: ./ruleset/gfw.yaml
-    interval: 43200
-  greatfire:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/greatfire.txt"
-    path: ./ruleset/greatfire.yaml
-    interval: 43200
-  tld-not-cn:
-    type: http
-    behavior: domain
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/tld-not-cn.txt"
-    path: ./ruleset/tld-not-cn.yaml
-    interval: 43200
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/telegramcidr.txt"
-    path: ./ruleset/telegramcidr.yaml
-    interval: 43200
-  cncidr:
-    type: http
-    behavior: ipcidr
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/cncidr.txt"
-    path: ./ruleset/cncidr.yaml
-    interval: 43200
-  lancidr:
-    type: http
-    behavior: ipcidr
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/lancidr.txt"
-    path: ./ruleset/lancidr.yaml
-    interval: 43200
-  applications:
+  EHGallery:
     type: http
     behavior: classical
-    url: "https://github.mayfreenom.gq/Loyalsoldier/clash-rules/raw/release/applications.txt"
-    path: ./ruleset/applications.yaml
+    path: ./ruleset/EHGallery.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/EHGallery.yaml"
     interval: 43200
+  Porn:
+    type: http
+    behavior: classical
+    path: ./ruleset/Porn.yaml
+    url: "https://github.mayfreenom.gq/ACL4SSR/ACL4SSR/raw/master/Clash/Providers/Ruleset/Porn.yaml"
+    interval: 43200
+#
   anti-AD:
     type: http
     behavior: domain
@@ -491,8 +426,11 @@ rules:
   - RULE-SET,Steam,PROXY
   - RULE-SET,YouTube,PROXY
   - RULE-SET,Netflix,PROXY
+  - RULE-SET,Amazon,PROXY
   - RULE-SET,AmazonIp,PROXY
   - RULE-SET,Bahamut,PROXY
+  - RULE-SET,EHGallery,PROXY
+  - RULE-SET,Porn,PROXY
   - RULE-SET,ProxyMedia,PROXY
   - RULE-SET,ProxyGFWlist,PROXY
 # 直连
