@@ -4,8 +4,6 @@ socks-port: 7891
 geodata-mode: true
 tcp-concurrent: true
 allow-lan: false
-bind-address:
-  '*' 
 mode: rule
 log-level: info
 ipv6: false
@@ -466,17 +464,17 @@ rules:
 #  - RULE-SET,anti-AD,REJECT
 #  - RULE-SET,anti-AD-white,DIRECT
 # GEOSITE规则
-   - GEOSITE,category-ads-all,REJECT
-   - GEOSITE,private,DIRECT
-   - GEOSITE,google-cn,DIRECT
-   - GEOSITE,google@cn,DIRECT
-   - GEOSITE,tld-cn,DIRECT
-   - GEOSITE,category-games@cn,DIRECT
-   - GEOSITE,geolocation-!cn,PROXY
-   - GEOSITE,cn,DIRECT
+#   - GEOSITE,category-ads-all,REJECT
+#   - GEOSITE,private,DIRECT
+#   - GEOSITE,google-cn,DIRECT
+#   - GEOSITE,google@cn,DIRECT
+#   - GEOSITE,tld-cn,DIRECT
+#   - GEOSITE,category-games@cn,DIRECT
+#   - GEOSITE,geolocation-!cn,PROXY
+#   - GEOSITE,cn,DIRECT
 # GEOIP规则
-   - GEOIP,private,DIRECT
-   - GEOIP,cn,DIRECT
+#   - GEOIP,private,DIRECT
+#   - GEOIP,cn,DIRECT
    - MATCH,PROXY
 # RULE-SET规则
 # 拒绝
