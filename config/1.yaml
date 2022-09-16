@@ -4,6 +4,8 @@ socks-port: 7891
 geodata-mode: true
 tcp-concurrent: true
 allow-lan: false
+bind-address:
+  '*' 
 mode: rule
 log-level: info
 ipv6: false
@@ -67,7 +69,7 @@ dns:
       - '+.facebook.com'
       - '+.youtube.com'
 #
-proxies: 
+proxies:
   - name: "vless-ws-racknerd"
     type: vless
     server: mareuorg.eu.org
@@ -144,7 +146,7 @@ proxy-groups:
       - vless-ws-cloudcone
       - vless-ws-virmach
 #
-rule-providers:      
+rule-providers:
   LocalAreaNetwork:
     type: http
     behavior: classical
