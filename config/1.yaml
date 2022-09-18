@@ -436,7 +436,7 @@ rules:
 #  - RULE-SET,anti-AD,REJECT
 #  - RULE-SET,anti-AD-white,DIRECT
 # GEOSITE规则
-  - GEOSITE,category-ads-all,REJECT
+#  - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOSITE,google-cn,DIRECT
   - GEOSITE,tld-cn,DIRECT
