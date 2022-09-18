@@ -118,11 +118,11 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: racknerd.mayfreenom.gq
+    servername: mareuorg.eu.org
     ws-opts:
       path: "/wstlsws"
       headers:
-        Host: racknerd.mayfreenom.gq
+        Host: mareuorg.eu.org
   - name: "cloudcone-cdn"
     type: vless
     server: cloudcone.marfreenom.gq
@@ -131,11 +131,11 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: cloudcone.mayfreenom.gq
+    servername: janeuorg.eu.org
     ws-opts:
       path: "/wstlsws"
       headers:
-        Host: cloudcone.mayfreenom.gq
+        Host: janeuorg.eu.org
   - name: "virmach-cdn"
     type: vless
     server: virmach.marfreenom.gq
@@ -144,11 +144,11 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: virmach.mayfreenom.gq
+    servername: febeuorg.eu.org
     ws-opts:
       path: "/wstlsws"
       headers:
-        Host: virmach.mayfreenom.gq
+        Host: febeuorg.eu.org
 #
 proxy-groups:
   - name: PROXY
