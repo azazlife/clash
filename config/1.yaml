@@ -155,11 +155,11 @@ proxy-groups:
     type: select
     proxies:
       - auto
-	  - auto-cdn
+      - auto-cdn
       - racknerd
       - cloudcone
       - virmach
-	  - racknerd-cdn
+      - racknerd-cdn
       - cloudcone-cdn
       - virmach-cdn
   - name: "auto" 
