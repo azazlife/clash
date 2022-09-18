@@ -70,7 +70,7 @@ dns:
       - '+.youtube.com'
 #
 proxies:
-  - name: "vless-ws-racknerd"
+  - name: "racknerd"
     type: vless
     server: mareuorg.eu.org
     port: 443
@@ -83,7 +83,7 @@ proxies:
       path: "/wstlsws"
       headers:
         Host: mareuorg.eu.org
-  - name: "vless-ws-cloudcone"
+  - name: "cloudcone"
     type: vless
     server: janeuorg.eu.org
     port: 443
@@ -96,7 +96,7 @@ proxies:
       path: "/wstlsws"
       headers:
         Host: janeuorg.eu.org
-  - name: "vless-ws-virmach"
+  - name: "virmach"
     type: vless
     server: febeuorg.eu.org
     port: 443
@@ -110,41 +110,76 @@ proxies:
       headers:
         Host: febeuorg.eu.org
 #
+  - name: "racknerd-cdn"
+    type: vless
+    server: racknerd.marfreenom.gq
+    port: 443
+    uuid: a097adf8-79cd-4335-ad26-2755300059c9
+    udp: true
+    tls: true
+    network: ws
+    servername: racknerd.mayfreenom.gq
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: racknerd.mayfreenom.gq
+  - name: "cloudcone-cdn"
+    type: vless
+    server: cloudcone.marfreenom.gq
+    port: 443
+    uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
+    udp: true
+    tls: true
+    network: ws
+    servername: cloudcone.mayfreenom.gq
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: cloudcone.mayfreenom.gq
+  - name: "virmach-cdn"
+    type: vless
+    server: virmach.marfreenom.gq
+    port: 443
+    uuid: 321a8837-94f0-4295-9dc0-0dacf630ed96
+    udp: true
+    tls: true
+    network: ws
+    servername: virmach.mayfreenom.gq
+    ws-opts:
+      path: "/wstlsws"
+      headers:
+        Host: virmach.mayfreenom.gq
+#
 proxy-groups:
-  - name: "auto" 
-    type: url-test
-    proxies:
-      - vless-ws-racknerd
-      - vless-ws-cloudcone
-      - vless-ws-virmach
-    tolerance: 100
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-  - name: "fallback-auto"
-    type: fallback
-    proxies:
-      - vless-ws-racknerd
-      - vless-ws-cloudcone
-      - vless-ws-virmach
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-  - name: "load-balance"
-    type: load-balance
-    proxies:
-      - vless-ws-racknerd
-      - vless-ws-cloudcone
-      - vless-ws-virmach
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
   - name: PROXY
     type: select
     proxies:
       - auto
-      - fallback-auto
-      - load-balance
-      - vless-ws-racknerd
-      - vless-ws-cloudcone
-      - vless-ws-virmach
+	  - auto-cdn
+      - racknerd
+      - cloudcone
+      - virmach
+	  - racknerd-cdn
+      - cloudcone-cdn
+      - virmach-cdn
+  - name: "auto" 
+    type: url-test
+    proxies:
+      - racknerd
+      - cloudcone
+      - virmach
+    tolerance: 100
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+  - name: "auto-cdn" 
+    type: url-test
+    proxies:
+      - racknerd-cdn
+      - cloudcone-cdn
+      - virmach-cdn
+    tolerance: 100
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
 #
 rule-providers:
   LocalAreaNetwork:
@@ -404,7 +439,6 @@ rules:
   - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOSITE,google-cn,DIRECT
-  - GEOSITE,google@cn,DIRECT
   - GEOSITE,tld-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
