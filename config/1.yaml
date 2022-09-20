@@ -51,10 +51,10 @@ dns:
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
 #  fallback:
-#    - tls://1dot1dot1dot1.cloudflare-dns.com
-#    - tls://dns.google
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+#    - tls://1dot1dot1dot1.cloudflare-dns.com
+#    - tls://dns.google
 #    - https://dns.cloudflare.com/dns-query
 #    - https://dns.google/dns-query
   fallback-filter:
@@ -70,7 +70,7 @@ dns:
       - '+.youtube.com'
 #
 proxies:
-  - name: "racknerd"
+  - name: racknerd
     type: vless
     server: mareuorg.eu.org
     port: 443
@@ -80,10 +80,10 @@ proxies:
     network: ws
     servername: mareuorg.eu.org
     ws-opts:
-      path: "/wstlsws"
+      path: /wstlsws
       headers:
         Host: mareuorg.eu.org
-  - name: "cloudcone"
+  - name: cloudcone
     type: vless
     server: janeuorg.eu.org
     port: 443
@@ -93,10 +93,10 @@ proxies:
     network: ws
     servername: janeuorg.eu.org
     ws-opts:
-      path: "/wstlsws"
+      path: /wstlsws
       headers:
         Host: janeuorg.eu.org
-  - name: "virmach"
+  - name: virmach
     type: vless
     server: febeuorg.eu.org
     port: 443
@@ -106,11 +106,11 @@ proxies:
     network: ws
     servername: febeuorg.eu.org
     ws-opts:
-      path: "/wstlsws"
+      path: /wstlsws
       headers:
         Host: febeuorg.eu.org
 #
-  - name: "racknerd-cdn"
+  - name: racknerd-cdn
     type: vless
     server: racknerd.marfreenom.gq
     port: 443
@@ -120,10 +120,10 @@ proxies:
     network: ws
     servername: racknerd.mayfreenom.gq
     ws-opts:
-      path: "/wstlsws"
+      path: /wstlsws
       headers:
         Host: racknerd.mayfreenom.gq
-  - name: "cloudcone-cdn"
+  - name: cloudcone-cdn
     type: vless
     server: cloudcone.marfreenom.gq
     port: 443
@@ -133,10 +133,10 @@ proxies:
     network: ws
     servername: cloudcone.mayfreenom.gq
     ws-opts:
-      path: "/wstlsws"
+      path: /wstlsws
       headers:
         Host: cloudcone.mayfreenom.gq
-  - name: "virmach-cdn"
+  - name: virmach-cdn
     type: vless
     server: virmach.marfreenom.gq
     port: 443
@@ -146,7 +146,7 @@ proxies:
     network: ws
     servername: virmach.mayfreenom.gq
     ws-opts:
-      path: "/wstlsws"
+      path: /wstlsws
       headers:
         Host: virmach.mayfreenom.gq
 #
@@ -162,7 +162,7 @@ proxy-groups:
       - racknerd-cdn
       - cloudcone-cdn
       - virmach-cdn
-  - name: "auto"
+  - name: auto
     type: url-test
     proxies:
       - racknerd
@@ -171,7 +171,7 @@ proxy-groups:
     tolerance: 100
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
-  - name: "auto-cdn"
+  - name: auto-cdn
     type: url-test
     proxies:
       - racknerd-cdn
@@ -442,11 +442,15 @@ rules:
   - GEOSITE,tld-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
-  - GEOSITE,cn,DIRECT
+#  - GEOSITE,cn,DIRECT
+  - GEOSITE,gfw,PROXY
+  - GEOSITE,greatfire,PROXY
 # GEOIP规则
   - GEOIP,private,DIRECT
-  - GEOIP,cn,DIRECT
-  - MATCH,PROXY
+#  - GEOIP,cn,DIRECT
+  - GEOIP,us,PROXY
+  - GEOIP,jp,PROXY
+  - MATCH,DIRECT
 # RULE-SET规则
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
@@ -488,7 +492,7 @@ rules:
 #  - RULE-SET,Wechat,DIRECT
 # 其他
 #  - GEOIP,LAN,DIRECT
+#  - GEOIP,CN,DIRECT
 #  - GEOIP,US,PROXY
 #  - GEOIP,JP,PROXY
-#  - GEOIP,CN,DIRECT
 #  - MATCH,DIRECT
