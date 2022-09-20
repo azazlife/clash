@@ -107,7 +107,7 @@ proxies:
       path: /wstlsvws
       headers:
         Host: racknerd.mayfreenom.gq
-  - name: cloudcone
+  - name: cloudcone-cdn
     type: vmess
     server: cloudcone.marfreenom.gq
     port: 443
@@ -122,7 +122,7 @@ proxies:
       path: /wstlsvws
       headers:
         Host: cloudcone.mayfreenom.gq
-  - name: virmach
+  - name: virmach-cdn
     type: vmess
     server: virmach.marfreenom.gq
     port: 443
