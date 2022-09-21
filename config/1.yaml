@@ -447,6 +447,9 @@ rules:
   - GEOSITE,greatfire,PROXY
 # GEOIP规则
   - GEOIP,private,DIRECT
+  - GEOIP,google,PROXY
+  - GEOIP,telegram,PROXY
+  - GEOIP,twitter,PROXY
 #  - GEOIP,cn,DIRECT
   - GEOIP,us,PROXY
   - GEOIP,jp,PROXY
