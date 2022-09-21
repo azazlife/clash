@@ -94,7 +94,7 @@ proxies:
 #
   - name: racknerd-cdn
     type: vmess
-    server: racknerd.marfreenom.gq
+    server: my.aprfreenom.gq
     port: 443
     uuid: a097adf8-79cd-4335-ad26-2755300059c9
     alterId: 0
@@ -109,7 +109,7 @@ proxies:
         Host: racknerd.mayfreenom.gq
   - name: cloudcone-cdn
     type: vmess
-    server: cloudcone.marfreenom.gq
+    server: www.aprfreenom.gq
     port: 443
     uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
     alterId: 0
