@@ -442,18 +442,18 @@ rules:
   - GEOSITE,tld-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
-#  - GEOSITE,cn,DIRECT
-  - GEOSITE,gfw,PROXY
-  - GEOSITE,greatfire,PROXY
+  - GEOSITE,cn,DIRECT
+#  - GEOSITE,gfw,PROXY
+#  - GEOSITE,greatfire,PROXY
 # GEOIP规则
   - GEOIP,private,DIRECT
   - GEOIP,google,PROXY
   - GEOIP,telegram,PROXY
   - GEOIP,twitter,PROXY
-#  - GEOIP,cn,DIRECT
-  - GEOIP,us,PROXY
-  - GEOIP,jp,PROXY
-  - MATCH,DIRECT
+  - GEOIP,cn,DIRECT
+#  - GEOIP,us,PROXY
+#  - GEOIP,jp,PROXY
+  - MATCH,PROXY
 # RULE-SET规则
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
