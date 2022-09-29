@@ -118,11 +118,11 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: racknerd.mayfreenom.gq
+    servername: racknerd-bz1.pages.dev
     ws-opts:
       path: /wstlsws
       headers:
-        Host: racknerd.mayfreenom.gq
+        Host: racknerd-bz1.pages.dev
   - name: cloudcone-cdn
     type: vless
     server: www.aprfreenom.gq
@@ -131,11 +131,11 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: cloudcone.mayfreenom.gq
+    servername: cloudcone.pages.dev
     ws-opts:
       path: /wstlsws
       headers:
-        Host: cloudcone.mayfreenom.gq
+        Host: cloudcone.pages.dev
   - name: virmach-cdn
     type: vless
     server: virmach.marfreenom.gq
@@ -144,11 +144,11 @@ proxies:
     udp: true
     tls: true
     network: ws
-    servername: virmach.mayfreenom.gq
+    servername: virmach-3yf.pages.dev
     ws-opts:
       path: /wstlsws
       headers:
-        Host: virmach.mayfreenom.gq
+        Host: virmach-3yf.pages.dev
 #
 proxy-groups:
   - name: PROXY
