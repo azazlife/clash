@@ -8,7 +8,7 @@ bind-address:
   '*' 
 mode: rule
 log-level: info
-ipv6: false
+ipv6: true
 external-controller: 127.0.0.1:9090
 #
 sniffer:
@@ -33,7 +33,7 @@ hosts:
 dns:
   enable: true
   listen: 127.0.0.1:1053
-  ipv6: false
+  ipv6: true
   default-nameserver:
     - 223.5.5.5 
     - 119.29.29.29 
@@ -46,17 +46,17 @@ dns:
     - www.msftncsi.com
     - www.msftconnecttest.com
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-#    - tls://dns.alidns.com
-#    - tls://dot.pub
+#    - 223.5.5.5
+#    - 119.29.29.29
+    - tls://dns.alidns.com
+    - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
 #  fallback:
-    - 1.1.1.1
-    - 8.8.8.8
-#    - https://dns.alidns.com/dns-query
-#    - https://doh.pub/dns-query
+#    - 1.1.1.1
+#    - 8.8.8.8
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
 #    - https://dns.cloudflare.com/dns-query
@@ -74,115 +74,66 @@ dns:
       - '+.youtube.com'
 #
 proxies:
-  - name: racknerd
-    type: vless
-    server: mareuorg.eu.org
-    port: 443
-    uuid: a097adf8-79cd-4335-ad26-2755300059c9
-    udp: true
-    tls: true
-    network: ws
-    servername: mareuorg.eu.org
-    ws-opts:
-      path: /wstlsws
-      headers:
-        Host: mareuorg.eu.org
   - name: cloudcone
-    type: vless
-    server: janeuorg.eu.org
-    port: 443
-    uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
-    udp: true
-    tls: true
-    network: ws
-    servername: janeuorg.eu.org
-    ws-opts:
-      path: /wstlsws
-      headers:
-        Host: janeuorg.eu.org
-  - name: virmach
     type: hysteria
     server: www.janeuorg.eu.org
-    port: 57084
+    port: 58274
+    auth_str: cloudcone
+    alpn:
+      - h3
+    protocol: udp
+    up: 2
+    down: 11
+    sni: www.janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 786432
+    recv_window: 3145728
+    disable_mtu_discovery: true
+  - name: racknerd
+    type: hysteria
+    server: www.mareuorg.eu.org
+    port: 10458
+    auth_str: racknerd
+    alpn:
+      - h3
+    protocol: udp
+    up: 2
+    down: 11
+    sni: www.mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 786432
+    recv_window: 3145728
+    disable_mtu_discovery: true
+  - name: virmach
+    type: hysteria
+    server: www.febeuorg.eu.org
+    port: 31449
     auth_str: virmach
     alpn:
       - h3
     protocol: udp
-    up: 11
-    down: 55
-    sni: www.janeuorg.eu.org
+    up: 2
+    down: 11
+    sni: www.febeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
+    recv_window_conn: 786432
+    recv_window: 3145728
     disable_mtu_discovery: true
-#
-  - name: racknerd-cdn
-    type: vless
-    server: my.aprfreenom.gq
-    port: 443
-    uuid: a097adf8-79cd-4335-ad26-2755300059c9
-    udp: true
-    tls: true
-    network: ws
-    servername: www3.janfreenom.gq
-    ws-opts:
-      path: /wstlsws
-      headers:
-        Host: www3.janfreenom.gq
-  - name: cloudcone-cdn
-    type: vless
-    server: www.aprfreenom.gq
-    port: 443
-    uuid: 98dc5de8-d1dd-458e-9db0-08669c6614a7
-    udp: true
-    tls: true
-    network: ws
-    servername: www1.janfreenom.gq
-    ws-opts:
-      path: /wstlsws
-      headers:
-        Host: www1.janfreenom.gq
-  - name: virmach-cdn
-    type: vless
-    server: virmach.marfreenom.gq
-    port: 443
-    uuid: 321a8837-94f0-4295-9dc0-0dacf630ed96
-    udp: true
-    tls: true
-    network: ws
-    servername: www2.janfreenom.gq
-    ws-opts:
-      path: /wstlsws
-      headers:
-        Host: www2.janfreenom.gq
 #
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - auto
-      - auto-cdn
       - racknerd
       - cloudcone
       - virmach
-      - racknerd-cdn
-      - cloudcone-cdn
-      - virmach-cdn
   - name: auto
     type: url-test
     proxies:
       - racknerd
       - cloudcone
       - virmach
-    tolerance: 100
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-  - name: auto-cdn
-    type: url-test
-    proxies:
-      - racknerd-cdn
-      - cloudcone-cdn
-      - virmach-cdn
     tolerance: 100
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
