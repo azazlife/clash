@@ -101,18 +101,20 @@ proxies:
       headers:
         Host: janeuorg.eu.org
   - name: virmach
-    type: vless
-    server: febeuorg.eu.org
-    port: 443
-    uuid: 321a8837-94f0-4295-9dc0-0dacf630ed96
-    udp: true
-    tls: true
-    network: ws
-    servername: febeuorg.eu.org
-    ws-opts:
-      path: /wstlsws
-      headers:
-        Host: febeuorg.eu.org
+    type: hysteria
+    server: www.janeuorg.eu.org
+    port: 57084
+    auth_str: virmach
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: www.janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
 #
   - name: racknerd-cdn
     type: vless
