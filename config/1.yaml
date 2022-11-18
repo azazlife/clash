@@ -46,17 +46,17 @@ dns:
     - www.msftncsi.com
     - www.msftconnecttest.com
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-#    - tls://dns.alidns.com
-#    - tls://dot.pub
+#    - 223.5.5.5
+#    - 119.29.29.29
+    - tls://dns.alidns.com
+    - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
 #  fallback:
-    - 1.1.1.1
-    - 8.8.8.8
-#    - https://dns.alidns.com/dns-query
-#    - https://doh.pub/dns-query
+#    - 1.1.1.1
+#    - 8.8.8.8
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
 #    - https://dns.cloudflare.com/dns-query
@@ -77,47 +77,47 @@ proxies:
   - name: cloudcone
     type: hysteria
     server: www.janeuorg.eu.org
-    port: 58274
+    port: 10317
     auth_str: cloudcone
     alpn:
       - h3
     protocol: udp
-    up: 2
-    down: 11
+    up: 22
+    down: 110
     sni: www.janeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 786432
-    recv_window: 3145728
+    recv_window_conn: 8650752
+    recv_window: 34603008
     disable_mtu_discovery: true
   - name: racknerd
     type: hysteria
     server: www.mareuorg.eu.org
-    port: 10458
+    port: 61227
     auth_str: racknerd
     alpn:
       - h3
     protocol: udp
-    up: 2
-    down: 11
+    up: 22
+    down: 110
     sni: www.mareuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 786432
-    recv_window: 3145728
+    recv_window_conn: 8650752
+    recv_window: 34603008
     disable_mtu_discovery: true
   - name: virmach
     type: hysteria
     server: www.febeuorg.eu.org
-    port: 31449
+    port: 37920
     auth_str: virmach
     alpn:
       - h3
     protocol: udp
-    up: 2
-    down: 11
+    up: 22
+    down: 110
     sni: www.febeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 786432
-    recv_window: 3145728
+    recv_window_conn: 8650752
+    recv_window: 34603008
     disable_mtu_discovery: true
 #
 proxy-groups:
