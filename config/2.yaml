@@ -24,9 +24,9 @@ sniffer:
   force-domain:
 #    - '+'
     - 'google.com'
-  port-whitelist:
-    - 80
-    - 443
+#  port-whitelist:
+#    - 80
+#    - 443
 #    - 8000-9000
 hosts:
 #
