@@ -1,0 +1,458 @@
+#port: 7890
+#socks-port: 7891
+mixed-port: 7890 
+geodata-mode: true
+tcp-concurrent: true
+allow-lan: false
+bind-address:
+  '*' 
+mode: rule
+log-level: info
+ipv6: false
+external-controller: 127.0.0.1:9090
+#
+sniffer:
+  enable: true
+  sniffing:
+    - tls
+    - http
+  skip-domain:
+    - 'Mijia Cloud'
+    - 'dlg.io.mi.com'
+    - '+.apple.com'
+#    - '*.baidu.com'
+  force-domain:
+#    - '+'
+    - 'google.com'
+  port-whitelist:
+    - 80
+    - 443
+#    - 8000-9000
+hosts:
+#
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5 
+    - 119.29.29.29 
+#    - 1.1.1.1
+#    - 8.8.8.8
+  enhanced-mode: redir-host
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - dns.msftncsi.com
+    - www.msftncsi.com
+    - www.msftconnecttest.com
+  nameserver:
+#    - 223.5.5.5
+#    - 119.29.29.29
+    - tls://dns.alidns.com
+    - tls://dot.pub
+#    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
+#  fallback:
+#    - 1.1.1.1
+#    - 8.8.8.8
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+#    - tls://1dot1dot1dot1.cloudflare-dns.com
+#    - tls://dns.google
+#    - https://dns.cloudflare.com/dns-query
+#    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+#
+proxies:
+  - name: cloudcone
+    type: hysteria
+    server: www.janeuorg.eu.org
+    port: 10317
+    auth_str: cloudcone
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: www.janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 8650752
+    recv_window: 34603008
+    disable_mtu_discovery: true
+  - name: racknerd
+    type: hysteria
+    server: www.mareuorg.eu.org
+    port: 61227
+    auth_str: racknerd
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: www.mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 8650752
+    recv_window: 34603008
+    disable_mtu_discovery: true
+  - name: virmach
+    type: hysteria
+    server: www.febeuorg.eu.org
+    port: 37920
+    auth_str: virmach
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: www.febeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 8650752
+    recv_window: 34603008
+    disable_mtu_discovery: true
+#
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - auto
+      - racknerd
+      - cloudcone
+      - virmach
+  - name: auto
+    type: url-test
+    proxies:
+      - racknerd
+      - cloudcone
+      - virmach
+    tolerance: 100
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+#
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    path: ./ruleset/LocalAreaNetwork.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml"
+    interval: 43200
+  UnBan:
+    type: http
+    behavior: classical
+    path: ./ruleset/UnBan.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml"
+    interval: 43200
+  BanAD:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanAD.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml"
+    interval: 43200
+  BanProgramAD:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanProgramAD.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/BanProgramAD.yaml"
+    interval: 43200
+  BanEasyList:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanEasyList.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/BanEasyList.yaml"
+    interval: 43200
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanEasyListChina.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/BanEasyListChina.yaml"
+    interval: 43200
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    path: ./ruleset/BanEasyPrivacy.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/BanEasyPrivacy.yaml"
+    interval: 43200
+  GoogleFCM:
+    type: http
+    behavior: classical
+    path: ./ruleset/GoogleFCM.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleFCM.yaml"
+    interval: 43200
+  GoogleCN:
+    type: http
+    behavior: classical
+    path: ./ruleset/GoogleCN.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml"
+    interval: 43200
+  Google:
+    type: http
+    behavior: classical
+    path: ./ruleset/Google.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml"
+    interval: 43200
+  SteamCN:
+    type: http
+    behavior: classical
+    path: ./ruleset/SteamCN.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml"
+    interval: 43200
+  OneDrive:
+    type: http
+    behavior: classical
+    path: ./ruleset/OneDrive.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/OneDrive.yaml"
+    interval: 43200
+  Microsoft:
+    type: http
+    behavior: classical
+    path: ./ruleset/Microsoft.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml"
+    interval: 43200
+  Apple:
+    type: http
+    behavior: classical
+    path: ./ruleset/AppleCN.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Apple.yaml"
+    interval: 43200
+  Telegram:
+    type: http
+    behavior: classical
+    path: ./ruleset/Telegram.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml"
+    interval: 43200
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    path: ./ruleset/NetEaseMusic.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+    interval: 43200
+  Epic:
+    type: http
+    behavior: classical
+    path: ./ruleset/Epic.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Epic.yaml"
+    interval: 43200
+  Sony:
+    type: http
+    behavior: classical
+    path: ./ruleset/Sony.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Sony.yaml"
+    interval: 43200
+  Steam:
+    type: http
+    behavior: classical
+    path: ./ruleset/Steam.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml"
+    interval: 43200
+  YouTube:
+    type: http
+    behavior: classical
+    path: ./ruleset/YouTube.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml"
+    interval: 43200
+  Netflix:
+    type: http
+    behavior: classical
+    path: ./ruleset/Netflix.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Netflix.yaml"
+    interval: 43200
+  AmazonIp:
+    type: http
+    behavior: ipcidr
+    path: ./ruleset/AmazonIp.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/AmazonIp.yaml"
+    interval: 43200
+  Bahamut:
+    type: http
+    behavior: classical
+    path: ./ruleset/Bahamut.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bahamut.yaml"
+    interval: 43200
+  BilibiliHMT:
+    type: http
+    behavior: classical
+    path: ./ruleset/BilibiliHMT.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+    interval: 43200
+  Bilibili:
+    type: http
+    behavior: classical
+    path: ./ruleset/Bilibili.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml"
+    interval: 43200
+  ChinaMedia:
+    type: http
+    behavior: classical
+    path: ./ruleset/ChinaMedia.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml"
+    interval: 43200
+  ProxyMedia:
+    type: http
+    behavior: classical
+    path: ./ruleset/ProxyMedia.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml"
+    interval: 43200
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    path: ./ruleset/ProxyGFWlist.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyGFWlist.yaml"
+    interval: 43200
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    path: ./ruleset/ChinaIp.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml"
+    interval: 43200
+  ChinaDomain:
+    type: http
+    behavior: classical
+    path: ./ruleset/ChinaDomain.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml"
+    interval: 43200
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    path: ./ruleset/ChinaCompanyIp.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaCompanyIp.yaml"
+    interval: 43200
+  Download:
+    type: http
+    behavior: classical
+    path: ./ruleset/Download.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Download.yaml"
+    interval: 43200
+  Amazon:
+    type: http
+    behavior: classical
+    path: ./ruleset/Amazon.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Amazon.yaml"
+    interval: 43200
+  Wechat:
+    type: http
+    behavior: classical
+    path: ./ruleset/Wechat.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Wechat.yaml"
+    interval: 43200
+  EHGallery:
+    type: http
+    behavior: classical
+    path: ./ruleset/EHGallery.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/EHGallery.yaml"
+    interval: 43200
+  Porn:
+    type: http
+    behavior: classical
+    path: ./ruleset/Porn.yaml
+    url: "https://raw.iqiq.io/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Porn.yaml"
+    interval: 43200
+#
+  anti-AD:
+    type: http
+    behavior: domain
+    path: ./ruleset/anti-AD.yaml
+    url: "https://raw.iqiq.io/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
+    interval: 43200
+  anti-AD-white:
+    type: http
+    behavior: domain
+    path: ./ruleset/anti-AD.yaml
+    url: "https://raw.iqiq.io/privacy-protection-tools/dead-horse/master/anti-ad-white-for-clash.yaml"
+    interval: 43200
+  mydirect:
+    type: http
+    behavior: domain
+    path: ./ruleset/mydirect.yaml
+    url: "https://raw.iqiq.io/bylheart/clashrule/main/mydirect.txt"
+    interval: 43200
+  myproxy:
+    type: http
+    behavior: domain
+    path: ./ruleset/myproxy.yaml
+    url: "https://raw.iqiq.io/bylheart/clashrule/main/myproxy.txt"
+    interval: 43200
+  myrules:
+    type: http
+    behavior: domain
+    path: ./ruleset/myrules.yaml
+    url: "https://raw.iqiq.io/bylheart/clashrule/main/myrules.txt"
+    interval: 43200
+#
+rules:
+  - RULE-SET,mydirect,DIRECT
+  - RULE-SET,myproxy,PROXY  
+#  - RULE-SET,anti-AD,REJECT
+#  - RULE-SET,anti-AD-white,DIRECT
+# GEOSITE规则
+#  - GEOSITE,category-ads-all,REJECT
+#  - GEOSITE,private,DIRECT
+#  - GEOSITE,google-cn,DIRECT
+#  - GEOSITE,tld-cn,DIRECT
+#  - GEOSITE,category-games@cn,DIRECT
+#  - GEOSITE,geolocation-!cn,PROXY
+#  - GEOSITE,cn,DIRECT
+#  - GEOSITE,gfw,PROXY
+#  - GEOSITE,greatfire,PROXY
+# GEOIP规则
+#  - GEOIP,private,DIRECT
+#  - GEOIP,google,PROXY
+#  - GEOIP,telegram,PROXY
+#  - GEOIP,twitter,PROXY
+#  - GEOIP,cn,DIRECT
+#  - GEOIP,us,PROXY
+#  - GEOIP,jp,PROXY
+#  - MATCH,DIRECT
+# RULE-SET规则
+# 拒绝
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanProgramAD,REJECT
+  - RULE-SET,BanEasyList,REJECT
+  - RULE-SET,BanEasyListChina,REJECT
+  - RULE-SET,BanEasyPrivacy,REJECT
+# 代理
+#  - RULE-SET,Google,PROXY
+#  - RULE-SET,Telegram,PROXY
+#  - RULE-SET,Steam,PROXY
+#  - RULE-SET,YouTube,PROXY
+#  - RULE-SET,Netflix,PROXY
+#  - RULE-SET,Amazon,PROXY
+#  - RULE-SET,AmazonIp,PROXY
+#  - RULE-SET,Bahamut,PROXY
+#  - RULE-SET,EHGallery,PROXY
+#  - RULE-SET,Porn,PROXY
+#  - RULE-SET,ProxyMedia,PROXY
+#  - RULE-SET,ProxyGFWlist,PROXY
+# 直连
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  - RULE-SET,UnBan,DIRECT
+  - RULE-SET,GoogleFCM,DIRECT
+  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,OneDrive,DIRECT
+  - RULE-SET,Microsoft,DIRECT
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Epic,DIRECT
+  - RULE-SET,Sony,DIRECT
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,BilibiliHMT,DIRECT
+  - RULE-SET,Bilibili,DIRECT  
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,Download,DIRECT
+  - RULE-SET,Wechat,DIRECT
+# 其他
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
+#  - GEOIP,US,PROXY,no-resolve
+#  - GEOIP,JP,PROXY,no-resolve
+  - MATCH,PROXY
