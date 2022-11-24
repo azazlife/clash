@@ -390,7 +390,7 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY  
-#  - RULE-SET,anti-AD,REJECT
+  - RULE-SET,anti-AD,REJECT
 #  - RULE-SET,anti-AD-white,DIRECT
 # GEOSITE规则
 #  - GEOSITE,category-ads-all,REJECT
@@ -413,11 +413,11 @@ rules:
 #  - MATCH,DIRECT
 # RULE-SET规则
 # 拒绝
-  - RULE-SET,BanAD,REJECT
-  - RULE-SET,BanProgramAD,REJECT
-  - RULE-SET,BanEasyList,REJECT
-  - RULE-SET,BanEasyListChina,REJECT
-  - RULE-SET,BanEasyPrivacy,REJECT
+#  - RULE-SET,BanAD,REJECT
+#  - RULE-SET,BanProgramAD,REJECT
+#  - RULE-SET,BanEasyList,REJECT
+#  - RULE-SET,BanEasyListChina,REJECT
+#  - RULE-SET,BanEasyPrivacy,REJECT
 # 代理
 #  - RULE-SET,Google,PROXY
 #  - RULE-SET,Telegram,PROXY
