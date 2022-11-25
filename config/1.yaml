@@ -434,8 +434,8 @@ rules:
 # 直连
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
-  - RULE-SET,GoogleFCM,DIRECT
-  - RULE-SET,GoogleCN,DIRECT
+#  - RULE-SET,GoogleFCM,DIRECT
+#  - RULE-SET,GoogleCN,DIRECT
   - RULE-SET,OneDrive,DIRECT
   - RULE-SET,Microsoft,DIRECT
   - RULE-SET,NetEaseMusic,DIRECT
