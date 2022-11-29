@@ -92,8 +92,8 @@ proxies:
   - name: racknerd
     type: hysteria
     server: www.mareuorg.eu.org
-    port: 56253
-    auth_str: S1tyihAoLJNeN09efWvXLWreiKN2aoAM1Lt9GWZtFKPZTarxgG
+    port: 63139
+    auth_str: PX4BtbXqMiHEMAPduOQZyivBbUU1yQosCvboD3ZzcMXLD3ANlb
     alpn:
       - h3
     protocol: udp
