@@ -394,23 +394,24 @@ rules:
 #  - RULE-SET,anti-AD-white,DIRECT
 # GEOSITE规则
 #  - GEOSITE,category-ads-all,REJECT
-#  - GEOSITE,private,DIRECT
-#  - GEOSITE,google-cn,DIRECT
-#  - GEOSITE,tld-cn,DIRECT
-#  - GEOSITE,category-games@cn,DIRECT
-#  - GEOSITE,geolocation-!cn,PROXY
-#  - GEOSITE,cn,DIRECT
+  - GEOSITE,private,DIRECT
+  - GEOSITE,apple-cn,DIRECT
+  - GEOSITE,google-cn,DIRECT
+  - GEOSITE,tld-cn,DIRECT
+  - GEOSITE,category-games@cn,DIRECT
+  - GEOSITE,geolocation-!cn,PROXY
+  - GEOSITE,cn,DIRECT
 #  - GEOSITE,gfw,PROXY
 #  - GEOSITE,greatfire,PROXY
 # GEOIP规则
-#  - GEOIP,private,DIRECT
+  - GEOIP,private,DIRECT
 #  - GEOIP,google,PROXY
 #  - GEOIP,telegram,PROXY
 #  - GEOIP,twitter,PROXY
-#  - GEOIP,cn,DIRECT
+  - GEOIP,cn,DIRECT
 #  - GEOIP,us,PROXY
 #  - GEOIP,jp,PROXY
-#  - MATCH,PROXY
+  - MATCH,PROXY
 # RULE-SET规则
 # 拒绝
 #  - RULE-SET,BanAD,REJECT
@@ -432,27 +433,27 @@ rules:
 #  - RULE-SET,ProxyMedia,PROXY
 #  - RULE-SET,ProxyGFWlist,PROXY
 # 直连
-  - RULE-SET,LocalAreaNetwork,DIRECT
-  - RULE-SET,UnBan,DIRECT
+#  - RULE-SET,LocalAreaNetwork,DIRECT
+#  - RULE-SET,UnBan,DIRECT
 #  - RULE-SET,GoogleFCM,DIRECT
 #  - RULE-SET,GoogleCN,DIRECT
-  - RULE-SET,OneDrive,DIRECT
-  - RULE-SET,Microsoft,DIRECT
-  - RULE-SET,NetEaseMusic,DIRECT
-  - RULE-SET,Epic,DIRECT
-  - RULE-SET,Sony,DIRECT
-  - RULE-SET,SteamCN,DIRECT
-  - RULE-SET,BilibiliHMT,DIRECT
-  - RULE-SET,Bilibili,DIRECT  
-  - RULE-SET,ChinaMedia,DIRECT
-  - RULE-SET,ChinaIp,DIRECT
-  - RULE-SET,ChinaDomain,DIRECT
-  - RULE-SET,ChinaCompanyIp,DIRECT
-  - RULE-SET,Download,DIRECT
-  - RULE-SET,Wechat,DIRECT
+#  - RULE-SET,OneDrive,DIRECT
+#  - RULE-SET,Microsoft,DIRECT
+#  - RULE-SET,NetEaseMusic,DIRECT
+#  - RULE-SET,Epic,DIRECT
+#  - RULE-SET,Sony,DIRECT
+#  - RULE-SET,SteamCN,DIRECT
+#  - RULE-SET,BilibiliHMT,DIRECT
+#  - RULE-SET,Bilibili,DIRECT  
+#  - RULE-SET,ChinaMedia,DIRECT
+#  - RULE-SET,ChinaIp,DIRECT
+#  - RULE-SET,ChinaDomain,DIRECT
+#  - RULE-SET,ChinaCompanyIp,DIRECT
+#  - RULE-SET,Download,DIRECT
+#  - RULE-SET,Wechat,DIRECT
 # 其他
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT,no-resolve
+#  - GEOIP,LAN,DIRECT
+#  - GEOIP,CN,DIRECT,no-resolve
 #  - GEOIP,US,PROXY,no-resolve
 #  - GEOIP,JP,PROXY,no-resolve
-  - MATCH,PROXY
+#  - MATCH,PROXY
