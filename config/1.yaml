@@ -396,7 +396,7 @@ rules:
 #  - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOSITE,apple-cn,DIRECT
-  - GEOSITE,google-cn,DIRECT
+#  - GEOSITE,google-cn,DIRECT
   - GEOSITE,tld-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
