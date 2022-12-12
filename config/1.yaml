@@ -81,8 +81,8 @@ proxies:
   - name: cloudcone
     type: hysteria
     server: www.janeuorg.eu.org
-    port: 13140
-    auth_str: iMy82MjUBAvYU6E17msQpL2yLuXFYraxrjIcCcGC5LlF3xxD9h
+    port: 62754
+    auth_str: ISc7vZJfiqDTMvK70BMN8GbcCSpYxMjDr8x8ODLMzeul16brBb
     alpn:
       - h3
     protocol: udp
@@ -96,8 +96,8 @@ proxies:
   - name: racknerd
     type: hysteria
     server: www.mareuorg.eu.org
-    port: 63139
-    auth_str: PX4BtbXqMiHEMAPduOQZyivBbUU1yQosCvboD3ZzcMXLD3ANlb
+    port: 45087
+    auth_str: V5IPQsuoS85k4miyk1oP1VUGqpVkyazpdOvfm3UAfsZPayGGBz
     alpn:
       - h3
     protocol: udp
@@ -111,8 +111,8 @@ proxies:
   - name: virmach
     type: hysteria
     server: www.febeuorg.eu.org
-    port: 16466
-    auth_str: AGoihQ9Vp3Whx6Yadaogx9RAvouDIVNVIzq9mPzfXAOueE3gy2
+    port: 56653
+    auth_str: gvg37FoVesyHjV1sIqgwoJzq5NITZbiYrrgwWWutjclcqLtQFx
     alpn:
       - h3
     protocol: udp
@@ -394,10 +394,10 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY  
-  - RULE-SET,anti-AD,REJECT
+#  - RULE-SET,anti-AD,REJECT
 #  - RULE-SET,anti-AD-white,DIRECT
 # GEOSITE规则
-#  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOSITE,google,PROXY
   - GEOSITE,apple-cn,DIRECT
