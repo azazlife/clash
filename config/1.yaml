@@ -142,6 +142,7 @@ proxy-groups:
     interval: 300
     lazy: true
 #
+rule-providers:
   mydirect:
     type: http
     behavior: domain
