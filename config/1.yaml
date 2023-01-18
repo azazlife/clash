@@ -32,7 +32,7 @@ hosts:
 #
 dns:
   enable: true
-  listen: 0.0.0.0:1053
+  listen: 127.0.0.1:1053
   ipv6: false
   default-nameserver:
     - 223.5.5.5 
@@ -129,18 +129,17 @@ proxy-groups:
     type: select
     proxies:
       - auto
-      - racknerd
       - cloudcone
       - virmach
+      - racknerd
   - name: auto
     type: fallback
     proxies:
-      - racknerd
       - cloudcone
       - virmach
+      - racknerd
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
-    lazy: true
 #
 rule-providers:
   mydirect:
@@ -172,11 +171,11 @@ rules:
 #  - GEOSITE,gfw,PROXY
 #  - GEOSITE,greatfire,PROXY
 # GEOIP规则
-  - GEOIP,private,DIRECT,no-resolve
-  - GEOIP,google,PROXY,no-resolve
-#  - GEOIP,telegram,PROXY,no-resolve
-#  - GEOIP,twitter,PROXY,no-resolve
-  - GEOIP,cn,DIRECT,no-resolve
-#  - GEOIP,us,PROXY,no-resolve
-#  - GEOIP,jp,PROXY,no-resolve
+  - GEOIP,private,DIRECT
+  - GEOIP,google,PROXY
+#  - GEOIP,telegram,PROXY
+#  - GEOIP,twitter,PROXY
+  - GEOIP,cn,DIRECT
+#  - GEOIP,us,PROXY
+#  - GEOIP,jp,PROXY
   - MATCH,PROXY
