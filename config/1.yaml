@@ -133,14 +133,14 @@ proxy-groups:
       - cloudcone
       - virmach
   - name: auto
-    type: url-test
+    type: fallback
     proxies:
       - racknerd
       - cloudcone
       - virmach
-    tolerance: 100
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
+    lazy: true
 #
   mydirect:
     type: http
