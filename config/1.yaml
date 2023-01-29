@@ -111,8 +111,8 @@ proxies:
   - name: virmach
     type: hysteria
     server: www.febeuorg.eu.org
-    port: 56653
-    auth_str: gvg37FoVesyHjV1sIqgwoJzq5NITZbiYrrgwWWutjclcqLtQFx
+    port: 10282
+    auth_str: pGTGwSa9V3ZgWOyYxCgbpa6nzHALf2K5hPzVrP3fjpnCUyt4cs
     alpn:
       - h3
     protocol: udp
