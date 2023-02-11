@@ -12,7 +12,7 @@ ipv6: false
 external-controller: 127.0.0.1:9090
 #
 sniffer:
-  enable: false
+  enable: true
   sniffing:
     - tls
     - http
@@ -40,7 +40,7 @@ dns:
     - 9.9.9.9
     - 1.1.1.1
     - 8.8.8.8
-  enhanced-mode: fake-ip
+  enhanced-mode: redir-host
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
     - dns.msftncsi.com
@@ -81,8 +81,8 @@ proxies:
   - name: cloudcone
     type: hysteria
     server: www.janeuorg.eu.org
-    port: 20621
-    auth_str: QqIc0kiJsTJXG5B7xpjnV1q4B7ld5UZwPoPWS3oOHPsx963W51
+    port: 53200
+    auth_str: LuxJxf35uJ6cCr7awRoigDfg22wlMbAHlNiZz9K8YrmkF45IFy
     alpn:
       - h3
     protocol: udp
@@ -90,14 +90,14 @@ proxies:
     down: 110
     sni: www.janeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 8650752
-    recv_window: 34603008
+    recv_window_conn: 11534336
+    recv_window: 46137344
     disable_mtu_discovery: true
   - name: racknerd
     type: hysteria
     server: www.mareuorg.eu.org
-    port: 31425
-    auth_str: RKJR1ut8F51XxeeCmaEawkEv0qs2tloHCYpn4ClhtKOE8snvhp
+    port: 33597
+    auth_str: aw4rnNqbpIwhkuxaTPjbLJEc61CKe2d9yjnZJY9Ot3s38wc9VF
     alpn:
       - h3
     protocol: udp
@@ -105,14 +105,14 @@ proxies:
     down: 110
     sni: www.mareuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 8650752
-    recv_window: 34603008
+    recv_window_conn: 11534336
+    recv_window: 46137344
     disable_mtu_discovery: true
   - name: virmach
     type: hysteria
     server: www.febeuorg.eu.org
-    port: 10282
-    auth_str: pGTGwSa9V3ZgWOyYxCgbpa6nzHALf2K5hPzVrP3fjpnCUyt4cs
+    port: 21725
+    auth_str: oGldxibgO8a313KTWcBwWa9Q9xuwNSXcLmxz8epCzboc8b1l4i
     alpn:
       - h3
     protocol: udp
@@ -120,8 +120,8 @@ proxies:
     down: 110
     sni: www.febeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 8650752
-    recv_window: 34603008
+    recv_window_conn: 11534336
+    recv_window: 46137344
     disable_mtu_discovery: true
 #
 proxy-groups:
