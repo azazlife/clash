@@ -81,8 +81,8 @@ proxies:
   - name: cloudcone
     type: hysteria
     server: www.janeuorg.eu.org
-    port: 53200
-    auth_str: LuxJxf35uJ6cCr7awRoigDfg22wlMbAHlNiZz9K8YrmkF45IFy
+    port: 35209
+    obfs: U3DQnCbMd3NNFAHJK5oQowdWaKd7cau520NeSJ6iGROsyWAQ8q
     alpn:
       - h3
     protocol: udp
@@ -96,8 +96,8 @@ proxies:
   - name: racknerd
     type: hysteria
     server: www.mareuorg.eu.org
-    port: 33597
-    auth_str: aw4rnNqbpIwhkuxaTPjbLJEc61CKe2d9yjnZJY9Ot3s38wc9VF
+    port: 19576
+    obfs: yGi5TUQTWqeIyUXL2SxvdvIGoG6WcJPZjPcSDRncit9c2pvkVY
     alpn:
       - h3
     protocol: udp
@@ -111,8 +111,8 @@ proxies:
   - name: virmach
     type: hysteria
     server: www.febeuorg.eu.org
-    port: 21725
-    auth_str: oGldxibgO8a313KTWcBwWa9Q9xuwNSXcLmxz8epCzboc8b1l4i
+    port: 17726
+    obfs: 3wkbxhnHu8OkyZzoq5zmIQ6vpCkQlcUDGQxlE0nslpPYVFSXlu
     alpn:
       - h3
     protocol: udp
