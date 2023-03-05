@@ -81,51 +81,39 @@ proxies:
   - name: cloudcone
     type: hysteria
     server: www.janeuorg.eu.org
-    ports: 47000-48000
-    auth_str: 7hRZz8USHHpHvwrpnfyo1Y87IZMFjPkKbe0kfiDk2YmE4ds9D4
+    port: 2034
+    auth_str: 17685e
     alpn:
       - h3
     protocol: udp
-    up: 11
-    down: 55
+    up: 20
+    down: 100
     sni: www.janeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
   - name: racknerd
     type: hysteria
     server: www.mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: BgBVhLu8FjPvviEWgq0P5s3564J3UiaWLHLBQ0T3fUMNXKwjKU
+    port: 58933
+    auth_str: b7352f
     alpn:
       - h3
     protocol: udp
-    up: 11
-    down: 55
+    up: 20
+    down: 100
     sni: www.mareuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
   - name: virmach
     type: hysteria
     server: www.febeuorg.eu.org
-    ports: 47000-48000
-    auth_str: DzgeioddsKWJaJJ8oTpmeKOqP37qeyoLkDihVjlHQrdaajvBHu
+    port: 8376
+    auth_str: 61de16
     alpn:
       - h3
     protocol: udp
-    up: 11
-    down: 55
+    up: 20
+    down: 100
     sni: www.febeuorg.eu.org
     skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
 #
 proxy-groups:
   - name: PROXY
