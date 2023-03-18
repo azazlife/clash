@@ -79,41 +79,38 @@ dns:
 #
 proxies:
   - name: cloudcone
-    type: hysteria
-    server: www.janeuorg.eu.org
-    port: 2034
-    auth_str: 17685e
-    alpn:
-      - h3
-    protocol: udp
-    up: 20
-    down: 100
-    sni: www.janeuorg.eu.org
-    skip-cert-verify: false
+    server: cloudcone.marfreenom.gq
+    port: 443
+    type: trojan
+    password: "eeaf8fe8-e17c-4744-b66d-411fe71250c9"
+    network: grpc
+    sni: www1.janfreenom.gq
+    # skip-cert-verify: true
+    udp: true
+    grpc-opts:
+      grpc-service-name: "ahoytrojangrpc"
   - name: racknerd
-    type: hysteria
-    server: www.mareuorg.eu.org
-    port: 58933
-    auth_str: b7352f
-    alpn:
-      - h3
-    protocol: udp
-    up: 20
-    down: 100
-    sni: www.mareuorg.eu.org
-    skip-cert-verify: false
+    server: racknerd.marfreenom.gq
+    port: 443
+    type: trojan
+    password: "a04ee410-fd31-4bb7-96ea-3073f29c5a45"
+    network: grpc
+    sni: www3.janfreenom.gq
+    # skip-cert-verify: true
+    udp: true
+    grpc-opts:
+      grpc-service-name: "ltcgtrojangrpc"
   - name: virmach
-    type: hysteria
-    server: www.febeuorg.eu.org
-    port: 8376
-    auth_str: 61de16
-    alpn:
-      - h3
-    protocol: udp
-    up: 20
-    down: 100
-    sni: www.febeuorg.eu.org
-    skip-cert-verify: false
+    server: virmach.marfreenom.gq
+    port: 443
+    type: trojan
+    password: "2adeed3b-e171-46de-a3b2-3b2928291a0b"
+    network: grpc
+    sni: www2.janfreenom.gq
+    # skip-cert-verify: true
+    udp: true
+    grpc-opts:
+      grpc-service-name: "eejmtrojangrpc"
 #
 proxy-groups:
   - name: PROXY
