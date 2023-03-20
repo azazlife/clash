@@ -74,38 +74,53 @@ dns:
 #
 proxies:
   - name: cloudcone
-    server: cloudcone.marfreenom.gq
-    port: 443
-    type: trojan
-    password: "eeaf8fe8-e17c-4744-b66d-411fe71250c9"
-    network: grpc
-    sni: www1.janfreenom.gq
-    # skip-cert-verify: true
-    udp: true
-    grpc-opts:
-      grpc-service-name: "ahoytrojangrpc"
+    type: hysteria
+    server: www.janeuorg.eu.org
+    ports: 47000-48000
+    auth_str: WLLMO7OJZGhW9bYeMkr1EO7lDsjkg1yxGen6HQkEeYXnTi0lrI
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: www.janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
   - name: racknerd
-    server: racknerd.marfreenom.gq
-    port: 443
-    type: trojan
-    password: "a04ee410-fd31-4bb7-96ea-3073f29c5a45"
-    network: grpc
-    sni: www3.janfreenom.gq
-    # skip-cert-verify: true
-    udp: true
-    grpc-opts:
-      grpc-service-name: "ltcgtrojangrpc"
+    type: hysteria
+    server: www.mareuorg.eu.org
+    ports: 47000-48000
+    auth_str: BXxCmZrRwDiQU6vDWBmxUsQmGNtDIEx4XXv5yreK0D8NA2rBun
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: www.mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
   - name: virmach
-    server: virmach.marfreenom.gq
-    port: 443
-    type: trojan
-    password: "2adeed3b-e171-46de-a3b2-3b2928291a0b"
-    network: grpc
-    sni: www2.janfreenom.gq
-    # skip-cert-verify: true
-    udp: true
-    grpc-opts:
-      grpc-service-name: "eejmtrojangrpc"
+    type: hysteria
+    server: www.febeuorg.eu.org
+    ports: 47000-48000
+    auth_str: 6KGZKyh6qo5Ba807x6KcrtzJImZ5ZiAkmNANVw6ANTBYIcNITz
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: www.febeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
 #
 proxy-groups:
   - name: PROXY
