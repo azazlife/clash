@@ -36,7 +36,7 @@ dns:
   ipv6: false
   default-nameserver:
     - 223.5.5.5
-    - 1.1.1.1
+    - 9.9.9.9
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
@@ -44,16 +44,16 @@ dns:
     - www.msftncsi.com
     - www.msftconnecttest.com
   nameserver:
-#    - 223.5.5.5
-#    - 119.29.29.29
+    - 223.5.5.5
+    - 119.29.29.29
     - tls://dns.alidns.com
     - tls://dot.pub
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   fallback:
-#    - 9.9.9.9
-#    - 1.1.1.1
-#    - 8.8.8.8
+    - 9.9.9.9
+    - 1.1.1.1
+    - 8.8.8.8
     - tls://dns.quad9.net
     - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
