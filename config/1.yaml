@@ -93,7 +93,7 @@ proxies:
     type: hysteria
     server: www.mareuorg.eu.org
     ports: 47000-48000
-    auth_str: BXxCmZrRwDiQU6vDWBmxUsQmGNtDIEx4XXv5yreK0D8NA2rBun
+    auth_str: t4Y3iSvXo3Zi9XA2Q0fkMpINy0fWb27riXtQD0d7sFc0vLNaRp
     alpn:
       - h3
     protocol: udp
@@ -109,7 +109,7 @@ proxies:
     type: hysteria
     server: www.febeuorg.eu.org
     ports: 47000-48000
-    auth_str: 6KGZKyh6qo5Ba807x6KcrtzJImZ5ZiAkmNANVw6ANTBYIcNITz
+    auth_str: D4ZdDKDGDR6982oLCI74102WoCu3NvpWbQXTHzw4wId02uJPut
     alpn:
       - h3
     protocol: udp
