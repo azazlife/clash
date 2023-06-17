@@ -77,7 +77,7 @@ proxies:
     type: hysteria
     server: www.janeuorg.eu.org
     ports: 47000-48000
-    auth_str: WLLMO7OJZGhW9bYeMkr1EO7lDsjkg1yxGen6HQkEeYXnTi0lrI
+    auth_str: C9WnqjZQRpdVh9npSSgecRYt6vIj2QJ0JZunupvkXIcPk1VNcs
     alpn:
       - h3
     protocol: udp
