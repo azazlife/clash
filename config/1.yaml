@@ -1,46 +1,69 @@
-mixed-port: 7890
-allow-lan: true
-bind-address: "*"
+mixed-port: 7890 
+geodata-mode: true
+tcp-concurrent: true
 find-process-mode: strict
 global-client-fingerprint: chrome
-ipv6: true
+allow-lan: true
 mode: rule
-log-level: debug
-external-controller: 0.0.0.0:9093
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:9090
+secret: ""
+geox-url:
+  geoip: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+  geosite: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+  mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
 profile:
-  store-selected: false
+  store-selected: true
   store-fake-ip: true
+#
+sniffer:
+  enable: false
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+#
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 'any:53'
+  auto-route: true
+  auto-detect-interface: true
 #
 dns:
   enable: true
-  prefer-h3: true
   listen: 0.0.0.0:1053
   ipv6: true
-  default-nameserver:
-    - 114.114.114.114
-    - 8.8.8.8
-    - tls://1.12.12.12:853
-    - tls://223.5.5.5:853
   enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
-    - '*.lan'
-    - localhost.ptlogin2.qq.com
     - dns.msftncsi.com
     - www.msftncsi.com
     - www.msftconnecttest.com
-  nameserver-policy:
-    'www.baidu.com': '114.114.114.114'
-    '+.internal.crop.com': '10.0.0.1'
-    'geosite:cn': https://doh.pub/dns-query
+  default-nameserver:
+    - 223.5.5.5
+    - 9.9.9.9
   nameserver:
-    - https://doh.pub/dns-query
+    - 223.5.5.5
+    - 119.29.29.29
+    - tls://dns.alidns.com
+    - tls://dot.pub
     - https://dns.alidns.com/dns-query
-  fallback:
-    - tls://8.8.4.4
-    - tls://1.1.1.1
-  proxy-server-nameserver:
     - https://doh.pub/dns-query
+  fallback:
+    - 9.9.9.9
+    - 1.1.1.1
+    - 8.8.8.8
+    - tls://dns.quad9.net
+    - tls://1dot1dot1dot1.cloudflare-dns.com
+    - tls://dns.google
+    - https://dns.quad9.net/dns-query
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -52,13 +75,6 @@ dns:
       - '+.google.com'
       - '+.facebook.com'
       - '+.youtube.com'
-#
-hosts:
-  '*.clash.dev': 127.0.0.1
-  'alpha.clash.dev': '::1'
-  test.com: [1.1.1.1, 2.2.2.2]
-  baidu.com: google.com
-  clash.lan: clash
 #
 proxies:
   - name: cloudcone
@@ -124,33 +140,34 @@ proxy-groups:
       - cloudcone
       - virmach
       - racknerd
+    tolerance: 150
     url: 'https://www.gstatic.com/generate_204'
     interval: 300
 #
 rule-providers:
-  mydirect:
-    behavior: domain
-    interval: 259200
-    path: /ruleset/mydirect.yaml
-    type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
-  myproxy:
-    behavior: domain
-    interval: 259200
-    path: /ruleset/myproxy.yaml
-    type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
   antiad:
-    behavior: domain
-    interval: 259200
-    path: /ruleset/antiad.yaml
     type: http
+    behavior: domain
+    path: ./ruleset/antiad.yaml
     url: "https://ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
+    interval: 86400
+  mydirect:
+    type: http
+    behavior: domain
+    path: ./ruleset/mydirect.yaml
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
+    interval: 86400
+  myproxy:
+    type: http
+    behavior: domain
+    path: ./ruleset/myproxy.yaml
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
+    interval: 86400
 #
 rules:
+#  - RULE-SET,antiad,REJECT
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
-#  - RULE-SET,antiad,REJECT
 #  - GEOSITE,category-ads-all,REJECT
 # 白名单模式
 # GEOSITE规则
