@@ -20,7 +20,6 @@ tls:
       -----BEGIN CERTIFICATE-----
       format/pem...
       -----END CERTIFICATE-----
-experimental:
 profile:
   store-selected: false
   store-fake-ip: true
