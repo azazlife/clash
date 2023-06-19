@@ -1,65 +1,60 @@
-#port: 7890
-#socks-port: 7891
-mixed-port: 7890 
-geodata-mode: true
-tcp-concurrent: true
-allow-lan: false
-bind-address:
-  '*' 
+mixed-port: 10801
+allow-lan: true
+bind-address: "*"
+find-process-mode: strict
+global-client-fingerprint: chrome
+ipv6: true
 mode: rule
-log-level: info
-ipv6: false
-external-controller: 127.0.0.1:9090
-#
-sniffer:
-  enable: false
-  sniffing:
-    - tls
-    - http
-  skip-domain:
-    - 'Mijia Cloud'
-    - 'dlg.io.mi.com'
-    - '+.apple.com'
-#    - '*.baidu.com'
-  force-domain:
-#    - '+'
-    - 'google.com'
-#  port-whitelist:
-#    - 80
-#    - 443
-#    - 8000-9000
-hosts:
+log-level: debug
+external-controller: 0.0.0.0:9093
+external-controller-tls: 0.0.0.0:9443
+geox-url:
+  geoip: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+  geosite: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+  mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+tls:
+  certificate: string
+  private-key: string
+  custom-certifactes:
+    - |
+      -----BEGIN CERTIFICATE-----
+      format/pem...
+      -----END CERTIFICATE-----
+experimental:
+profile:
+  store-selected: false
+  store-fake-ip: true
 #
 dns:
   enable: true
-  listen: 127.0.0.1:1053
-  ipv6: false
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  ipv6: true
   default-nameserver:
-    - 223.5.5.5
-    - 9.9.9.9
+    - 114.114.114.114
+    - 8.8.8.8
+    - tls://1.12.12.12:853
+    - tls://223.5.5.5:853
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
     - dns.msftncsi.com
     - www.msftncsi.com
     - www.msftconnecttest.com
+  nameserver-policy:
+    'www.baidu.com': '114.114.114.114'
+    '+.internal.crop.com': '10.0.0.1'
+    'geosite:cn': https://doh.pub/dns-query
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - tls://dns.alidns.com
-    - tls://dot.pub
-    - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
   fallback:
-    - 9.9.9.9
-    - 1.1.1.1
-    - 8.8.8.8
-    - tls://dns.quad9.net
-    - tls://1dot1dot1dot1.cloudflare-dns.com
-#    - tls://dns.google
-    - https://dns.quad9.net/dns-query
-    - https://dns.cloudflare.com/dns-query
-#    - https://dns.google/dns-query
+    - tls://8.8.4.4
+    - tls://1.1.1.1
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -71,6 +66,13 @@ dns:
       - '+.google.com'
       - '+.facebook.com'
       - '+.youtube.com'
+#
+hosts:
+  '*.clash.dev': 127.0.0.1
+  'alpha.clash.dev': '::1'
+  test.com: [1.1.1.1, 2.2.2.2]
+  baidu.com: google.com
+  clash.lan: clash
 #
 proxies:
   - name: cloudcone
@@ -136,34 +138,33 @@ proxy-groups:
       - cloudcone
       - virmach
       - racknerd
-    tolerance: 150
-    url: 'http://www.gstatic.com/generate_204'
+    url: 'https://www.gstatic.com/generate_204'
     interval: 300
 #
 rule-providers:
-  antiad:
-    type: http
-    behavior: domain
-    path: ./ruleset/antiad.yaml
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
-    interval: 86400
   mydirect:
-    type: http
     behavior: domain
-    path: ./ruleset/mydirect.yaml
+    interval: 259200
+    path: /ruleset/mydirect.yaml
+    type: http
     url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
-    interval: 86400
   myproxy:
-    type: http
     behavior: domain
-    path: ./ruleset/myproxy.yaml
+    interval: 259200
+    path: /ruleset/myproxy.yaml
+    type: http
     url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
-    interval: 86400
+  antiad:
+    behavior: domain
+    interval: 259200
+    path: /ruleset/antiad.yaml
+    type: http
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
 #
 rules:
-#  - RULE-SET,antiad,REJECT
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,PROXY
+#  - RULE-SET,antiad,REJECT
 #  - GEOSITE,category-ads-all,REJECT
 # 白名单模式
 # GEOSITE规则
