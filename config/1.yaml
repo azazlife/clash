@@ -179,7 +179,7 @@ rules:
 #  - GEOSITE,category-ads-all,REJECT
 # 白名单模式
 # GEOSITE规则
-  - GEOSITE,google,PROXY
+#  - GEOSITE,google,PROXY
   - GEOSITE,private,DIRECT
   - GEOSITE,apple-cn,DIRECT
   - GEOSITE,google-cn,DIRECT
