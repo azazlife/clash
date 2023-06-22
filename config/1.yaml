@@ -7,15 +7,15 @@ allow-lan: true
 mode: rule
 log-level: info
 ipv6: true
-external-controller: 0.0.0.0:9090
+external-controller: 127.0.0.1:9090
 secret: ""
 geox-url:
   geoip: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
   geosite: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
   mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
-profile:
-  store-selected: true
-  store-fake-ip: true
+#profile:
+#  store-selected: true
+#  store-fake-ip: true
 #
 sniffer:
   enable: false
@@ -36,7 +36,7 @@ tun:
 #
 dns:
   enable: true
-  listen: 0.0.0.0:1053
+  listen: 127.0.0.1:1053
   ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
@@ -46,43 +46,43 @@ dns:
     - www.msftconnecttest.com
   default-nameserver:
     - 223.5.5.5
-    - 119.29.29.29
-#    - 9.9.9.9
+#    - 119.29.29.29
+    - 9.9.9.9
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
     - tls://dns.alidns.com
     - tls://dot.pub
-#    - https://dns.alidns.com/dns-query
-#    - https://doh.pub/dns-query
-#  fallback:
-#    - 9.9.9.9
-#    - 1.1.1.1
-#    - 8.8.8.8
-#    - tls://dns.quad9.net
-#    - tls://1dot1dot1dot1.cloudflare-dns.com
-#    - tls://dns.google
-#    - https://dns.quad9.net/dns-query
-#    - https://dns.cloudflare.com/dns-query
-#    - https://dns.google/dns-query
-#  fallback-filter:
-#    geoip: true
-#    geoip-code: CN
-#    geosite:
-#      - gfw
-#    ipcidr:
-#      - 240.0.0.0/4
-#    domain:
-#      - '+.google.com'
-#      - '+.facebook.com'
-#      - '+.youtube.com'
-  proxy-server-nameserver:
-  - https://dns.alidns.com/dns-query
-  - https://doh.pub/dns-query
-  nameserver-policy:
-    "geosite:cn,private":
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - 9.9.9.9
+    - 1.1.1.1
+    - 8.8.8.8
+    - tls://dns.quad9.net
+    - tls://1dot1dot1dot1.cloudflare-dns.com
+    - tls://dns.google
+    - https://dns.quad9.net/dns-query
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+#  proxy-server-nameserver:
+#  - https://dns.alidns.com/dns-query
+#  - https://doh.pub/dns-query
+#  nameserver-policy:
+#    "geosite:cn,private":
+#    - https://doh.pub/dns-query
+#    - https://dns.alidns.com/dns-query
 #
 proxies:
   - name: cloudcone
