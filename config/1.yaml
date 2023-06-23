@@ -1,5 +1,5 @@
 mixed-port: 7890 
-geodata-mode: true
+#geodata-mode: true
 tcp-concurrent: true
 find-process-mode: strict
 global-client-fingerprint: chrome
@@ -8,11 +8,11 @@ mode: rule
 log-level: info
 ipv6: true
 external-controller: 127.0.0.1:9090
-secret: ""
-geox-url:
-  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
-  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
-  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+#secret: ""
+#geox-url:
+#  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+#  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+#  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
 #profile:
 #  store-selected: true
 #  store-fake-ip: true
