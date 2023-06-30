@@ -87,10 +87,10 @@ dns:
 proxies:
   - name: cloudcone
     server: www.janeuorg.eu.org
-    port: 58587
+    port: 12341
     type: tuic
-    uuid: 90401e04-876d-4471-ad20-d424c546a765
-    password: 1e814a
+    uuid: 8b99dd21-6725-475f-9f49-effa1cf6afa1
+    password: 8b99dd21-6725-475f-9f49-effa1cf6afa1
     alpn: [h3]
     disable-sni: true
     reduce-rtt: true
@@ -99,10 +99,10 @@ proxies:
     congestion-controller: bbr
   - name: racknerd
     server: www.mareuorg.eu.org
-    port: 63475
+    port: 21502
     type: tuic
-    uuid: 3a766550-8bbf-4c50-a58a-cd9da66c782c
-    password: 5d888c
+    uuid: 013f1fff-1fbe-443b-8636-b66cb39d18bb
+    password: 013f1fff-1fbe-443b-8636-b66cb39d18bb
     alpn: [h3]
     disable-sni: true
     reduce-rtt: true
