@@ -87,39 +87,27 @@ dns:
 proxies:
   - name: cloudcone
     server: www.janeuorg.eu.org
-    port: 12341
+    port: 61114
     type: tuic
-    uuid: 8b99dd21-6725-475f-9f49-effa1cf6afa1
-    password: 8b99dd21-6725-475f-9f49-effa1cf6afa1
+    uuid: 76a632d1-f711-4cc8-80a8-47b8fc8ddccf
+    password: b897d2
     alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native
     congestion-controller: bbr
   - name: racknerd
     server: www.mareuorg.eu.org
-    port: 21502
+    port: 27228
     type: tuic
-    uuid: 013f1fff-1fbe-443b-8636-b66cb39d18bb
-    password: 013f1fff-1fbe-443b-8636-b66cb39d18bb
+    uuid: dfbd413a-737a-440a-9a1f-fd2705f4a56a
+    password: 769fd8
     alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native
     congestion-controller: bbr
   - name: virmach
     server: www.febeuorg.eu.org
-    port: 19720
+    port: 16465
     type: tuic
-    uuid: 35c8dab4-960e-489b-9ffb-aeff3a7e0897
-    password: 35c8dab4-960e-489b-9ffb-aeff3a7e0897
+    uuid: 4bec3f8a-bd2d-49e7-b14c-c4fc989e6373
+    password: 0d44b9
     alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native
     congestion-controller: bbr
 #
 proxy-groups:
