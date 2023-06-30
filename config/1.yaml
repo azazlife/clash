@@ -86,53 +86,41 @@ dns:
 #
 proxies:
   - name: cloudcone
-    type: hysteria
     server: www.janeuorg.eu.org
-    ports: 47000-48000
-    auth_str: C9WnqjZQRpdVh9npSSgecRYt6vIj2QJ0JZunupvkXIcPk1VNcs
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: www.janeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 58587
+    type: tuic
+    uuid: 90401e04-876d-4471-ad20-d424c546a765
+    password: 1e814a
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native
+    congestion-controller: bbr
   - name: racknerd
-    type: hysteria
     server: www.mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: t4Y3iSvXo3Zi9XA2Q0fkMpINy0fWb27riXtQD0d7sFc0vLNaRp
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: www.mareuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 63475
+    type: tuic
+    uuid: 3a766550-8bbf-4c50-a58a-cd9da66c782c
+    password: 5d888c
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native
+    congestion-controller: bbr
   - name: virmach
-    type: hysteria
     server: www.febeuorg.eu.org
-    ports: 47000-48000
-    auth_str: D4ZdDKDGDR6982oLCI74102WoCu3NvpWbQXTHzw4wId02uJPut
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: www.febeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 19720
+    type: tuic
+    uuid: 35c8dab4-960e-489b-9ffb-aeff3a7e0897
+    password: 35c8dab4-960e-489b-9ffb-aeff3a7e0897
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native
+    congestion-controller: bbr
 #
 proxy-groups:
   - name: PROXY
