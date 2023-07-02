@@ -86,27 +86,27 @@ dns:
 #
 proxies:
   - name: cloudcone
-    server: www.janeuorg.eu.org
-    port: 51674
+    server: janeuorg.eu.org
+    port: 17957
     type: tuic
-    uuid: ad089b13-7a8d-460c-8279-882619d679f1
-    password: 42fb9f
+    uuid: aa082f73-3149-406b-954d-4202f02f994f
+    password: aa082f73-3149-406b-954d-4202f02f994f
     alpn: [h3]
     congestion-controller: bbr
   - name: racknerd
-    server: www.mareuorg.eu.org
-    port: 27228
+    server: mareuorg.eu.org
+    port: 22728
     type: tuic
-    uuid: dfbd413a-737a-440a-9a1f-fd2705f4a56a
-    password: 769fd8
+    uuid: 785487a1-2317-4187-aa20-4ae8c366c3eb
+    password: 785487a1-2317-4187-aa20-4ae8c366c3eb
     alpn: [h3]
     congestion-controller: bbr
   - name: virmach
-    server: www.febeuorg.eu.org
-    port: 16465
+    server: febeuorg.eu.org
+    port: 18511
     type: tuic
-    uuid: 4bec3f8a-bd2d-49e7-b14c-c4fc989e6373
-    password: 0d44b9
+    uuid: 53a6be65-20c3-433f-9ceb-a866f71ea6c9
+    password: 53a6be65-20c3-433f-9ceb-a866f71ea6c9
     alpn: [h3]
     congestion-controller: bbr
 #
