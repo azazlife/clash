@@ -87,10 +87,10 @@ dns:
 proxies:
   - name: cloudcone
     server: www.janeuorg.eu.org
-    port: 61114
+    port: 51674
     type: tuic
-    uuid: 76a632d1-f711-4cc8-80a8-47b8fc8ddccf
-    password: b897d2
+    uuid: ad089b13-7a8d-460c-8279-882619d679f1
+    password: 42fb9f
     alpn: [h3]
     congestion-controller: bbr
   - name: racknerd
