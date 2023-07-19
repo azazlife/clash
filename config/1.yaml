@@ -1,6 +1,6 @@
 mixed-port: 7890 
 geodata-mode: true
-tcp-concurrent: true
+tcp-concurrent: false
 find-process-mode: strict
 global-client-fingerprint: chrome
 allow-lan: true
@@ -8,14 +8,13 @@ mode: rule
 log-level: info
 ipv6: true
 external-controller: 127.0.0.1:9090
-secret: "may12th"
 geox-url:
   geoip: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
   geosite: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
   mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
-#profile:
-#  store-selected: true
-#  store-fake-ip: true
+profile:
+  store-selected: true
+  store-fake-ip: true
 #
 sniffer:
   enable: false
@@ -39,7 +38,7 @@ dns:
   listen: 127.0.0.1:1053
   ipv6: true
   enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
     - dns.msftncsi.com
     - www.msftncsi.com
@@ -86,29 +85,53 @@ dns:
 #
 proxies:
   - name: cloudcone
+    type: hysteria
     server: janeuorg.eu.org
-    port: 17957
-    type: tuic
-    uuid: aa082f73-3149-406b-954d-4202f02f994f
-    password: aa082f73-3149-406b-954d-4202f02f994f
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: alpCYsbSEuqiN3QiwfcasdeMCVKaz05HdT1I3ljwUTPZvbcKnv
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
   - name: racknerd
+    type: hysteria
     server: mareuorg.eu.org
-    port: 22728
-    type: tuic
-    uuid: 785487a1-2317-4187-aa20-4ae8c366c3eb
-    password: 785487a1-2317-4187-aa20-4ae8c366c3eb
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: xE97rCjKkWpMLAPSlWOouzb50xfn2Ui72RzY3US53dwtM2d3Zu
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
   - name: virmach
+    type: hysteria
     server: febeuorg.eu.org
-    port: 18511
-    type: tuic
-    uuid: 53a6be65-20c3-433f-9ceb-a866f71ea6c9
-    password: 53a6be65-20c3-433f-9ceb-a866f71ea6c9
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: udTANuykHGv3kjQuBunzXakZBNLWMl5xGgUUYQEIU40aPYRMu3
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: febeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
 #
 proxy-groups:
   - name: PROXY
