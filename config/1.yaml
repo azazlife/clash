@@ -1,6 +1,6 @@
 mixed-port: 7890 
 geodata-mode: true
-tcp-concurrent: false
+tcp-concurrent: true
 find-process-mode: strict
 global-client-fingerprint: chrome
 allow-lan: true
@@ -40,48 +40,53 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
+	- '*'
+    - '+.lan'
+    - '+.local'
     - dns.msftncsi.com
     - www.msftncsi.com
     - www.msftconnecttest.com
   default-nameserver:
     - 223.5.5.5
 #    - 119.29.29.29
-    - 9.9.9.9
+#    - 9.9.9.9
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - tls://dns.alidns.com
-    - tls://dot.pub
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-  fallback:
-    - 9.9.9.9
-    - 1.1.1.1
-    - 8.8.8.8
-    - tls://dns.quad9.net
-    - tls://1dot1dot1dot1.cloudflare-dns.com
-    - tls://dns.google
-    - https://dns.quad9.net/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-#  proxy-server-nameserver:
-#  - https://dns.alidns.com/dns-query
-#  - https://doh.pub/dns-query
-#  nameserver-policy:
-#    "geosite:cn,private":
-#    - https://doh.pub/dns-query
+#    - 223.5.5.5
+#    - 119.29.29.29
+#    - tls://dns.alidns.com
+#    - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
+	- 'tls://8.8.4.4#dns'
+    - 'tls://1.0.0.1#dns'
+#  fallback:
+#    - 9.9.9.9
+#    - 1.1.1.1
+#    - 8.8.8.8
+#    - tls://dns.quad9.net
+#    - tls://1dot1dot1dot1.cloudflare-dns.com
+#    - tls://dns.google
+#    - https://dns.quad9.net/dns-query
+#    - https://dns.cloudflare.com/dns-query
+#    - https://dns.google/dns-query
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    geosite:
+#      - gfw
+#    ipcidr:
+#      - 240.0.0.0/4
+#    domain:
+#      - '+.google.com'
+#      - '+.facebook.com'
+#      - '+.youtube.com'
+  proxy-server-nameserver:
+#  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
 #
 proxies:
   - name: cloudcone
@@ -162,7 +167,7 @@ rule-providers:
 rules:
 #  - RULE-SET,antiad,REJECT
   - RULE-SET,mydirect,DIRECT
-  - RULE-SET,myproxy,PROXY
+  - RULE-SET,myproxy,cloudcone
 #  - GEOSITE,category-ads-all,REJECT
 # 白名单模式
 # GEOSITE规则
