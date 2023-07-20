@@ -85,53 +85,44 @@ dns:
 #
 proxies:
   - name: cloudcone
-    type: hysteria
-    server: janeuorg.eu.org
-    ports: 47000-48000
-    auth_str: alpCYsbSEuqiN3QiwfcasdeMCVKaz05HdT1I3ljwUTPZvbcKnv
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: janeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    type: vless
+    server: 198.74.122.132
+    port: 18340
+    uuid: acd71f16-a27c-49d0-9b4c-c7058c3e9ddd
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: dl.google.com
+    reality-opts:
+      public-key: a_b0wT7SGOW_Q5A9eXyQVj4A7yFcLrPsYzx-iRDNkWI
+    client-fingerprint: chrome
   - name: racknerd
-    type: hysteria
-    server: mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: xE97rCjKkWpMLAPSlWOouzb50xfn2Ui72RzY3US53dwtM2d3Zu
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: mareuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    type: vless
+    server: 107.173.86.137
+    port: 14909
+    uuid: 3a95b32c-1f77-48a9-8c85-49e17ec6d16f
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: dl.google.com
+    reality-opts:
+      public-key: jBzDd6bwkRXQBawLeZ75zQ6t-hBj6AHe0i7G3LaBqh0
+    client-fingerprint: chrome
   - name: virmach
-    type: hysteria
-    server: febeuorg.eu.org
-    ports: 47000-48000
-    auth_str: udTANuykHGv3kjQuBunzXakZBNLWMl5xGgUUYQEIU40aPYRMu3
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: febeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    type: vless
+    server: 47.87.142.189
+    port: 22738
+    uuid: d14a9e90-9508-4040-849b-ee9f558417b3
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: dl.google.com
+    reality-opts:
+      public-key: 1Y3Z51avvMu8Lv9ValrqE3d2JAAWGDJMBke3d9uF6Qk
+    client-fingerprint: chrome
 #
 proxy-groups:
   - name: PROXY
