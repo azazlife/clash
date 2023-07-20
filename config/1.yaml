@@ -85,44 +85,41 @@ dns:
 #
 proxies:
   - name: cloudcone
-    type: vless
-    server: 198.74.122.132
-    port: 18340
-    uuid: acd71f16-a27c-49d0-9b4c-c7058c3e9ddd
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: dl.google.com
-    reality-opts:
-      public-key: a_b0wT7SGOW_Q5A9eXyQVj4A7yFcLrPsYzx-iRDNkWI
-    client-fingerprint: chrome
+    server: janeuorg.eu.org
+    port: 21481
+    type: tuic
+    uuid: ae7db0fb-6e55-4ab2-aa4e-1bf512669c59
+    password: ae7db0fb-6e55-4ab2-aa4e-1bf512669c59
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native
+    congestion-controller: bbr
   - name: racknerd
-    type: vless
-    server: 107.173.86.137
-    port: 14909
-    uuid: 3a95b32c-1f77-48a9-8c85-49e17ec6d16f
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: dl.google.com
-    reality-opts:
-      public-key: jBzDd6bwkRXQBawLeZ75zQ6t-hBj6AHe0i7G3LaBqh0
-    client-fingerprint: chrome
+    server: mareuorg.eu.org
+    port: 25299
+    type: tuic
+    uuid: 9ddf7d4e-760b-444a-958f-cd190578bf1a
+    password: 9ddf7d4e-760b-444a-958f-cd190578bf1a
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native
+    congestion-controller: bbr
   - name: virmach
-    type: vless
-    server: 47.87.142.189
-    port: 22738
-    uuid: d14a9e90-9508-4040-849b-ee9f558417b3
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: dl.google.com
-    reality-opts:
-      public-key: 1Y3Z51avvMu8Lv9ValrqE3d2JAAWGDJMBke3d9uF6Qk
-    client-fingerprint: chrome
+    server: febeuorg.eu.org
+    port: 15840
+    type: tuic
+    uuid: 767a37fe-409b-4e22-adfc-81ef5bfe0ca3
+    password: 767a37fe-409b-4e22-adfc-81ef5bfe0ca3
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native
+    congestion-controller: bbr
 #
 proxy-groups:
   - name: PROXY
