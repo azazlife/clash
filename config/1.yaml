@@ -96,10 +96,6 @@ proxies:
     uuid: ae7db0fb-6e55-4ab2-aa4e-1bf512669c59
     password: ae7db0fb-6e55-4ab2-aa4e-1bf512669c59
     alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native
     congestion-controller: bbr
   - name: racknerd
     server: mareuorg.eu.org
@@ -108,10 +104,6 @@ proxies:
     uuid: 9ddf7d4e-760b-444a-958f-cd190578bf1a
     password: 9ddf7d4e-760b-444a-958f-cd190578bf1a
     alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native
     congestion-controller: bbr
   - name: virmach
     server: febeuorg.eu.org
@@ -120,10 +112,6 @@ proxies:
     uuid: 767a37fe-409b-4e22-adfc-81ef5bfe0ca3
     password: 767a37fe-409b-4e22-adfc-81ef5bfe0ca3
     alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native
     congestion-controller: bbr
 #
 proxy-groups:
