@@ -57,7 +57,7 @@ dns:
 #    - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
-	- 'tls://8.8.4.4#dns'
+    - 'tls://8.8.4.4#dns'
     - 'tls://1.0.0.1#dns'
 #  fallback:
 #    - 9.9.9.9
