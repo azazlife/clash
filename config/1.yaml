@@ -49,70 +49,94 @@ dns:
   default-nameserver:
     - 223.5.5.5
 #    - 119.29.29.29
-    - 9.9.9.9
+#    - 9.9.9.9
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - tls://dns.alidns.com
-    - tls://dot.pub
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-#    - 'tls://8.8.4.4#dns'
-#    - 'tls://1.0.0.1#dns'
-  fallback:
-    - 9.9.9.9
-    - 1.1.1.1
-    - 8.8.8.8
-    - tls://dns.quad9.net
-    - tls://1dot1dot1dot1.cloudflare-dns.com
-    - tls://dns.google
-    - https://dns.quad9.net/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-#  proxy-server-nameserver:
-#  - https://dns.alidns.com/dns-query
-#  - https://doh.pub/dns-query
-#  nameserver-policy:
-#    "geosite:cn,private":
-#    - https://doh.pub/dns-query
+#    - 223.5.5.5
+#    - 119.29.29.29
+#    - tls://dns.alidns.com
+#    - tls://dot.pub
 #    - https://dns.alidns.com/dns-query
+#    - https://doh.pub/dns-query
+    - 'tls://8.8.4.4#dns'
+    - 'tls://1.0.0.1#dns'
+#  fallback:
+#    - 9.9.9.9
+#    - 1.1.1.1
+#    - 8.8.8.8
+#    - tls://dns.quad9.net
+#    - tls://1dot1dot1dot1.cloudflare-dns.com
+#    - tls://dns.google
+#    - https://dns.quad9.net/dns-query
+#    - https://dns.cloudflare.com/dns-query
+#    - https://dns.google/dns-query
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    geosite:
+#      - gfw
+#    ipcidr:
+#      - 240.0.0.0/4
+#    domain:
+#      - '+.google.com'
+#      - '+.facebook.com'
+#      - '+.youtube.com'
+  proxy-server-nameserver:
+#  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
 #
 proxies:
   - name: cloudcone
+    type: hysteria
     server: janeuorg.eu.org
-    port: 21481
-    type: tuic
-    uuid: ae7db0fb-6e55-4ab2-aa4e-1bf512669c59
-    password: ae7db0fb-6e55-4ab2-aa4e-1bf512669c59
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: aAhzlIo658FIihAekwVtPOmdQZQIUgr3pyyyuqvnT32k3dUHph
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
   - name: racknerd
+    type: hysteria
     server: mareuorg.eu.org
-    port: 25299
-    type: tuic
-    uuid: 9ddf7d4e-760b-444a-958f-cd190578bf1a
-    password: 9ddf7d4e-760b-444a-958f-cd190578bf1a
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: gM19mB6fcmWZ3HgdnrDc10UldgyKkQApsML3NvljJfvy0cBWFF
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
   - name: virmach
+    type: hysteria
     server: febeuorg.eu.org
-    port: 15840
-    type: tuic
-    uuid: 767a37fe-409b-4e22-adfc-81ef5bfe0ca3
-    password: 767a37fe-409b-4e22-adfc-81ef5bfe0ca3
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: 28ai7NcusJLHRcTjLnrNubljYrbGzwVzzMUJIO0uq5VDdD1clN
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: febeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
 #
 proxy-groups:
   - name: PROXY
