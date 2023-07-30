@@ -1,82 +1,76 @@
-mixed-port: 7890 
-geodata-mode: true
-tcp-concurrent: true
-find-process-mode: strict
-global-client-fingerprint: chrome
+mixed-port: 7890
 allow-lan: true
+bind-address: '*'
+find-process-mode: strict
 mode: rule
-log-level: info
-ipv6: true
-external-controller: 0.0.0.0:9090
 geox-url:
   geoip: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
   geosite: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
   mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:9090
+global-client-fingerprint: chrome
 profile:
   store-selected: true
-  store-fake-ip: false
-#
-sniffer:
-  enable: false
-  sniff:
-    TLS:
-      ports: [443, 8443]
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-#
-tun:
-  enable: false
-  stack: system
-  dns-hijack:
-    - 'any:53'
-  auto-route: true
-  auto-detect-interface: true
+  store-fake-ip: true
+geodata-loader: memconservative
+geodata-mode: true
+tcp-concurrent: true
+unified-delay: true
 #
 dns:
   enable: true
-  listen: 127.0.0.1:1053
+  prefer-h3: true
+  listen: 0.0.0.0:1053
   ipv6: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+#    - 1.1.1.1
+#    - 8.8.8.8
+    - system
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  use-hosts: true
   fake-ip-filter:
     - dns.msftncsi.com
     - www.msftncsi.com
     - www.msftconnecttest.com
-  default-nameserver:
-    - 223.5.5.5
-#    - 119.29.29.29
-    - 9.9.9.9
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - tls://dns.alidns.com
-    - tls://dot.pub
+#    - 223.5.5.5
+#    - 119.29.29.29
+#    - tls://dns.alidns.com
+#    - tls://dot.pub
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
 #    - 'tls://8.8.4.4#dns'
 #    - 'tls://1.0.0.1#dns'
-  fallback:
-    - 9.9.9.9
-    - 1.1.1.1
-    - 8.8.8.8
-    - tls://dns.quad9.net
-    - tls://1dot1dot1dot1.cloudflare-dns.com
-    - tls://dns.google
-    - https://dns.quad9.net/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+#    - https://bdafc461.d.adguard-dns.com/dns-query
+#    - tls://bdafc461.d.adguard-dns.com
+#    - quic://bdafc461.d.adguard-dns.com
+#    - https://dns.nextdns.io/8657cb
+#  fallback:
+#    - 9.9.9.9
+#    - 1.1.1.1
+#    - 8.8.8.8
+#    - tls://dns.quad9.net
+#    - tls://1dot1dot1dot1.cloudflare-dns.com
+#    - tls://dns.google
+#    - https://dns.quad9.net/dns-query
+#    - https://dns.cloudflare.com/dns-query
+#    - https://dns.google/dns-query
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    geosite:
+#      - gfw
+#    ipcidr:
+#      - 240.0.0.0/4
+#    domain:
+#      - '+.google.com'
+#      - '+.facebook.com'
+#      - '+.youtube.com'
 #  proxy-server-nameserver:
 #  - https://dns.alidns.com/dns-query
 #  - https://doh.pub/dns-query
@@ -181,15 +175,15 @@ rules:
 # 白名单模式
 # GEOSITE规则
   - GEOSITE,google,PROXY
-  - GEOSITE,private,DIRECT
   - GEOSITE,apple-cn,DIRECT
   - GEOSITE,google-cn,DIRECT
   - GEOSITE,tld-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
-  - GEOSITE,geolocation-!cn,PROXY
+  - GEOSITE,private,DIRECT
   - GEOSITE,cn,DIRECT
+#  - GEOSITE,geolocation-!cn,PROXY
 # GEOIP规则
-  - GEOIP,google,PROXY
+#  - GEOIP,google,PROXY
   - GEOIP,private,DIRECT
   - GEOIP,cn,DIRECT
   - MATCH,PROXY
@@ -197,7 +191,7 @@ rules:
 # GEOSITE规则
 #  - GEOSITE,google,PROXY
 #  - GEOSITE,gfw,PROXY
-#  - GEOSITE,greatfire,PROXY
+#  - GEOSITE,geolocation-!cn,PROXY
 # GEOIP规则
 #  - GEOIP,google,PROXY
 #  - GEOIP,telegram,PROXY
