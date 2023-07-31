@@ -14,7 +14,6 @@ global-client-fingerprint: chrome
 profile:
   store-selected: true
   store-fake-ip: true
-geodata-loader: memconservative
 geodata-mode: true
 tcp-concurrent: true
 unified-delay: true
@@ -29,7 +28,6 @@ dns:
     - 119.29.29.29
 #    - 1.1.1.1
 #    - 8.8.8.8
-    - system
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   use-hosts: true
@@ -40,8 +38,8 @@ dns:
   nameserver:
 #    - 223.5.5.5
 #    - 119.29.29.29
-#    - tls://dns.alidns.com
-#    - tls://dot.pub
+    - tls://dns.alidns.com
+    - tls://dot.pub
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
 #    - 'tls://8.8.4.4#dns'
