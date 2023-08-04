@@ -9,7 +9,7 @@ geox-url:
   mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
 log-level: info
 ipv6: true
-external-controller: 127.0.0.1:9090
+external-controller: 0.0.0.0:9090
 global-client-fingerprint: chrome
 profile:
   store-selected: true
@@ -21,7 +21,7 @@ unified-delay: true
 dns:
   enable: true
   prefer-h3: true
-  listen: 127.0.0.1:1053
+  listen: 0.0.0.0:1053
   ipv6: true
   default-nameserver:
     - 223.5.5.5
