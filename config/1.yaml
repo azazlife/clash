@@ -13,10 +13,10 @@ external-controller: 0.0.0.0:9090
 global-client-fingerprint: chrome
 profile:
   store-selected: true
-  store-fake-ip: true
+#  store-fake-ip: true
 geodata-mode: true
 tcp-concurrent: true
-unified-delay: true
+#unified-delay: true
 #
 dns:
   enable: true
