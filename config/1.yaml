@@ -1,12 +1,15 @@
 mixed-port: 7890
 find-process-mode: strict
 mode: rule
+geodata-mode: true
 geox-url:
   geoip: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
   geosite: "https://ghproxy.com/https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
   mmdb: "https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
 log-level: info
+ipv6: true
 external-controller: 127.0.0.1:9090
+tcp-concurrent: true
 global-client-fingerprint: chrome
 unified-delay: true
 #
@@ -15,7 +18,7 @@ dns:
   listen: 0.0.0.0:1053
   default-nameserver:
     - 223.5.5.5
-    - 8.8.8.8
+    - 119.29.29.29
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   nameserver:
@@ -25,27 +28,27 @@ dns:
 #    - tls://dot.pub
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
-  fallback:
+#  fallback:
 #    - 9.9.9.9
 #    - 1.1.1.1
 #    - 8.8.8.8
 #    - tls://dns.quad9.net
 #    - tls://1dot1dot1dot1.cloudflare-dns.com
 #    - tls://dns.google
-    - https://dns.quad9.net/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+#    - https://dns.quad9.net/dns-query
+#    - https://dns.cloudflare.com/dns-query
+#    - https://dns.google/dns-query
+#  fallback-filter:
+#    geoip: true
+#    geoip-code: CN
+#    geosite:
+#      - gfw
+#    ipcidr:
+#      - 240.0.0.0/4
+#    domain:
+#      - '+.google.com'
+#      - '+.facebook.com'
+#      - '+.youtube.com'
 #
 proxies:
   - name: cloudcone
@@ -134,27 +137,27 @@ rules:
 #  - GEOSITE,category-ads-all,REJECT
 # 白名单模式
 # GEOSITE规则
-  - GEOSITE,google,PROXY
-  - GEOSITE,apple-cn,DIRECT
-  - GEOSITE,google-cn,DIRECT
-  - GEOSITE,tld-cn,DIRECT
-  - GEOSITE,category-games@cn,DIRECT
-  - GEOSITE,private,DIRECT
-  - GEOSITE,cn,DIRECT
-  - GEOSITE,geolocation-!cn,PROXY
-# GEOIP规则
-  - GEOIP,google,PROXY
-  - GEOIP,private,DIRECT
-  - GEOIP,cn,DIRECT
-  - MATCH,PROXY
-# 黑名单模式
-# GEOSITE规则
 #  - GEOSITE,google,PROXY
+#  - GEOSITE,apple-cn,DIRECT
+#  - GEOSITE,google-cn,DIRECT
+#  - GEOSITE,tld-cn,DIRECT
+#  - GEOSITE,category-games@cn,DIRECT
+#  - GEOSITE,private,DIRECT
+#  - GEOSITE,cn,DIRECT
 #  - GEOSITE,geolocation-!cn,PROXY
-#  - GEOSITE,gfw,PROXY
 # GEOIP规则
 #  - GEOIP,google,PROXY
-#  - GEOIP,telegram,PROXY
-#  - GEOIP,us,PROXY
-#  - GEOIP,jp,PROXY
-#  - MATCH,DIRECT
+#  - GEOIP,private,DIRECT
+#  - GEOIP,cn,DIRECT
+#  - MATCH,PROXY
+# 黑名单模式
+# GEOSITE规则
+  - GEOSITE,google,PROXY
+  - GEOSITE,geolocation-!cn,PROXY
+  - GEOSITE,gfw,PROXY
+# GEOIP规则
+  - GEOIP,google,PROXY
+  - GEOIP,telegram,PROXY
+  - GEOIP,us,PROXY
+  - GEOIP,jp,PROXY
+  - MATCH,DIRECT
