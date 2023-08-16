@@ -55,53 +55,29 @@ dns:
 #
 proxies:
   - name: cloudcone
-    type: hysteria
     server: janeuorg.eu.org
-    ports: 47000-48000
-    auth_str: aAhzlIo658FIihAekwVtPOmdQZQIUgr3pyyyuqvnT32k3dUHph
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: janeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 20691
+    type: tuic
+    uuid: 5c62a101-c89b-4e75-b97a-43368b674a5a
+    password: 5c62a101-c89b-4e75-b97a-43368b674a5a
+    alpn: [h3]
+    congestion-controller: bbr
   - name: racknerd
-    type: hysteria
     server: mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: gM19mB6fcmWZ3HgdnrDc10UldgyKkQApsML3NvljJfvy0cBWFF
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: mareuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 16691
+    type: tuic
+    uuid: 178263f0-3bf6-46dc-8bb3-d0d31384f658
+    password: 178263f0-3bf6-46dc-8bb3-d0d31384f658
+    alpn: [h3]
+    congestion-controller: bbr
   - name: virmach
-    type: hysteria
     server: febeuorg.eu.org
-    ports: 47000-48000
-    auth_str: 28ai7NcusJLHRcTjLnrNubljYrbGzwVzzMUJIO0uq5VDdD1clN
-    alpn:
-      - h3
-    protocol: udp
-    up: 11
-    down: 55
-    sni: febeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 5767168
-    recv_window: 23068672
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 15112
+    type: tuic
+    uuid: e70520ae-6d3a-489a-b24f-da799dffb8e4
+    password: e70520ae-6d3a-489a-b24f-da799dffb8e4
+    alpn: [h3]
+    congestion-controller: bbr
 #
 proxy-groups:
   - name: PROXY
