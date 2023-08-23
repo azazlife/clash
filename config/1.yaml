@@ -14,7 +14,7 @@ global-client-fingerprint: chrome
 unified-delay: true
 #
 dns:
-  enable: true
+  enable: false
   listen: 0.0.0.0:1053
   ipv6: true
   default-nameserver:
