@@ -19,8 +19,8 @@ dns:
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
-    - tls://1.12.12.12:853
-    - tls://223.5.5.5:853
+#    - tls://1.12.12.12:853
+#    - tls://223.5.5.5:853
 #    - 9.9.9.9
 #    - 1.1.1.1
 #    - 8.8.8.8
@@ -32,9 +32,9 @@ dns:
 #    - tls://dns.alidns.com
 #    - tls://dot.pub
     - https://223.5.5.5/dns-query
+    - https://223.6.6.6/dns-query
     - https://1.12.12.12/dns-query
     - https://120.53.53.53/dns-query
-    - https://223.6.6.6/dns-query
 #    - https://dns.alidns.com/dns-query
 #    - https://doh.pub/dns-query
 #  fallback:
@@ -64,29 +64,53 @@ dns:
 #
 proxies:
   - name: cloudcone
+    type: hysteria
     server: janeuorg.eu.org
-    port: 20691
-    type: tuic
-    uuid: 5c62a101-c89b-4e75-b97a-43368b674a5a
-    password: 5c62a101-c89b-4e75-b97a-43368b674a5a
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: mzTPJ1l6Bx28697jXPpGmnsg1Dg2U3U9BxIlGNCum3qz5wot0C
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: janeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 11534336
+    recv_window: 46137344
+    disable_mtu_discovery: true
+    fast-open: true
   - name: racknerd
+    type: hysteria
     server: mareuorg.eu.org
-    port: 16691
-    type: tuic
-    uuid: 178263f0-3bf6-46dc-8bb3-d0d31384f658
-    password: 178263f0-3bf6-46dc-8bb3-d0d31384f658
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: qbRDOWXRrcqXE5T8BGvuYSCBFvkdFbbYoRQF9twENeF15jwBKw
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 11534336
+    recv_window: 46137344
+    disable_mtu_discovery: true
+    fast-open: true
   - name: virmach
+    type: hysteria
     server: febeuorg.eu.org
-    port: 15112
-    type: tuic
-    uuid: e70520ae-6d3a-489a-b24f-da799dffb8e4
-    password: e70520ae-6d3a-489a-b24f-da799dffb8e4
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: 2K7wmX8xMc1a1jiYHCHlJ6QnUjLbK8TF1nGKCqsG2rK8PuHqaj
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: febeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 11534336
+    recv_window: 46137344
+    disable_mtu_discovery: true
+    fast-open: true
 #
 proxy-groups:
   - name: PROXY
