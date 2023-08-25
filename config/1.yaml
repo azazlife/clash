@@ -146,7 +146,7 @@ rule-providers:
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,cloudcone
-  - GEOSITE,category-ads-all,REJECT
+#  - GEOSITE,category-ads-all,REJECT
 # 白名单模式
 # GEOSITE规则
   - GEOSITE,google,PROXY
