@@ -6,8 +6,6 @@ geox-url:
   geoip: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
   geosite: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
   mmdb: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
-log-level: debug
-ipv6: true
 external-controller: 127.0.0.1:9090
 tcp-concurrent: true
 global-client-fingerprint: chrome
@@ -25,7 +23,7 @@ dns:
 #    - 1.1.1.1
 #    - 8.8.8.8
   enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.1/8
+  fake-ip-range: 198.18.0.1/16
   nameserver:
 #    - 223.5.5.5
 #    - 119.29.29.29
@@ -131,45 +129,48 @@ proxy-groups:
 #
 rule-providers:
   mydirect:
-    type: http
     behavior: domain
-    path: ./ruleset/mydirect.yaml
+    interval: 86400
+    path: ./provider/rule-set/mydirect.yaml
+    type: http
     url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
-    interval: 86400
   myproxy:
-    type: http
     behavior: domain
-    path: ./ruleset/myproxy.yaml
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
     interval: 86400
+    path: ./provider/rule-set/myproxy.yaml
+    type: http
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
+  cn:
+    behavior: domain
+    interval: 86400
+    path: ./provider/rule-set/cn_domain.yaml
+    type: http
+    url: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
 #
 rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,cloudcone
-#  - GEOSITE,category-ads-all,REJECT
-# 白名单模式
+  - RULE-SET,cn,DIRECT
+  - GEOSITE,category-ads-all,REJECT
 # GEOSITE规则
-  - GEOSITE,google,PROXY
-  - GEOSITE,apple-cn,DIRECT
-  - GEOSITE,google-cn,DIRECT
-  - GEOSITE,tld-cn,DIRECT
-  - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,private,DIRECT
-  - GEOSITE,cn,DIRECT
+  - GEOSITE,youtube,PROXY
+  - GEOSITE,google,PROXY
+  - GEOSITE,twitter,PROXY
+  - GEOSITE,pixiv,PROXY
+  - GEOSITE,category-scholar-!cn,PROXY
+  - GEOSITE,biliintl,PROXY
+  - GEOSITE,onedrive,DIRECT
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,apple-cn,DIRECT
+  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
+  - GEOSITE,cn,DIRECT
 # GEOIP规则
-  - GEOIP,google,PROXY
-  - GEOIP,private,DIRECT
-  - GEOIP,cn,DIRECT
-  - MATCH,PROXY
-# 黑名单模式
-# GEOSITE规则
-#  - GEOSITE,google,PROXY
-#  - GEOSITE,geolocation-!cn,PROXY
-#  - GEOSITE,gfw,PROXY
-# GEOIP规则
-#  - GEOIP,google,PROXY
-#  - GEOIP,telegram,PROXY
-#  - GEOIP,us,PROXY
-#  - GEOIP,jp,PROXY
-#  - MATCH,DIRECT
+  - GEOIP,private,DIRECT,no-resolve
+  - GEOIP,telegram,PROXY
+  - GEOIP,JP,PROXY
+  - GEOIP,CN,DIRECT
+  - DST-PORT,80/8080/443/8443,PROXY
+  - MATCH,DIRECT
