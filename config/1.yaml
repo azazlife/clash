@@ -151,7 +151,7 @@ rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,cloudcone
   - RULE-SET,cn,DIRECT
-  - GEOSITE,category-ads-all,REJECT
+#  - GEOSITE,category-ads-all,REJECT
 # GEOSITE规则
   - GEOSITE,private,DIRECT
   - GEOSITE,youtube,PROXY
