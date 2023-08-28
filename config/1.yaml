@@ -115,7 +115,7 @@ proxy-groups:
     type: select
     proxies:
       - auto
-	  - load-balance
+      - load-balance
       - cloudcone
       - virmach
       - racknerd
