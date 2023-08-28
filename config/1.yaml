@@ -115,6 +115,7 @@ proxy-groups:
     type: select
     proxies:
       - auto
+	  - load-balance
       - cloudcone
       - virmach
       - racknerd
@@ -125,6 +126,14 @@ proxy-groups:
       - virmach
       - racknerd
     url: 'https://www.gstatic.com/generate_204'
+    interval: 300
+  - name: load-balance
+    type: load-balance
+    proxies:
+      - cloudcone
+      - virmach
+      - racknerd
+    url: "https://cp.cloudflare.com/generate_204"
     interval: 300
 #
 rule-providers:
