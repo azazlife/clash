@@ -3,7 +3,7 @@ proxies:
     type: hysteria
     server: janeuorg.eu.org
     ports: 47000-48000
-    auth_str: mzTPJ1l6Bx28697jXPpGmnsg1Dg2U3U9BxIlGNCum3qz5wot0C
+    auth_str: e6qfWVH0A5dfodGvE5NZNPx898FljWPPPoohjS2SzahUGG9AtW
     alpn:
       - h3
     protocol: udp
@@ -20,7 +20,7 @@ proxies:
     type: hysteria
     server: mareuorg.eu.org
     ports: 47000-48000
-    auth_str: qbRDOWXRrcqXE5T8BGvuYSCBFvkdFbbYoRQF9twENeF15jwBKw
+    auth_str: OlESi9qyLrTi0EgCb2JUl3jnKhpy0trgvynPQkib6U0cTnbkCt
     alpn:
       - h3
     protocol: udp
@@ -37,7 +37,7 @@ proxies:
     type: hysteria
     server: febeuorg.eu.org
     ports: 47000-48000
-    auth_str: 2K7wmX8xMc1a1jiYHCHlJ6QnUjLbK8TF1nGKCqsG2rK8PuHqaj
+    auth_str: ezRsQ3ro30ynFW2kftIlOAFHUx7YfTBgl1vSrmWQ1xLWHMx4k1
     alpn:
       - h3
     protocol: udp
