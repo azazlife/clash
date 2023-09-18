@@ -1,51 +1,36 @@
 proxies:
   - name: cloudcone
-    type: hysteria
     server: janeuorg.eu.org
-    ports: 47000-48000
-    auth_str: e6qfWVH0A5dfodGvE5NZNPx898FljWPPPoohjS2SzahUGG9AtW
-    alpn:
-      - h3
-    protocol: udp
-    up: 22
-    down: 110
-    sni: janeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 11534336
-    recv_window: 46137344
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 9154
+    type: tuic
+    uuid: 8c6c6d9a-054d-4a15-a558-e35311399f8e
+    password: 8c6c6d9a-054d-4a15-a558-e35311399f8e
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
 #
   - name: racknerd
-    type: hysteria
     server: mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: OlESi9qyLrTi0EgCb2JUl3jnKhpy0trgvynPQkib6U0cTnbkCt
-    alpn:
-      - h3
-    protocol: udp
-    up: 22
-    down: 110
-    sni: mareuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 11534336
-    recv_window: 46137344
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 46867
+    type: tuic
+    uuid: b52e316d-c3b6-4067-86b4-706007eef6e2
+    password: b52e316d-c3b6-4067-86b4-706007eef6e2
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
 #
   - name: virmach
-    type: hysteria
     server: febeuorg.eu.org
-    ports: 47000-48000
-    auth_str: ezRsQ3ro30ynFW2kftIlOAFHUx7YfTBgl1vSrmWQ1xLWHMx4k1
-    alpn:
-      - h3
-    protocol: udp
-    up: 22
-    down: 110
-    sni: febeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 11534336
-    recv_window: 46137344
-    disable_mtu_discovery: true
-    fast-open: true
+    port: 18442
+    type: tuic
+    uuid: f3045e18-cb55-461f-b9ef-67432bc0fcf0
+    password: f3045e18-cb55-461f-b9ef-67432bc0fcf0
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
