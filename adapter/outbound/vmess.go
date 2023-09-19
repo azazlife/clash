@@ -20,6 +20,8 @@ import (
 	"golang.org/x/net/http2"
 )
 
+var ErrUDPRemoteAddrMismatch = errors.New("udp packet dropped due to mismatched remote address")
+
 type Vmess struct {
 	*Base
 	client *vmess.Client
@@ -37,8 +39,8 @@ type VmessOption struct {
 	Server         string       `proxy:"server"`
 	Port           int          `proxy:"port"`
 	UUID           string       `proxy:"uuid"`
-	AlterID        int          `proxy:"alterId"`
-	Cipher         string       `proxy:"cipher"`
+	AlterID        int          `proxy:"alterId,omitempty"`
+	Cipher         string       `proxy:"cipher,omitempty"`
 	UDP            bool         `proxy:"udp,omitempty"`
 	Network        string       `proxy:"network,omitempty"`
 	TLS            bool         `proxy:"tls,omitempty"`
@@ -193,7 +195,9 @@ func (v *Vmess) DialContext(ctx context.Context, metadata *C.Metadata, opts ...d
 		if err != nil {
 			return nil, err
 		}
-		defer safeConnClose(c, err)
+		defer func(c net.Conn) {
+			safeConnClose(c, err)
+		}(c)
 
 		c, err = v.client.StreamConn(c, parseVmessAddr(metadata))
 		if err != nil {
@@ -208,7 +212,9 @@ func (v *Vmess) DialContext(ctx context.Context, metadata *C.Metadata, opts ...d
 		return nil, fmt.Errorf("%s connect error: %s", v.addr, err.Error())
 	}
 	tcpKeepAlive(c)
-	defer safeConnClose(c, err)
+	defer func(c net.Conn) {
+		safeConnClose(c, err)
+	}(c)
 
 	c, err = v.StreamConn(c, metadata)
 	return NewConn(c, v), err
@@ -232,7 +238,9 @@ func (v *Vmess) ListenPacketContext(ctx context.Context, metadata *C.Metadata, o
 		if err != nil {
 			return nil, err
 		}
-		defer safeConnClose(c, err)
+		defer func(c net.Conn) {
+			safeConnClose(c, err)
+		}(c)
 
 		c, err = v.client.StreamConn(c, parseVmessAddr(metadata))
 	} else {
@@ -241,7 +249,9 @@ func (v *Vmess) ListenPacketContext(ctx context.Context, metadata *C.Metadata, o
 			return nil, fmt.Errorf("%s connect error: %s", v.addr, err.Error())
 		}
 		tcpKeepAlive(c)
-		defer safeConnClose(c, err)
+		defer func(c net.Conn) {
+			safeConnClose(c, err)
+		}(c)
 
 		c, err = v.StreamConn(c, metadata)
 	}
@@ -254,7 +264,14 @@ func (v *Vmess) ListenPacketContext(ctx context.Context, metadata *C.Metadata, o
 }
 
 func NewVmess(option VmessOption) (*Vmess, error) {
+	return newVmess(option, false)
+}
+
+func newVmess(option VmessOption, isVless bool) (*Vmess, error) {
 	security := strings.ToLower(option.Cipher)
+	if security == "" {
+		security = "auto"
+	}
 	client, err := vmess.NewClient(vmess.Config{
 		UUID:     option.UUID,
 		AlterID:  uint16(option.AlterID),
@@ -262,6 +279,7 @@ func NewVmess(option VmessOption) (*Vmess, error) {
 		HostName: option.Server,
 		Port:     strconv.Itoa(option.Port),
 		IsAead:   option.AlterID == 0,
+		IsVless:  isVless,
 	})
 	if err != nil {
 		return nil, err
@@ -274,11 +292,16 @@ func NewVmess(option VmessOption) (*Vmess, error) {
 		}
 	}
 
+	tp := C.Vmess
+	if isVless {
+		tp = C.Vless
+	}
+
 	v := &Vmess{
 		Base: &Base{
 			name:  option.Name,
 			addr:  net.JoinHostPort(option.Server, strconv.Itoa(option.Port)),
-			tp:    C.Vmess,
+			tp:    tp,
 			udp:   option.UDP,
 			iface: option.Interface,
 			rmark: option.RoutingMark,
@@ -330,26 +353,25 @@ func parseVmessAddr(metadata *C.Metadata) *vmess.DstAddr {
 	var addr []byte
 	switch metadata.AddrType() {
 	case socks5.AtypIPv4:
-		addrType = byte(vmess.AtypIPv4)
+		addrType = vmess.AtypIPv4
 		addr = make([]byte, net.IPv4len)
 		copy(addr[:], metadata.DstIP.To4())
 	case socks5.AtypIPv6:
-		addrType = byte(vmess.AtypIPv6)
+		addrType = vmess.AtypIPv6
 		addr = make([]byte, net.IPv6len)
 		copy(addr[:], metadata.DstIP.To16())
 	case socks5.AtypDomainName:
-		addrType = byte(vmess.AtypDomainName)
+		addrType = vmess.AtypDomainName
 		addr = make([]byte, len(metadata.Host)+1)
 		addr[0] = byte(len(metadata.Host))
 		copy(addr[1:], []byte(metadata.Host))
 	}
 
-	port, _ := strconv.ParseUint(metadata.DstPort, 10, 16)
 	return &vmess.DstAddr{
 		UDP:      metadata.NetWork == C.UDP,
 		AddrType: addrType,
 		Addr:     addr,
-		Port:     uint(port),
+		Port:     uint(metadata.DstPort),
 	}
 }
 
@@ -358,7 +380,14 @@ type vmessPacketConn struct {
 	rAddr net.Addr
 }
 
+// WriteTo implments C.PacketConn.WriteTo
+// Since VMess doesn't support full cone NAT by design, we verify if addr matches uc.rAddr, and drop the packet if not.
 func (uc *vmessPacketConn) WriteTo(b []byte, addr net.Addr) (int, error) {
+	allowedAddr := uc.rAddr.(*net.UDPAddr)
+	destAddr := addr.(*net.UDPAddr)
+	if !(allowedAddr.IP.Equal(destAddr.IP) && allowedAddr.Port == destAddr.Port) {
+		return 0, ErrUDPRemoteAddrMismatch
+	}
 	return uc.Conn.Write(b)
 }
 

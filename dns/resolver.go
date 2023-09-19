@@ -16,6 +16,7 @@ import (
 	C "github.com/Dreamacro/clash/constant"
 
 	D "github.com/miekg/dns"
+	"github.com/samber/lo"
 	"golang.org/x/sync/singleflight"
 )
 
@@ -39,6 +40,7 @@ type Resolver struct {
 	group                 singleflight.Group
 	lruCache              *cache.LruCache
 	policy                *trie.DomainTrie
+	searchDomains         []string
 }
 
 // LookupIP request with TypeA and TypeAAAA, priority return TypeA
@@ -140,9 +142,14 @@ func (r *Resolver) ExchangeContext(ctx context.Context, m *D.Msg) (msg *D.Msg, e
 		msg = cache.(*D.Msg).Copy()
 		if expireTime.Before(now) {
 			setMsgTTL(msg, uint32(1)) // Continue fetch
-			go r.exchangeWithoutCache(ctx, m)
+			go func() {
+				ctx, cancel := context.WithTimeout(context.Background(), resolver.DefaultDNSTimeout)
+				r.exchangeWithoutCache(ctx, m)
+				cancel()
+			}()
 		} else {
-			setMsgTTL(msg, uint32(time.Until(expireTime).Seconds()))
+			// updating TTL by subtracting common delta time from each DNS record
+			updateMsgTTL(msg, uint32(time.Until(expireTime).Seconds()))
 		}
 		return
 	}
@@ -160,8 +167,11 @@ func (r *Resolver) exchangeWithoutCache(ctx context.Context, m *D.Msg) (msg *D.M
 			}
 
 			msg := result.(*D.Msg)
-
-			putMsgToCache(r.lruCache, q.String(), msg)
+			// OPT RRs MUST NOT be cached, forwarded, or stored in or loaded from master files.
+			msg.Extra = lo.Filter(msg.Extra, func(rr D.RR, index int) bool {
+				return rr.Header().Rrtype != D.TypeOPT
+			})
+			putMsgToCache(r.lruCache, q.String(), q, msg)
 		}()
 
 		isIPReq := isIPRequest(q)
@@ -255,7 +265,10 @@ func (r *Resolver) ipExchange(ctx context.Context, m *D.Msg) (msg *D.Msg, err er
 	res := <-msgCh
 	if res.Error == nil {
 		if ips := msgToIP(res.Msg); len(ips) != 0 {
-			if !r.shouldIPFallback(ips[0]) {
+			shouldNotFallback := lo.EveryBy(ips, func(ip net.IP) bool {
+				return !r.shouldIPFallback(ip)
+			})
+			if shouldNotFallback {
 				msg = res.Msg // no need to wait for fallback result
 				err = res.Error
 				return msg, err
@@ -285,16 +298,33 @@ func (r *Resolver) lookupIP(ctx context.Context, host string, dnsType uint16) ([
 	query := &D.Msg{}
 	query.SetQuestion(D.Fqdn(host), dnsType)
 
-	msg, err := r.Exchange(query)
+	msg, err := r.ExchangeContext(ctx, query)
 	if err != nil {
 		return nil, err
 	}
 
 	ips := msgToIP(msg)
-	if len(ips) == 0 {
+	if len(ips) != 0 {
+		return ips, nil
+	} else if len(r.searchDomains) == 0 {
 		return nil, resolver.ErrIPNotFound
 	}
-	return ips, nil
+
+	// query provided search domains serially
+	for _, domain := range r.searchDomains {
+		q := &D.Msg{}
+		q.SetQuestion(D.Fqdn(fmt.Sprintf("%s.%s", host, domain)), dnsType)
+		msg, err := r.ExchangeContext(ctx, q)
+		if err != nil {
+			return nil, err
+		}
+		ips := msgToIP(msg)
+		if len(ips) != 0 {
+			return ips, nil
+		}
+	}
+
+	return nil, resolver.ErrIPNotFound
 }
 
 func (r *Resolver) msgToDomain(msg *D.Msg) string {
@@ -336,6 +366,7 @@ type Config struct {
 	Pool           *fakeip.Pool
 	Hosts          *trie.DomainTrie
 	Policy         map[string]NameServer
+	SearchDomains  []string
 }
 
 func NewResolver(config Config) *Resolver {
@@ -345,10 +376,11 @@ func NewResolver(config Config) *Resolver {
 	}
 
 	r := &Resolver{
-		ipv6:     config.IPv6,
-		main:     transform(config.Main, defaultResolver),
-		lruCache: cache.New(cache.WithSize(4096), cache.WithStale(true)),
-		hosts:    config.Hosts,
+		ipv6:          config.IPv6,
+		main:          transform(config.Main, defaultResolver),
+		lruCache:      cache.New(cache.WithSize(4096), cache.WithStale(true)),
+		hosts:         config.Hosts,
+		searchDomains: config.SearchDomains,
 	}
 
 	if len(config.Fallback) != 0 {
