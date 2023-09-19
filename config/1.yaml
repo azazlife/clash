@@ -47,9 +47,9 @@ external-ui: /data/adb/box/clash/dashboard
 # 若选择 "random", 则按 Cloudflare Radar 数据按概率生成一个现代浏览器指纹。
 
 # geox-url:
-  # mmdb: "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
-  # geoip: "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat"
-  # geosite: "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat"
+  # mmdb: "https:ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+  # geoip: "https:ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  # geosite: "https:ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
 
 # 控制是否让 Clash 去匹配进程
 # always 开启，强制匹配所有进程
