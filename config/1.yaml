@@ -4,6 +4,9 @@ mixed-port: 7890
 redir-port: 9797
 tproxy-port: 9898
 
+experimental:
+  quic-go-disable-gso: true
+
 # rule 规则匹配
 # global 全局代理(需要在GLOBAL策略组选择代理/策略)
 # direct 全局直连
