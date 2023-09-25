@@ -166,12 +166,12 @@ dns:
 
   # 后备域名解析服务器，一般情况下使用境外 DNS, 保证结果可信
   # 配置 fallback后默认启用 fallback-filter,geoip-code为 cn
-  fallback:
+  # fallback:
     # - tls://8.8.4.4
     # - tls://1.1.1.1
-    - https://9.9.9.9/dns-query
-    - https://1.1.1.1/dns-query
-    - https://8.8.8.8/dns-query
+    # - https://9.9.9.9/dns-query
+    # - https://1.1.1.1/dns-query
+    # - https://8.8.8.8/dns-query
 
   # 代理节点域名解析服务器，仅用于解析代理节点的域名
   # proxy-server-nameserver:
