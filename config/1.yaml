@@ -283,12 +283,12 @@ rule-providers:
     # path: ./ruleset/Advertising_Domain.yaml
     # type: http
     # url: "https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml"
-  AntiAd:
-    behavior: domain
-    interval: 43200
-    path: ./ruleset/anti-ad-clash.yaml
-    type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
+  # AntiAd:
+    # behavior: domain
+    # interval: 43200
+    # path: ./ruleset/anti-ad-clash.yaml
+    # type: http
+    # url: "https://ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
   # AdBlock:
     # behavior: classical
     # interval: 43200
@@ -301,7 +301,7 @@ rules:
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,OTHER
   # - RULE-SET,AdBlock,REJECT
-  - RULE-SET,AntiAd,REJECT
+  # - RULE-SET,AntiAd,REJECT
   # - RULE-SET,Advertising,REJECT
   # - RULE-SET,Advertising_Domain,REJECT
   # - GEOSITE,category-ads-all,REJECT
