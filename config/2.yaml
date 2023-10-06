@@ -12,21 +12,19 @@ proxies:
     congestion-controller: bbr
 #
   - name: racknerd
-    type: hysteria
-    server: mareuorg.eu.org
-    port: 44820
-    auth_str: RNCcofwKxyMqw9n2jJHIDznnDLFpDoTG0oXmnoEi6RdJWdzl7B
-    alpn:
-      - h3
-    protocol: faketcp
-    up: 11
-    down: 110
-    sni: mareuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 11534336
-    recv_window: 46137344
-    disable_mtu_discovery: true
-    fast-open: true
+    type: vless
+    server: 107.173.86.137
+    port: 15204
+    uuid: acfbdae5-9e88-4aab-ab29-94f0b644462c
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: 
+    reality-opts:
+      public-key: 3kktBfu6A4s_I9c4O6ZWGyWKLTyPDzAaCdzNty_mo00
+      short-id: 6ba85179e30d4fc2
+    client-fingerprint: chrome
 #
   - name: virmach
     server: febeuorg.eu.org
