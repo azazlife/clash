@@ -13,7 +13,7 @@ proxies:
 #
   - name: racknerd
     type: vless
-    server: 107.173.86.137
+    server: www.mareuorg.eu.org
     port: 15204
     uuid: acfbdae5-9e88-4aab-ab29-94f0b644462c
     network: tcp
@@ -27,13 +27,16 @@ proxies:
     client-fingerprint: chrome
 #
   - name: virmach
-    server: febeuorg.eu.org
-    port: 18442
-    type: tuic
-    uuid: f3045e18-cb55-461f-b9ef-67432bc0fcf0
-    password: f3045e18-cb55-461f-b9ef-67432bc0fcf0
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
+    type: vless
+    server: www.febeuorg.eu.org
+    port: 443
+    uuid: 1704bc5d-2367-4379-821c-aab22d3d6b0a
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.febeuorg.eu.org
+    reality-opts:
+      public-key: pUzSNXGUvmjDxzyddejc3Z4tlo8qWz5tsbv6wwwHWRI
+      short-id: 6ba85179e30d4fc2
+    client-fingerprint: chrome
