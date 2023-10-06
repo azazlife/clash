@@ -14,15 +14,15 @@ proxies:
   - name: racknerd
     type: vless
     server: www.mareuorg.eu.org
-    port: 15204
-    uuid: acfbdae5-9e88-4aab-ab29-94f0b644462c
+    port: 443
+    uuid: 62e50150-9bf1-4c35-ba6d-952274519307
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: 
+    servername: www.mareuorg.eu.org
     reality-opts:
-      public-key: 3kktBfu6A4s_I9c4O6ZWGyWKLTyPDzAaCdzNty_mo00
+      public-key: nMvJLIoFV09808y_9rGlCheIjrIpwLj1w8qrwC8-MkQ
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
