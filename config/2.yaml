@@ -14,12 +14,12 @@ proxies:
   - name: racknerd
     type: hysteria
     server: mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: NxfjIdYUHbSb3ODi6GtZHIpxhQUTBK9W6vgh7gzXyolqdVlLIr
+    port: 44820
+    auth_str: RNCcofwKxyMqw9n2jJHIDznnDLFpDoTG0oXmnoEi6RdJWdzl7B
     alpn:
       - h3
-    protocol: udp
-    up: 22
+    protocol: faketcp
+    up: 11
     down: 110
     sni: mareuorg.eu.org
     skip-cert-verify: false
