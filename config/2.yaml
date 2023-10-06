@@ -12,16 +12,21 @@ proxies:
     congestion-controller: bbr
 #
   - name: racknerd
+    type: hysteria
     server: mareuorg.eu.org
-    port: 46867
-    type: tuic
-    uuid: b52e316d-c3b6-4067-86b4-706007eef6e2
-    password: b52e316d-c3b6-4067-86b4-706007eef6e2
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: NxfjIdYUHbSb3ODi6GtZHIpxhQUTBK9W6vgh7gzXyolqdVlLIr
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 11534336
+    recv_window: 46137344
+    disable_mtu_discovery: true
+    fast-open: true
 #
   - name: virmach
     server: febeuorg.eu.org
