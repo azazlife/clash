@@ -1,42 +1,27 @@
 proxies:
   - name: cloudcone
-    server: janeuorg.eu.org
-    port: 9154
-    type: tuic
-    uuid: 8c6c6d9a-054d-4a15-a558-e35311399f8e
-    password: 8c6c6d9a-054d-4a15-a558-e35311399f8e
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
+    type: hysteria2
+    server: www.janeuorg.eu.org
+    port: 11563
+    password: fafb1e52-e75a-4145-8439-286994335882
+    sni: www.janeuorg.eu.org
+    alpn:
+      - h3
 #
   - name: racknerd
-    type: vless
+    type: hysteria2
     server: www.mareuorg.eu.org
-    port: 443
-    uuid: 62e50150-9bf1-4c35-ba6d-952274519307
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.mareuorg.eu.org
-    reality-opts:
-      public-key: nMvJLIoFV09808y_9rGlCheIjrIpwLj1w8qrwC8-MkQ
-      short-id: 6ba85179e30d4fc2
-    client-fingerprint: chrome
+    port: 20229
+    password: 5c3aba28-b221-4ab1-b736-7167c69ad34e
+    sni: www.mareuorg.eu.org
+    alpn:
+      - h3
 #
   - name: virmach
-    type: vless
+    type: hysteria2
     server: www.febeuorg.eu.org
-    port: 443
-    uuid: 1704bc5d-2367-4379-821c-aab22d3d6b0a
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.febeuorg.eu.org
-    reality-opts:
-      public-key: pUzSNXGUvmjDxzyddejc3Z4tlo8qWz5tsbv6wwwHWRI
-      short-id: 6ba85179e30d4fc2
-    client-fingerprint: chrome
+    port: 18220
+    password: d7629dc7-f884-4cbf-a824-edb7934f7934
+    sni: www.febeuorg.eu.org
+    alpn:
+      - h3
