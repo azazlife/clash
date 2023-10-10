@@ -32,7 +32,7 @@ geodata-mode: true
 # memconservative：专为内存受限(小内存)设备优化的加载器(默认值)
 # geodata-loader: memconservative
 
-external-controller: 0.0.0.0:9090 
+external-controller: 127.0.0.1:9090 
 # secret: "123456"
 external-ui: /data/adb/box/clash/dashboard
 tcp-concurrent: true
@@ -125,7 +125,7 @@ dns:
     # - tls://223.5.5.5:853
 
   # dns 服务监听
-  listen: 0.0.0.0:1053
+  listen: 127.0.0.1:1053
   use-hosts: true
 
   # 可选值 fake-ip / redir-host
