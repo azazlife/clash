@@ -2,8 +2,8 @@ proxies:
   - name: cloudcone
     type: hysteria2
     server: www.janeuorg.eu.org
-    port: 11563
-    password: fafb1e52-e75a-4145-8439-286994335882
+    port: 14169
+    password: b6e5e95e-7cf0-4c9f-9580-9215b8471c80
     sni: www.janeuorg.eu.org
     alpn:
       - h3
