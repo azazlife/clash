@@ -312,7 +312,7 @@ rules:
   - GEOSITE,twitter,PROXY
   - GEOSITE,pixiv,PROXY
   - GEOSITE,category-scholar-!cn,PROXY
-  - GEOSITE,biliintl,PROXY
+  # - GEOSITE,biliintl,PROXY
   # - GEOSITE,onedrive,DIRECT
   # - GEOSITE,microsoft@cn,DIRECT
   # - GEOSITE,apple-cn,DIRECT
