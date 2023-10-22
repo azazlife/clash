@@ -20,12 +20,10 @@ proxies:
     congestion-controller: bbr
 #
   - name: virmach
-    type: hysteria2
     server: www.febeuorg.eu.org
-    port: 13668
-    up: "20 Mbps"
-    down: "100 Mbps"
+    port: 16493
+    type: tuic
+    uuid: 2b2ccaad-e948-49af-9beb-cb70ab95d102
     password: 2b2ccaad-e948-49af-9beb-cb70ab95d102
-    sni: www.febeuorg.eu.org
-    alpn:
-      - h3
+    alpn: [h3]
+    congestion-controller: bbr
