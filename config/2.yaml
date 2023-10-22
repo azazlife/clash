@@ -13,10 +13,10 @@ proxies:
   - name: racknerd
     type: hysteria2
     server: www.mareuorg.eu.org
-    port: 20229
+    port: 18428
     up: "20 Mbps"
     down: "100 Mbps"
-    password: 5c3aba28-b221-4ab1-b736-7167c69ad34e
+    password: a3af7b69-6f77-4a28-ab52-beac85a3e0cb
     sni: www.mareuorg.eu.org
     alpn:
       - h3
