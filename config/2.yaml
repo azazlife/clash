@@ -11,15 +11,13 @@ proxies:
       - h3
 #
   - name: racknerd
-    type: hysteria2
     server: www.mareuorg.eu.org
-    port: 18428
-    up: "20 Mbps"
-    down: "100 Mbps"
+    port: 24380
+    type: tuic
+    uuid: a3af7b69-6f77-4a28-ab52-beac85a3e0cb
     password: a3af7b69-6f77-4a28-ab52-beac85a3e0cb
-    sni: www.mareuorg.eu.org
-    alpn:
-      - h3
+    alpn: [h3]
+    congestion-controller: bbr
 #
   - name: virmach
     type: hysteria2
