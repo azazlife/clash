@@ -16,12 +16,3 @@ proxies:
     sni: www.mareuorg.eu.org
     alpn:
       - h3
-#
-  - name: virmach
-    type: hysteria2
-    server: www.febeuorg.eu.org
-    port: 18220
-    password: d7629dc7-f884-4cbf-a824-edb7934f7934
-    sni: www.febeuorg.eu.org
-    alpn:
-      - h3
