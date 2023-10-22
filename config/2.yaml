@@ -3,6 +3,8 @@ proxies:
     type: hysteria2
     server: www.janeuorg.eu.org
     port: 14169
+    up: "20 Mbps"
+    down: "100 Mbps"
     password: b6e5e95e-7cf0-4c9f-9580-9215b8471c80
     sni: www.janeuorg.eu.org
     alpn:
@@ -12,6 +14,8 @@ proxies:
     type: hysteria2
     server: www.mareuorg.eu.org
     port: 20229
+    up: "20 Mbps"
+    down: "100 Mbps"
     password: 5c3aba28-b221-4ab1-b736-7167c69ad34e
     sni: www.mareuorg.eu.org
     alpn:
@@ -21,6 +25,8 @@ proxies:
     type: hysteria2
     server: www.febeuorg.eu.org
     port: 13668
+    up: "20 Mbps"
+    down: "100 Mbps"
     password: 2b2ccaad-e948-49af-9beb-cb70ab95d102
     sni: www.febeuorg.eu.org
     alpn:
