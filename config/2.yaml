@@ -11,13 +11,21 @@ proxies:
       - h3
 #
   - name: racknerd
+    type: hysteria
     server: www.mareuorg.eu.org
-    port: 24380
-    type: tuic
-    uuid: a3af7b69-6f77-4a28-ab52-beac85a3e0cb
-    password: a3af7b69-6f77-4a28-ab52-beac85a3e0cb
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: ujtmcXK2WSbwK62v7Wz2pZ1AynXB6gpKMfRlCZokNxlB7mDvQn
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: www.mareuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 11534336
+    recv_window: 46137344
+    disable_mtu_discovery: true
+    fast-open: true
 #
   - name: virmach
     type: hysteria
