@@ -20,10 +20,18 @@ proxies:
     congestion-controller: bbr
 #
   - name: virmach
+    type: hysteria
     server: www.febeuorg.eu.org
-    port: 16493
-    type: tuic
-    uuid: 2b2ccaad-e948-49af-9beb-cb70ab95d102
-    password: 2b2ccaad-e948-49af-9beb-cb70ab95d102
-    alpn: [h3]
-    congestion-controller: bbr
+    ports: 47000-48000
+    auth_str: LyZFk2nRPjn0SEtEU7OSvEiyifLH4RFIvxF0RnmHh96sR2AokM
+    alpn:
+      - h3
+    protocol: udp
+    up: 22
+    down: 110
+    sni: www.febeuorg.eu.org
+    skip-cert-verify: false
+    recv_window_conn: 11534336
+    recv_window: 46137344
+    disable_mtu_discovery: true
+    fast-open: true
