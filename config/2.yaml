@@ -11,21 +11,19 @@ proxies:
       - h3
 #
   - name: racknerd
-    type: hysteria
-    server: www.mareuorg.eu.org
-    ports: 47000-48000
-    auth_str: ujtmcXK2WSbwK62v7Wz2pZ1AynXB6gpKMfRlCZokNxlB7mDvQn
-    alpn:
-      - h3
-    protocol: udp
-    up: 22
-    down: 110
-    sni: www.mareuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 11534336
-    recv_window: 46137344
-    disable_mtu_discovery: true
-    fast-open: true
+    type: vless
+    server: 107.173.86.137
+    port: 14811
+    uuid: 87f52b70-da6e-4c64-8645-b2439ce8c0c1
+    network: tcp
+    # tls: true
+    # udp: true
+    flow: xtls-rprx-vision
+    servername: updates.cdn-apple.com # REALITY servername
+    reality-opts:
+      public-key: UwmlQNRWWM0n8S095aKmYnSZ6f0wi5_WsF4VZqaltgY
+      short-id: 6ba85179e30d4fc2 # optional
+    client-fingerprint: chrome # cannot be empty
 #
   - name: virmach
     type: hysteria
