@@ -16,8 +16,8 @@ proxies:
     port: 14811
     uuid: 87f52b70-da6e-4c64-8645-b2439ce8c0c1
     network: tcp
-    # tls: true
-    # udp: true
+    tls: true
+    udp: true
     flow: xtls-rprx-vision
     servername: updates.cdn-apple.com
     reality-opts:
