@@ -19,7 +19,7 @@ proxies:
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.ebay.com
+    servername: ajax.aspnetcdn.com
     reality-opts:
       public-key: sHB4rkdax6zk1OTnHQNQJtc5eymDPMEor-UzQ7zPixY
       short-id: 6ba85179e30d4fc2
