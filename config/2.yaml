@@ -19,11 +19,11 @@ proxies:
     # tls: true
     # udp: true
     flow: xtls-rprx-vision
-    servername: updates.cdn-apple.com # REALITY servername
+    servername: updates.cdn-apple.com
     reality-opts:
       public-key: UwmlQNRWWM0n8S095aKmYnSZ6f0wi5_WsF4VZqaltgY
-      short-id: 6ba85179e30d4fc2 # optional
-    client-fingerprint: chrome # cannot be empty
+      short-id: 6ba85179e30d4fc2
+    client-fingerprint: chrome
 #
   - name: virmach
     type: hysteria
