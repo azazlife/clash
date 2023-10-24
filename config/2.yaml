@@ -13,15 +13,15 @@ proxies:
   - name: racknerd
     type: vless
     server: 107.173.86.137
-    port: 14811
+    port: 443
     uuid: 87f52b70-da6e-4c64-8645-b2439ce8c0c1
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: updates.cdn-apple.com
+    servername: www.ebay.com
     reality-opts:
-      public-key: UwmlQNRWWM0n8S095aKmYnSZ6f0wi5_WsF4VZqaltgY
+      public-key: sHB4rkdax6zk1OTnHQNQJtc5eymDPMEor-UzQ7zPixY
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
