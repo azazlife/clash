@@ -1,16 +1,16 @@
 proxies:
   - name: cloudcone
     type: vless
-    server: 142.171.9.118
-    port: 443
-    uuid: 4cadd3cc-b9ca-4861-a84e-20cc9be695cd
+    server: www.janeuorg.eu.org
+    port: 19476
+    uuid: 998b9b59-ffe2-473b-915c-0d13d372989a
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.navitime.co.jp
+    servername: www.janeuorg.eu.org
     reality-opts:
-      public-key: LZSlJzAu0bkbGuvhrAE0Gxijps1mMcyCSeP71keVpmc
+      public-key: -qj5OqEgRr8unE7fVDUNQ0LEv_ULe79GHxdWICYLfXI
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
