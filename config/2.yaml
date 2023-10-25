@@ -31,15 +31,15 @@ proxies:
 #
   - name: virmach
     type: vless
-    server: 141.11.211.57
-    port: 443
-    uuid: 4046b89d-89a7-4fd1-b91b-4cef836ad249
+    server: www.febeuorg.eu.org
+    port: 10740
+    uuid: 906858b0-bb58-4e33-a411-d1363567729a
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.navitime.co.jp
+    servername: www.febeuorg.eu.org
     reality-opts:
-      public-key: XmODr8YK6KliNX5ZzdsiJDpWndBBNRC1jWBfvk-qzAc
+      public-key: nG0lrn_U-Cn0ihGNa24eU7Wb9f5VhfG6Qhr_7WDM5Qo
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
