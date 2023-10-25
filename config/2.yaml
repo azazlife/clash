@@ -1,14 +1,18 @@
 proxies:
   - name: cloudcone
-    type: hysteria2
-    server: www.janeuorg.eu.org
-    port: 14169
-    up: "20 Mbps"
-    down: "100 Mbps"
-    password: b6e5e95e-7cf0-4c9f-9580-9215b8471c80
-    sni: www.janeuorg.eu.org
-    alpn:
-      - h3
+    type: vless
+    server: 142.171.9.118
+    port: 443
+    uuid: 4cadd3cc-b9ca-4861-a84e-20cc9be695cd
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.navitime.co.jp
+    reality-opts:
+      public-key: LZSlJzAu0bkbGuvhrAE0Gxijps1mMcyCSeP71keVpmc
+      short-id: 6ba85179e30d4fc2
+    client-fingerprint: chrome
 #
   - name: racknerd
     type: vless
@@ -19,25 +23,23 @@ proxies:
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.yahoo.co.jp
+    servername: www.navitime.co.jp
     reality-opts:
       public-key: sHB4rkdax6zk1OTnHQNQJtc5eymDPMEor-UzQ7zPixY
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
   - name: virmach
-    type: hysteria
-    server: www.febeuorg.eu.org
-    ports: 47000-48000
-    auth_str: LyZFk2nRPjn0SEtEU7OSvEiyifLH4RFIvxF0RnmHh96sR2AokM
-    alpn:
-      - h3
-    protocol: udp
-    up: 22
-    down: 110
-    sni: www.febeuorg.eu.org
-    skip-cert-verify: false
-    recv_window_conn: 11534336
-    recv_window: 46137344
-    disable_mtu_discovery: true
-    fast-open: true
+    type: vless
+    server: 141.11.211.57
+    port: 443
+    uuid: 4046b89d-89a7-4fd1-b91b-4cef836ad249
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.navitime.co.jp
+    reality-opts:
+      public-key: XmODr8YK6KliNX5ZzdsiJDpWndBBNRC1jWBfvk-qzAc
+      short-id: 6ba85179e30d4fc2
+    client-fingerprint: chrome
