@@ -16,16 +16,16 @@ proxies:
 #
   - name: racknerd
     type: vless
-    server: 107.173.86.137
-    port: 443
-    uuid: 87f52b70-da6e-4c64-8645-b2439ce8c0c1
+    server: www.mareuorg.eu.org
+    port: 16973
+    uuid: 30b66b57-994e-4c3b-a05a-5628c88d664b
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.navitime.co.jp
+    servername: www.mareuorg.eu.org
     reality-opts:
-      public-key: sHB4rkdax6zk1OTnHQNQJtc5eymDPMEor-UzQ7zPixY
+      public-key: Ca37Tkx8muSxgtHnN4MSTL3S76ypEvujySGPnzTEkhQ
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
