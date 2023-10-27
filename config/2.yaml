@@ -43,3 +43,20 @@ proxies:
       public-key: nG0lrn_U-Cn0ihGNa24eU7Wb9f5VhfG6Qhr_7WDM5Qo
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
+#
+  - name: "cloudflare"
+    server: icook.hk
+    port: 2095
+    client-fingerprint: random
+    type: vless
+    uuid: f72b7917-961c-48dd-9d54-fce30c397586
+    tls: false
+    tfo: false
+    servername: jan.maycloudflare.workers.dev
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: jan.maycloudflare.workers.dev  
+    udp: true
