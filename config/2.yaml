@@ -2,50 +2,50 @@ proxies:
   - name: cloudcone
     type: vless
     server: www.janeuorg.eu.org
-    port: 19476
-    uuid: 998b9b59-ffe2-473b-915c-0d13d372989a
+    port: 443
+    uuid: 4057806c-8327-4fde-8bf2-0d5b11f370e0
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.janeuorg.eu.org
+    servername: www.wikihow.com
     reality-opts:
-      public-key: -qj5OqEgRr8unE7fVDUNQ0LEv_ULe79GHxdWICYLfXI
+      public-key: nKg9MRFk-sm1E-37ZBYu9yQGOUxkYzZuUiLJzQlvcUg
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
   - name: racknerd
     type: vless
     server: www.mareuorg.eu.org
-    port: 16973
-    uuid: 30b66b57-994e-4c3b-a05a-5628c88d664b
+    port: 443
+    uuid: 36c01922-b5b5-420f-8056-d77545c54458
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.mareuorg.eu.org
+    servername: www.formula1.com
     reality-opts:
-      public-key: Ca37Tkx8muSxgtHnN4MSTL3S76ypEvujySGPnzTEkhQ
+      public-key: 94UPSXZ9sdWeGTuzsIn9DtJ9TxCvt1O6BuU9saIuklA
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
   - name: virmach
     type: vless
     server: www.febeuorg.eu.org
-    port: 10740
-    uuid: 906858b0-bb58-4e33-a411-d1363567729a
+    port: 443
+    uuid: 14c349f8-4f3a-4cf0-97f9-8ee7d5c40ace
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.febeuorg.eu.org
+    servername: www.thespruce.com
     reality-opts:
-      public-key: nG0lrn_U-Cn0ihGNa24eU7Wb9f5VhfG6Qhr_7WDM5Qo
+      public-key: iHZOZHmtjLBHquBCPQGNPxrj9iwtR79ZpNqnQOX-o0s
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
-  - name: "cloudflare"
-    server: poki.com
+  - name: cloudflare
+    server: blaze-1.com
     port: 2095
     client-fingerprint: random
     type: vless
