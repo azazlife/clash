@@ -22,7 +22,7 @@ bind-address: '*'
 # info 输出一般运行的内容，以及 error 和 warning 级别的日志
 # debug 尽可能的输出运行中所有的信息
 log-level: info
-ipv6: true
+ipv6: false
 
 # 更改geoip使用文件,mmdb或者dat,true为dat
 geodata-mode: true
