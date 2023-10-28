@@ -17,15 +17,15 @@ proxies:
   - name: racknerd
     type: vless
     server: www.mareuorg.eu.org
-    port: 443
-    uuid: 36c01922-b5b5-420f-8056-d77545c54458
+    port: 17458
+    uuid: 04c579bb-8cfb-485b-add9-df57849de761
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.formula1.com
+    servername: www.mareuorg.eu.org
     reality-opts:
-      public-key: 94UPSXZ9sdWeGTuzsIn9DtJ9TxCvt1O6BuU9saIuklA
+      public-key: fBkM2RLIljZwdzFk3e45ym22PPhn4F_pvoYYineuewY
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
