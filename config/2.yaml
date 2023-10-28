@@ -8,7 +8,7 @@ proxies:
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.wikihow.com
+    servername: www.max.com
     reality-opts:
       public-key: nKg9MRFk-sm1E-37ZBYu9yQGOUxkYzZuUiLJzQlvcUg
       short-id: 6ba85179e30d4fc2
