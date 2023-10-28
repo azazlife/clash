@@ -2,15 +2,15 @@ proxies:
   - name: cloudcone
     type: vless
     server: www.janeuorg.eu.org
-    port: 443
-    uuid: 4057806c-8327-4fde-8bf2-0d5b11f370e0
+    port: 17855
+    uuid: 45fa3a07-ada8-4c2b-9d12-de24e7fc9f20
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.max.com
+    servername: www.janeuorg.eu.org
     reality-opts:
-      public-key: nKg9MRFk-sm1E-37ZBYu9yQGOUxkYzZuUiLJzQlvcUg
+      public-key: qnyUU4xVJ30JxxSVsDw4SEcGVAT-85hVcEQnNBXBnTw
       short-id: 6ba85179e30d4fc2
     client-fingerprint: chrome
 #
