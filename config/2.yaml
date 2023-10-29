@@ -45,7 +45,7 @@ proxies:
     client-fingerprint: chrome
 #
   - name: cloudflare
-    server: poki.com
+    server: pixabay.com
     port: 2095
     client-fingerprint: random
     type: vless
