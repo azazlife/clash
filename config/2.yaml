@@ -1,33 +1,21 @@
 proxies:
   - name: cloudcone
-    type: vless
+    type: hysteria2
     server: www.janeuorg.eu.org
-    port: 17855
-    uuid: 45fa3a07-ada8-4c2b-9d12-de24e7fc9f20
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.janeuorg.eu.org
-    reality-opts:
-      public-key: qnyUU4xVJ30JxxSVsDw4SEcGVAT-85hVcEQnNBXBnTw
-      short-id: 6ba85179e30d4fc2
-    client-fingerprint: chrome
+    port: 10846
+    password: 102c3a5e-abe6-45b6-a041-6f8049c84e31
+    sni: www.janeuorg.eu.org
+    up: "30 Mbps"
+    down: "200 Mbps"
 #
   - name: racknerd
-    type: vless
+    type: hysteria2
     server: www.mareuorg.eu.org
-    port: 17458
-    uuid: 04c579bb-8cfb-485b-add9-df57849de761
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.mareuorg.eu.org
-    reality-opts:
-      public-key: fBkM2RLIljZwdzFk3e45ym22PPhn4F_pvoYYineuewY
-      short-id: 6ba85179e30d4fc2
-    client-fingerprint: chrome
+    port: 16941
+    password: ec56dc36-2688-4924-9a96-362328352828
+    sni: www.mareuorg.eu.org
+    up: "30 Mbps"
+    down: "200 Mbps"
 #
   - name: virmach
     type: hysteria2
