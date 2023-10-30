@@ -30,19 +30,13 @@ proxies:
     client-fingerprint: chrome
 #
   - name: virmach
-    type: vless
+    type: hysteria2
     server: www.febeuorg.eu.org
-    port: 23816
-    uuid: f7e4f351-1dc4-4f26-b43d-6ca6860613fe
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.febeuorg.eu.org
-    reality-opts:
-      public-key: Hx0Xm8w6k2EvLIAQH6ZwZJWw8rBQVpI5yug78tKxgmo
-      short-id: 6ba85179e30d4fc2
-    client-fingerprint: chrome
+    port: 10572
+    password: 2fac7fc9-cd2e-4831-95e2-dd716fe0cb27
+    sni: www.febeuorg.eu.org
+    up: "30 Mbps"
+    down: "200 Mbps"
 #
   - name: cloudflare
     server: pixabay.com
