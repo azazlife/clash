@@ -218,10 +218,14 @@ proxy-groups:
     type: fallback
     use:
       - provide
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
   - name: "URL-TEST"
     type: url-test
     use:
       - provide
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
   - name: OTHER
     type: select
     use:
