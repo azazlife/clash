@@ -5,8 +5,8 @@ proxies:
     port: 10846
     password: 102c3a5e-abe6-45b6-a041-6f8049c84e31
     sni: www.janeuorg.eu.org
-    up: "30 Mbps"
-    down: "200 Mbps"
+    up: "10 Mbps"
+    down: "100 Mbps"
 #
   - name: racknerd
     type: hysteria2
@@ -14,8 +14,8 @@ proxies:
     port: 16941
     password: ec56dc36-2688-4924-9a96-362328352828
     sni: www.mareuorg.eu.org
-    up: "30 Mbps"
-    down: "200 Mbps"
+    up: "10 Mbps"
+    down: "100 Mbps"
 #
   - name: virmach
     type: hysteria2
@@ -23,8 +23,8 @@ proxies:
     port: 10572
     password: 2fac7fc9-cd2e-4831-95e2-dd716fe0cb27
     sni: www.febeuorg.eu.org
-    up: "30 Mbps"
-    down: "200 Mbps"
+    up: "10 Mbps"
+    down: "100 Mbps"
 #
   - name: cloudflare
     server: pixabay.com
