@@ -17,15 +17,6 @@ proxies:
     up: "10 Mbps"
     down: "100 Mbps"
 #
-  - name: virmach
-    type: hysteria2
-    server: www.febeuorg.eu.org
-    port: 10572
-    password: 2fac7fc9-cd2e-4831-95e2-dd716fe0cb27
-    sni: www.febeuorg.eu.org
-    up: "10 Mbps"
-    down: "100 Mbps"
-#
   - name: cloudflare
     server: pixabay.com
     port: 2095
