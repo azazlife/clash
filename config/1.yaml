@@ -50,9 +50,9 @@ global-client-fingerprint: chrome
 # 若选择 "random", 则按 Cloudflare Radar 数据按概率生成一个现代浏览器指纹。
 
 geox-url:
-  geoip: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
-  geosite: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-  mmdb: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
+  geoip: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
 
 # 控制是否让 Clash 去匹配进程
 # always 开启，强制匹配所有进程
@@ -234,7 +234,7 @@ proxy-groups:
 proxy-providers:
   provide:
     type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/clash/master/config/2.yaml"
+    url: "https://gh-proxy.com/https://raw.githubusercontent.com/bylheart/clash/master/config/2.yaml"
     interval: 3600
     path: ./provide/subscription.yaml
     health-check:
@@ -249,55 +249,55 @@ rule-providers:
     interval: 259200
     path: ./ruleset/myrules.yaml
     type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myrules.txt"
+    url: "https://gh-proxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myrules.txt"
   mydirect:
     behavior: domain
     interval: 259200
     path: ./ruleset/mydirect.yaml
     type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
+    url: "https://gh-proxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
   myproxy:
     behavior: domain
     interval: 259200
     path: ./ruleset/myproxy.yaml
     type: http
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
+    url: "https://gh-proxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
   cn:
     behavior: domain
     interval: 43200
     path: ./ruleset/cn_domain.yaml
     type: http
-    url: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
+    url: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
   proxy:
     behavior: domain
     interval: 43200
     path: ./ruleset/proxy.yaml
     type: http
-    url: "https://ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml"
+    url: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml"
   # Advertising:
     # behavior: classical
     # interval: 43200
     # path: ./ruleset/Advertising.yaml
     # type: http
-    # url: "https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml"
+    # url: "https://gh-proxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml"
   # Advertising_Domain:
     # behavior: domain
     # interval: 43200
     # path: ./ruleset/Advertising_Domain.yaml
     # type: http
-    # url: "https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml"
+    # url: "https://gh-proxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml"
   # AntiAd:
     # behavior: domain
     # interval: 43200
     # path: ./ruleset/anti-ad-clash.yaml
     # type: http
-    # url: "https://ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
+    # url: "https://gh-proxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
   # AdBlock:
     # behavior: classical
     # interval: 43200
     # path: ./ruleset/AdBlock.yaml
     # type: http
-    # url: "https://ghproxy.com/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Clash/filter/AdBlock.list"
+    # url: "https://gh-proxy.com/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Clash/filter/AdBlock.list"
 #
 rules:
   # - RULE-SET,myrules,PROXY
