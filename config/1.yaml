@@ -126,7 +126,7 @@ dns:
 
   # dns 服务监听
   listen: 127.0.0.1:1053
-  use-hosts: true
+  #use-hosts: true
 
   # 可选值 fake-ip / redir-host
   # Clash 的 dns 处理模式
