@@ -127,7 +127,7 @@ dns:
      - tls://120.53.53.53:853
 
   # dns 服务监听
-  listen: 127.0.0.1:1053
+  listen: 0.0.0.0:1053
   #use-hosts: true
 
   # 可选值 fake-ip / redir-host
