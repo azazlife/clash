@@ -278,18 +278,18 @@ rule-providers:
     path: ./ruleset/myproxy.yaml
     type: http
     url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
-  cn:
-    behavior: domain
-    interval: 43200
-    path: ./ruleset/cn_domain.yaml
-    type: http
-    url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
-  proxy:
-    behavior: domain
-    interval: 43200
-    path: ./ruleset/proxy.yaml
-    type: http
-    url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml"
+  #cn:
+    #behavior: domain
+    #interval: 43200
+    #path: ./ruleset/cn_domain.yaml
+    #type: http
+    #url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
+  #proxy:
+    #behavior: domain
+    #interval: 43200
+    #path: ./ruleset/proxy.yaml
+    #type: http
+    #url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml"
   # Advertising:
     # behavior: classical
     # interval: 43200
@@ -338,8 +338,8 @@ rules:
   - GEOSITE,steam@cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
-  - RULE-SET,proxy,PROXY
-  - RULE-SET,cn,DIRECT
+  #- RULE-SET,proxy,PROXY
+  #- RULE-SET,cn,DIRECT
   - GEOSITE,cn,DIRECT
 # GEOIP规则
   - GEOIP,private,DIRECT,no-resolve
