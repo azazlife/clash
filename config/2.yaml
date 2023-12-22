@@ -2,19 +2,23 @@ proxies:
   - name: cloudcone
     type: hysteria2
     server: www.janeuorg.eu.org
-    port: 10846
-    password: 102c3a5e-abe6-45b6-a041-6f8049c84e31
+    port: 28726
+    password: 04e55d2b-fd8d-4669-88a5-acc770adfba7
+    alpn:
+        - h3
     sni: www.janeuorg.eu.org
-    up: "10 Mbps"
+    up: "50 Mbps"
     down: "100 Mbps"
 #
   - name: racknerd
     type: hysteria2
     server: www.mareuorg.eu.org
-    port: 16941
-    password: ec56dc36-2688-4924-9a96-362328352828
+    port: 19970
+    password: 711cec86-6597-48d5-952b-c8c720ea5067
+    alpn:
+        - h3
     sni: www.mareuorg.eu.org
-    up: "10 Mbps"
+    up: "50 Mbps"
     down: "100 Mbps"
 #
   - name: cloudflare
