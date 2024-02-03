@@ -55,7 +55,7 @@ geox-url:
   mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
 
 geo-auto-update: true # 是否自动更新 geodata
-geo-update-interval: 24 # 更新间隔，单位：小时
+geo-update-interval: 6 # 更新间隔，单位：小时
 
 # 控制是否让 Clash 去匹配进程
 # always 开启，强制匹配所有进程
