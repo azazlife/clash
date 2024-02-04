@@ -29,6 +29,8 @@ ipv6: true # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS
 
 external-controller: 127.0.0.1:9093 # RESTful API 监听地址
 
+unified-delay: true
+
 tcp-concurrent: true # TCP 并发连接所有 IP, 将使用最快握手的 TCP
 
 # 全局 TLS 指纹，优先低于 proxy 内的 client-fingerprint
