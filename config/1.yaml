@@ -84,13 +84,12 @@ dns:
     #- tls://223.6.6.6:853
     #- tls://1.12.12.12:853
     #- tls://120.53.53.53:853
-    #- https://223.5.5.5/dns-query
-    #- https://223.6.6.6/dns-query
-    #- https://1.12.12.12/dns-query
-    #- https://120.53.53.53/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query # DNS over HTTPS
-    - quic://dns.adguard.com:784
+    - https://223.5.5.5/dns-query
+    - https://223.6.6.6/dns-query
+    - https://1.12.12.12/dns-query
+    - https://120.53.53.53/dns-query
+    #- https://dns.alidns.com/dns-query
+    #- https://doh.pub/dns-query # DNS over HTTPS
     #- 114.114.114.114 # default value
     #- 8.8.8.8 # default value
     #- https://dns.alidns.com/dns-query#h3=true # 强制 HTTP/3，与 perfer-h3 无关，强制开启 DoH 的 HTTP/3 支持，若不支持将无法使用
