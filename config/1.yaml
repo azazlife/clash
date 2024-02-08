@@ -80,10 +80,10 @@ dns:
   # 支持 UDP，TCP，DoT，DoH，DoQ
   # 这部分为主要 DNS 配置，影响所有直连，确保使用对大陆解析精准的 DNS
   nameserver:
-    #- tls://223.5.5.5:853 # DNS over TLS
-    #- tls://223.6.6.6:853
-    #- tls://1.12.12.12:853
-    #- tls://120.53.53.53:853
+    - tls://223.5.5.5:853 # DNS over TLS
+    - tls://223.6.6.6:853
+    - tls://1.12.12.12:853
+    - tls://120.53.53.53:853
     - https://223.5.5.5/dns-query
     - https://223.6.6.6/dns-query
     - https://1.12.12.12/dns-query
@@ -179,7 +179,7 @@ proxy-providers:
     type: http # http 的 path 可空置,默认储存路径为 homedir的proxies文件夹,文件名为url的md5
     url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/bylheart/clash/master/config/2.yaml"
     interval: 3600
-    path: /provider/subscription.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
+    path: ./provider/subscription.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
     health-check:
       enable: true
       interval: 600
@@ -200,67 +200,67 @@ rule-providers:
   myrules:
     behavior: classical
     interval: 259200
-    path: /rule/myrules.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
+    path: ./rule/myrules.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
     type: http # http 的 path 可空置,默认储存路径为 homedir的rules文件夹,文件名为url的md5
     url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myrules.txt"
   mydirect:
     behavior: domain
     interval: 259200
-    path: /rule/mydirect.yaml
+    path: ./rule/mydirect.yaml
     type: http
     url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/mydirect.txt"
   myproxy:
     behavior: domain
     interval: 259200
-    path: /rule/myproxy.yaml
+    path: ./rule/myproxy.yaml
     type: http
     url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
   #cn:
     #behavior: domain
     #interval: 43200
-    #path: /rule/cn_domain.yaml
+    #path: ./rule/cn_domain.yaml
     #type: http
     #url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
   #proxy:
     #behavior: domain
     #interval: 43200
-    #path: /rule/proxy.yaml
+    #path: ./rule/proxy.yaml
     #type: http
     #url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml"
   # Advertising:
     # behavior: classical
     # interval: 43200
-    # path: /rule/Advertising.yaml
+    # path: ./rule/Advertising.yaml
     # type: http
     # url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml"
   # Advertising_Domain:
     # behavior: domain
     # interval: 43200
-    # path: /rule/Advertising_Domain.yaml
+    # path: ./rule/Advertising_Domain.yaml
     # type: http
     # url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml"
   # AntiAd:
     # behavior: domain
     # interval: 43200
-    # path: /rule/anti-ad-clash.yaml
+    # path: ./rule/anti-ad-clash.yaml
     # type: http
     # url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
   # AdBlock:
     # behavior: classical
     # interval: 43200
-    # path: /rule/AdBlock.yaml
+    # path: ./rule/AdBlock.yaml
     # type: http
     # url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Clash/filter/AdBlock.list"
 #
 rules:
-  # - RULE-SET,myrules,PROXY
+  #- RULE-SET,myrules,PROXY
   - RULE-SET,mydirect,DIRECT
   - RULE-SET,myproxy,OTHER
-  # - RULE-SET,AdBlock,REJECT
-  # - RULE-SET,AntiAd,REJECT
-  # - RULE-SET,Advertising,REJECT
-  # - RULE-SET,Advertising_Domain,REJECT
-  # - GEOSITE,category-ads-all,REJECT
+  #- RULE-SET,AdBlock,REJECT
+  #- RULE-SET,AntiAd,REJECT
+  #- RULE-SET,Advertising,REJECT
+  #- RULE-SET,Advertising_Domain,REJECT
+  #- GEOSITE,category-ads-all,REJECT
 # GEOSITE规则
   - GEOSITE,private,DIRECT
   - GEOSITE,youtube,PROXY
@@ -268,10 +268,10 @@ rules:
   - GEOSITE,twitter,PROXY
   - GEOSITE,pixiv,PROXY
   - GEOSITE,category-scholar-!cn,PROXY
-  # - GEOSITE,biliintl,PROXY
-  # - GEOSITE,onedrive,DIRECT
-  # - GEOSITE,microsoft@cn,DIRECT
-  # - GEOSITE,apple-cn,DIRECT
+  #- GEOSITE,biliintl,PROXY
+  #- GEOSITE,onedrive,DIRECT
+  #- GEOSITE,microsoft@cn,DIRECT
+  #- GEOSITE,apple-cn,DIRECT
   - GEOSITE,steam@cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
@@ -282,8 +282,8 @@ rules:
   - GEOIP,private,DIRECT,no-resolve
   - GEOIP,google,PROXY
   - GEOIP,telegram,PROXY
-  - GEOIP,JP,PROXY
-  # - GEOIP,US,PROXY
+  #- GEOIP,JP,PROXY
+  #- GEOIP,US,PROXY
   - GEOIP,CN,DIRECT
-  # - DST-PORT,80/8080/443/8443,PROXY
+  #- DST-PORT,80/8080/443/8443,PROXY
   - MATCH,PROXY
