@@ -21,6 +21,17 @@ proxies:
     up: "50 Mbps"
     down: "100 Mbps"
 #
+  - name: "vrimach"
+    type: hysteria2
+    server: www.febeuorg.eu.org
+    port: 41040
+    password: 7a2b25a4-d6d3-4e53-a9b1-ffab48db370b
+    alpn:
+        - h3
+    sni: www.febeuorg.eu.org
+    up: "50 Mbps"
+    down: "100 Mbps"
+#
   - name: cloudflare
     server: pixabay.com
     port: 2095
