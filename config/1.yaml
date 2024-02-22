@@ -215,18 +215,6 @@ rule-providers:
     path: ./rule/myproxy.yaml
     type: http
     url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/bylheart/myrules/main/myproxy.txt"
-  #cn:
-    #behavior: domain
-    #interval: 43200
-    #path: ./rule/cn_domain.yaml
-    #type: http
-    #url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml"
-  #proxy:
-    #behavior: domain
-    #interval: 43200
-    #path: ./rule/proxy.yaml
-    #type: http
-    #url: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml"
   # Advertising:
     # behavior: classical
     # interval: 43200
