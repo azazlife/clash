@@ -263,8 +263,6 @@ rules:
   - GEOSITE,steam@cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
-  #- RULE-SET,proxy,PROXY
-  #- RULE-SET,cn,DIRECT
   - GEOSITE,cn,DIRECT
 # GEOIP规则
   - GEOIP,private,DIRECT,no-resolve
